@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "krm-validatie-terraform-state"
+    bucket = "krmvalidatie-terraform-state"
     key    = "krm-validatie.tfstate"
     region = "eu-west-1"
   }

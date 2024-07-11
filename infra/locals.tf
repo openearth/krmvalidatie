@@ -6,7 +6,7 @@ locals {
   image_tag = local.is_prod ? "prod" : "dev"
   default_tags = {
     "terraform"   = "true"
-    "project"     = "river-ice"
+    "project"     = "krmvalidatie"
     "environment" = terraform.workspace
   }
 

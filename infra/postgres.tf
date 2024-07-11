@@ -1,94 +1,66 @@
-# Create a VPC
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+resource "aws_db_instance" "krmvalidatie" {
+  identifier_prefix      = "krmvalidatie-db-${terraform.workspace}"
+  allocated_storage      = 20
+  max_allocated_storage  = 100
+  db_name                = "postgres_krmvalidatie_${terraform.workspace}"
+  engine                 = "postgres"
+  engine_version         = "16.1"
+  instance_class         = "db.t3.micro"
+  username               = "krmvalidatie"
+  password               = random_password.db_password.result
+  vpc_security_group_ids = [aws_security_group.krmvalidatie-db.id]
+  db_subnet_group_name   = aws_db_subnet_group.krmvalidatie.name
+  publicly_accessible    = false
+  storage_type           = "gp2"
+  skip_final_snapshot    = true
+  multi_az               = false
+
 }
 
-# Create Subnets
-resource "aws_subnet" "public" {
-  count                   = 2
-  vpc_id                  = aws_vpc.main.id
-  cidr_block              = cidrsubnet(aws_vpc.main.cidr_block, 4, count.index)
-  availability_zone       = data.aws_availability_zones.available.names[count.index]
-  map_public_ip_on_launch = true
+resource "random_password" "db_password" {
+  length  = 24
+  special = false
 }
 
-# Create Internet Gateway
-resource "aws_internet_gateway" "main" {
-  vpc_id = aws_vpc.main.id
+resource "aws_secretsmanager_secret" "postgres_credentials" {
+  name = "krmvalidatie-postgres-credentials-${terraform.workspace}"
 }
 
-# Create Route Table
-resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.main.id
-
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.main.id
-  }
+resource "aws_secretsmanager_secret_version" "postgres_credentials" {
+  secret_id = aws_secretsmanager_secret.postgres_credentials.id
+  secret_string = jsonencode({
+    username = aws_db_instance.krmvalidatie.username,
+    password = random_password.db_password.result
+  })
 }
 
-# Associate Route Table with Subnets
-resource "aws_route_table_association" "public" {
-  count          = length(aws_subnet.public)
-  subnet_id      = element(aws_subnet.public.*.id, count.index)
-  route_table_id = aws_route_table.public.id
-}
+resource "aws_security_group" "krmvalidatie-db" {
+  name   = "krmvalidatie-db-sg-${terraform.workspace}"
+  vpc_id = aws_vpc.vpc.id
 
-# Security Group for RDS
-resource "aws_security_group" "rds_sg" {
-  vpc_id = aws_vpc.main.id
+  # ingress {
+  #   from_port       = 5432
+  #   to_port         = 5432
+  #   protocol        = "tcp"
+  #   security_groups = [aws_security_group.lambda_sg.id]
+  #   description     = "Allow requests from lambda"
+  # }
+
 
   ingress {
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [aws_vpc.vpc.cidr_block]
+    description = "Allow requests from VPC"
   }
 }
 
-# Security Group for Lambda
-resource "aws_security_group" "lambda_sg" {
-  vpc_id = aws_vpc.main.id
+resource "aws_db_subnet_group" "krmvalidatie" {
+  name       = "postgres-krmvalidatie-sn-group-${terraform.workspace}"
+  subnet_ids = [aws_subnet.az1a.id, aws_subnet.az1b.id, aws_subnet.az1c.id]
 
-  ingress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+  tags = {
+    Name = "DB subnet group for krmvalidatie database"
   }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-# RDS PostgreSQL Instance
-resource "aws_db_instance" "postgres" {
-  allocated_storage    = 20
-  engine               = "postgres"
-  engine_version       = "12.4"
-  instance_class       = "db.t3.micro"
-  name                 = "mydatabase"
-  username             = "myusername"
-  password             = "mypassword"
-  parameter_group_name = "default.postgres12"
-  publicly_accessible  = true
-  vpc_security_group_ids = [aws_security_group.rds_sg.id]
-  db_subnet_group_name = aws_db_subnet_group.main.id
-}
-
-# Subnet Group for RDS
-resource "aws_db_subnet_group" "main" {
-  name       = "main"
-  subnet_ids = aws_subnet.public.*.id
 }
