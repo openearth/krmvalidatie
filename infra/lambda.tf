@@ -6,6 +6,12 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
   handler       = "krm-validatie.lambda_handler"
   filename      = "functions/src/krm-validatie.zip"  # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda.output_base64sha256
+  timeout       = 120
+
+  layers = [
+    # "arn:aws:lambda:eu-west-1:336392948345:layer:AWSDataWrangler-Python38:1",
+    "arn:aws:lambda:eu-west-1:637423531264:layer:geopandas:1"
+  ]
 
   # environment {
   #   #   variables = {
@@ -21,6 +27,12 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
   #   subnet_ids         = aws_subnet.public.*.id
   # }
 }
+
+# resource "aws_lambda_layer_version" "pandas_layer" {
+#   filename   = "pandas_layer.zip"
+#   layer_name = "pandas_layer"
+#   compatible_runtimes = ["python3.8"]
+# }
 
 # Create the function
 data "archive_file" "lambda" {
@@ -39,12 +51,10 @@ data "aws_iam_policy_document" "lambda_secrets_manager_policy" {
   }
 }
 
-# IAM policy document for accessing Secrets Manager
 data "aws_iam_policy_document" "lambda_s3_policy" {
   statement {
     actions = [
-      "s3:ListObjects",
-      "s3:ListBucket",
+      "s3:*"
     ]
     resources = ["*"]
   }

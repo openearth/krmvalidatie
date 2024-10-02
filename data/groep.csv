@@ -1,0 +1,1809 @@
+groep;parameter;typegroep;elke_param_verplicht;
+O2;O2;individuele param;ja;
+T;T;individuele param;ja;
+SALNTT;SALNTT;individuele param;ja;
+Platichthys flesus;Platichthys flesus;individuele param;ja;
+Pleuronectes platessa;Pleuronectes platessa;individuele param;ja;
+Hg;Hg;individuele param;ja;
+DS;DS;individuele param;ja;
+VET;VET;individuele param;ja;
+Nanorg;Nanorg;individuele param;ja;
+PO4;PO4;individuele param;ja;
+CHLFa;CHLFa;individuele param;ja;
+Phaeocystis;Phaeocystis;individuele param;ja;
+Corg;Corg;individuele param;ja;
+DSslak;DSslak;individuele param;ja;
+Nucella lapillus;Nucella lapillus;individuele param;ja;
+Nassarius reticulatus;Nassarius reticulatus;individuele param;ja;
+organotin;DC4ySn;Chemische stof;ja;
+organotin;DFySn;Chemische stof;ja;
+organotin;MC4ySn;Chemische stof;ja;
+organotin;MFySn;Chemische stof;ja;
+organotin;TC4ySn;Chemische stof;ja;
+organotin;TFySn;Chemische stof;ja;
+Phocoena Phocoena;Phocoena Phocoena;individuele param;ja;
+Melanitta nigra;Melanitta nigra;individuele param;ja;
+OSPAR_PLAIND;OSPAR_PLAIND;individuele param;ja;
+OSPAR_PLATOT;OSPAR_PLATOT;individuele param;ja;
+OSPAR_PLAUSE;OSPAR_PLAUSE;individuele param;ja;
+OSPAR_PLATOT;OSPAR_PLAUSE;individuele param;nee;
+zeehonden;Phoca vitulina;Biotaxon;nee;
+zeehonden;Halichoerus grypus;Biotaxon;nee;
+RIKILT-1 mg/kg;As;Chemische stof;ja;
+RIKILT-1 mg/kg;Cd;Chemische stof;ja;
+RIKILT-1 mg/kg;Hg;Chemische stof;ja;
+RIKILT-1 mg/kg;Pb;Chemische stof;ja;
+WSFR-1 ng/gX;5C1yChr;Chemische stof;ja;
+RIKILT-1 ng/gX;aHBCD;Chemische stof;ja;
+RIKILT-1 ng/g;BaA;Chemische stof;ja;
+RIKILT-1 ng/g;BaP;Chemische stof;ja;
+WSFR-1 ng/gX;BbF;Chemische stof;ja;
+RIKILT-1 ng/g;BcFle;Chemische stof;ja;
+RIKILT-1 ng/g;BghiPe;Chemische stof;ja;
+RIKILT-1 ng/gX;bHBCD;Chemische stof;ja;
+WSFR-1 ng/gX;BjF;Chemische stof;ja;
+RIKILT-1 ng/g;BkF;Chemische stof;ja;
+RIKILT-1 ng/gX;cHBCD;Chemische stof;ja;
+RIKILT-1 ng/g;Chr;Chemische stof;ja;
+RIKILT-1 ng/g;cycPecdPyr;Chemische stof;ja;
+RIKILT-1 ng/g;DBaeP;Chemische stof;ja;
+WSFR-1 ng/gX;DBahAnt;Chemische stof;ja;
+RIKILT-1 ng/g;DBahP;Chemische stof;ja;
+WSFR-1 ng/gX;DBaiP;Chemische stof;ja;
+RIKILT-1 ng/g;DBalP;Chemische stof;ja;
+RIKILT-1 ng/g;InP;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE100;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE119;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE138;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE153;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE154;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE17;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE183;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE190;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE209;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE28;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE47;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE49;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE66;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE71;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE75;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE77;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE85;Chemische stof;ja;
+RIKILT-1 ng/g;PBDE99;Chemische stof;ja;
+RIKILT-1 ng/g;PCB101;Chemische stof;ja;
+RIKILT-1 ng/g;PCB138;Chemische stof;ja;
+RIKILT-1 ng/g;PCB153;Chemische stof;ja;
+RIKILT-1 ng/g;PCB180;Chemische stof;ja;
+RIKILT-1 ng/g;PCB28;Chemische stof;ja;
+RIKILT-1 ng/g;PCB52;Chemische stof;ja;
+RIKILT-1 ng/gX;T4BrbFolA;Chemische stof;ja;
+RIKILT-1 ng/g;24DDD;Chemische stof;ja;
+RIKILT-1 ng/g;24DDE;Chemische stof;ja;
+RIKILT-1 ng/g;44DDD;Chemische stof;ja;
+RIKILT-1 ng/g;44DDE;Chemische stof;ja;
+RIKILT-1 ng/g;44DDT;Chemische stof;ja;
+RIKILT-1 ng/g;aedsfn;Chemische stof;ja;
+RIKILT-1 ng/g;aHCH;Chemische stof;ja;
+RIKILT-1 ng/g;aldn;Chemische stof;ja;
+RIKILT-1 ng/g;bHCH;Chemische stof;ja;
+RIKILT-1 ng/g;bHpClepO;Chemische stof;ja;
+RIKILT-1 ng/g;cCldn;Chemische stof;ja;
+RIKILT-1 ng/g;cHCH;Chemische stof;ja;
+RIKILT-1 ng/g;dieldn;Chemische stof;ja;
+RIKILT-1 ng/g;HCB;Chemische stof;ja;
+RIKILT-1 ng/g;HpCl;Chemische stof;ja;
+RIKILT-1 ng/g;HxClbtDen;Chemische stof;ja;
+RIKILT-1 ng/g;L_PFBS;Chemische stof;ja;
+RIKILT-1 ng/g;L_PFDS;Chemische stof;ja;
+RIKILT-1 ng/g;L_PFHpS;Chemische stof;ja;
+RIKILT-1 ng/g;L_PFHxS;Chemische stof;ja;
+RIKILT-1 ng/g;oCldn;Chemische stof;ja;
+RIKILT-1 ng/g;PeClBen;Chemische stof;ja;
+RIKILT-1 ng/g;PFBA;Chemische stof;ja;
+RIKILT-1 ng/g;PFDA;Chemische stof;ja;
+RIKILT-1 ng/g;PFDoA;Chemische stof;ja;
+RIKILT-1 ng/g;PFHpA;Chemische stof;ja;
+RIKILT-1 ng/g;PFHxA;Chemische stof;ja;
+RIKILT-1 ng/g;PFNA;Chemische stof;ja;
+RIKILT-1 ng/g;PFOA;Chemische stof;ja;
+RIKILT-1 ng/g;PFOS;Chemische stof;ja;
+RIKILT-1 ng/g;PFPA;Chemische stof;ja;
+RIKILT-1 ng/g;PFTDA;Chemische stof;ja;
+RIKILT-1 ng/g;PFTeDA;Chemische stof;ja;
+RIKILT-1 ng/g;PFUdA;Chemische stof;ja;
+RIKILT-1 ng/g;SCB6;Chemische stof;ja;
+RIKILT-1 ng/g;som PAH [ub];Chemische stof;ja;
+RIKILT-1 ng/g;som PAH4 [lb];Chemische stof;ja;
+RIKILT-1 ng/g;tCldn;Chemische stof;ja;
+RIKILT-1 ng/g;tHpClepO;Chemische stof;ja;
+RIKILT-1 ng/g;SCB6;Chemische stof;ja;
+RIKILT-1 pg/g;SumDioxins;Chemische stof;ja;
+RIKILT-1 pg/gX;Total dioxin-like PCBs;Chemische stof;ja;
+RIKILT-1 pg/gX;Total dioxins and dioxin-like PCBs;Chemische stof;ja;
+RIKILT-1 pg/g;PCB101;Chemische stof;ja;
+RIKILT-1 pg/g;PCB105;Chemische stof;ja;
+RIKILT-1 pg/g;PCB114;Chemische stof;ja;
+RIKILT-1 pg/g;PCB118;Chemische stof;ja;
+RIKILT-1 pg/g;PCB123;Chemische stof;ja;
+RIKILT-1 pg/g;PCB126;Chemische stof;ja;
+RIKILT-1 pg/g;PCB138;Chemische stof;ja;
+RIKILT-1 pg/g;PCB153;Chemische stof;ja;
+RIKILT-1 pg/g;PCB156;Chemische stof;ja;
+RIKILT-1 pg/g;PCB157;Chemische stof;ja;
+RIKILT-1 pg/g;PCB167;Chemische stof;ja;
+RIKILT-1 pg/g;PCB169;Chemische stof;ja;
+RIKILT-1 pg/g;PCB180;Chemische stof;ja;
+RIKILT-1 pg/g;PCB189;Chemische stof;ja;
+RIKILT-1 pg/g;PCB28;Chemische stof;ja;
+RIKILT-1 pg/g;PCB52;Chemische stof;ja;
+RIKILT-1 pg/g;PCB77;Chemische stof;ja;
+RIKILT-1 pg/g;PCB81;Chemische stof;ja;
+RIKILT-1 pg/g;PCDD48;Chemische stof;ja;
+RIKILT-1 pg/g;PCDD54;Chemische stof;ja;
+RIKILT-1 pg/g;PCDD66;Chemische stof;ja;
+RIKILT-1 pg/g;PCDD67;Chemische stof;ja;
+RIKILT-1 pg/g;PCDD70;Chemische stof;ja;
+RIKILT-1 pg/g;PCDD73;Chemische stof;ja;
+RIKILT-1 pg/g;PCDD75;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF114;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF118;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF121;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF124;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF130;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF131;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF134;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF135;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF83;Chemische stof;ja;
+RIKILT-1 pg/g;PCDF94;Chemische stof;ja;
+zwerfvuil op strand;OSPAR_SA001;Object;ja;
+zwerfvuil op strand;OSPAR_SA002;Object;ja;
+zwerfvuil op strand;OSPAR_SA003;Object;ja;
+zwerfvuil op strand;OSPAR_SA004;Object;ja;
+zwerfvuil op strand;OSPAR_SA005;Object;ja;
+zwerfvuil op strand;OSPAR_SA006;Object;ja;
+zwerfvuil op strand;OSPAR_SA007;Object;ja;
+zwerfvuil op strand;OSPAR_SA008;Object;ja;
+zwerfvuil op strand;OSPAR_SA009;Object;ja;
+zwerfvuil op strand;OSPAR_SA010;Object;ja;
+zwerfvuil op strand;OSPAR_SA011;Object;ja;
+zwerfvuil op strand;OSPAR_SA012;Object;ja;
+zwerfvuil op strand;OSPAR_SA013;Object;ja;
+zwerfvuil op strand;OSPAR_SA014;Object;ja;
+zwerfvuil op strand;OSPAR_SA015;Object;ja;
+zwerfvuil op strand;OSPAR_SA016;Object;ja;
+zwerfvuil op strand;OSPAR_SA017;Object;ja;
+zwerfvuil op strand;OSPAR_SA018;Object;ja;
+zwerfvuil op strand;OSPAR_SA019;Object;ja;
+zwerfvuil op strand;OSPAR_SA020;Object;ja;
+zwerfvuil op strand;OSPAR_SA021;Object;ja;
+zwerfvuil op strand;OSPAR_SA022;Object;ja;
+zwerfvuil op strand;OSPAR_SA023;Object;ja;
+zwerfvuil op strand;OSPAR_SA024;Object;ja;
+zwerfvuil op strand;OSPAR_SA025;Object;ja;
+zwerfvuil op strand;OSPAR_SA026;Object;ja;
+zwerfvuil op strand;OSPAR_SA027;Object;ja;
+zwerfvuil op strand;OSPAR_SA028;Object;ja;
+zwerfvuil op strand;OSPAR_SA029;Object;ja;
+zwerfvuil op strand;OSPAR_SA030;Object;ja;
+zwerfvuil op strand;OSPAR_SA031;Object;ja;
+zwerfvuil op strand;OSPAR_SA032;Object;ja;
+zwerfvuil op strand;OSPAR_SA033;Object;ja;
+zwerfvuil op strand;OSPAR_SA034;Object;ja;
+zwerfvuil op strand;OSPAR_SA035;Object;ja;
+zwerfvuil op strand;OSPAR_SA036;Object;ja;
+zwerfvuil op strand;OSPAR_SA037;Object;ja;
+zwerfvuil op strand;OSPAR_SA038;Object;ja;
+zwerfvuil op strand;OSPAR_SA039;Object;ja;
+zwerfvuil op strand;OSPAR_SA040;Object;ja;
+zwerfvuil op strand;OSPAR_SA041;Object;ja;
+zwerfvuil op strand;OSPAR_SA042;Object;ja;
+zwerfvuil op strand;OSPAR_SA043;Object;ja;
+zwerfvuil op strand;OSPAR_SA044;Object;ja;
+zwerfvuil op strand;OSPAR_SA045;Object;ja;
+zwerfvuil op strand;OSPAR_SA046;Object;ja;
+zwerfvuil op strand;OSPAR_SA047;Object;ja;
+zwerfvuil op strand;OSPAR_SA048;Object;ja;
+zwerfvuil op strand;OSPAR_SA049;Object;ja;
+zwerfvuil op strand;OSPAR_SA050;Object;ja;
+zwerfvuil op strand;OSPAR_SA052;Object;ja;
+zwerfvuil op strand;OSPAR_SA053;Object;ja;
+zwerfvuil op strand;OSPAR_SA054;Object;ja;
+zwerfvuil op strand;OSPAR_SA055;Object;ja;
+zwerfvuil op strand;OSPAR_SA056;Object;ja;
+zwerfvuil op strand;OSPAR_SA057;Object;ja;
+zwerfvuil op strand;OSPAR_SA059;Object;ja;
+zwerfvuil op strand;OSPAR_SA060;Object;ja;
+zwerfvuil op strand;OSPAR_SA061;Object;ja;
+zwerfvuil op strand;OSPAR_SA062;Object;ja;
+zwerfvuil op strand;OSPAR_SA063;Object;ja;
+zwerfvuil op strand;OSPAR_SA064;Object;ja;
+zwerfvuil op strand;OSPAR_SA065;Object;ja;
+zwerfvuil op strand;OSPAR_SA066;Object;ja;
+zwerfvuil op strand;OSPAR_SA067;Object;ja;
+zwerfvuil op strand;OSPAR_SA068;Object;ja;
+zwerfvuil op strand;OSPAR_SA069;Object;ja;
+zwerfvuil op strand;OSPAR_SA070;Object;ja;
+zwerfvuil op strand;OSPAR_SA071;Object;ja;
+zwerfvuil op strand;OSPAR_SA072;Object;ja;
+zwerfvuil op strand;OSPAR_SA073;Object;ja;
+zwerfvuil op strand;OSPAR_SA074;Object;ja;
+zwerfvuil op strand;OSPAR_SA075;Object;ja;
+zwerfvuil op strand;OSPAR_SA076;Object;ja;
+zwerfvuil op strand;OSPAR_SA077;Object;ja;
+zwerfvuil op strand;OSPAR_SA078;Object;ja;
+zwerfvuil op strand;OSPAR_SA079;Object;ja;
+zwerfvuil op strand;OSPAR_SA080;Object;ja;
+zwerfvuil op strand;OSPAR_SA081;Object;ja;
+zwerfvuil op strand;OSPAR_SA082;Object;ja;
+zwerfvuil op strand;OSPAR_SA083;Object;ja;
+zwerfvuil op strand;OSPAR_SA084;Object;ja;
+zwerfvuil op strand;OSPAR_SA086;Object;ja;
+zwerfvuil op strand;OSPAR_SA087;Object;ja;
+zwerfvuil op strand;OSPAR_SA088;Object;ja;
+zwerfvuil op strand;OSPAR_SA089;Object;ja;
+zwerfvuil op strand;OSPAR_SA090;Object;ja;
+zwerfvuil op strand;OSPAR_SA091;Object;ja;
+zwerfvuil op strand;OSPAR_SA092;Object;ja;
+zwerfvuil op strand;OSPAR_SA093;Object;ja;
+zwerfvuil op strand;OSPAR_SA094;Object;ja;
+zwerfvuil op strand;OSPAR_SA095;Object;ja;
+zwerfvuil op strand;OSPAR_SA096;Object;ja;
+zwerfvuil op strand;OSPAR_SA097;Object;ja;
+zwerfvuil op strand;OSPAR_SA098;Object;ja;
+zwerfvuil op strand;OSPAR_SA099;Object;ja;
+zwerfvuil op strand;OSPAR_SA100;Object;ja;
+zwerfvuil op strand;OSPAR_SA101;Object;ja;
+zwerfvuil op strand;OSPAR_SA102;Object;ja;
+zwerfvuil op strand;OSPAR_SA103;Object;ja;
+zwerfvuil op strand;OSPAR_SA104;Object;ja;
+zwerfvuil op strand;OSPAR_SA105;Object;ja;
+zwerfvuil op strand;OSPAR_SA108;Object;ja;
+zwerfvuil op strand;OSPAR_SA109;Object;ja;
+zwerfvuil op strand;OSPAR_SA110;Object;ja;
+zwerfvuil op strand;OSPAR_SA111;Object;ja;
+zwerfvuil op strand;OSPAR_SA112;Object;ja;
+zwerfvuil op strand;OSPAR_SA113;Object;ja;
+zwerfvuil op strand;OSPAR_SA114;Object;ja;
+zwerfvuil op strand;OSPAR_SA115;Object;ja;
+zwerfvuil op strand;OSPAR_SA116;Object;ja;
+zwerfvuil op strand;OSPAR_SA117;Object;ja;
+zwerfvuil op strand;OSPAR_SA118;Object;ja;
+zwerfvuil op strand;OSPAR_SA119;Object;ja;
+zwerfvuil op strand;OSPAR_SA120;Object;ja;
+zwerfvuil op strand;OSPAR_SA121;Object;ja;
+zwerfvuil op strand;OSPAR_SA200;Object;ja;
+zwerfvuil op strand;OSPAR_SA201;Object;ja;
+zwerfvuil op strand;OSPAR_SA202;Object;ja;
+zwerfvuil op strand;OSPAR_SA203;Object;ja;
+zwerfvuil op strand;OSPAR_SA204;Object;ja;
+zwerfvuil op strand;OSPAR_SA205;Object;ja;
+zwerfvuil op strand;OSPAR_SA206;Object;ja;
+zwerfvuil op strand;OSPAR_SA207;Object;ja;
+zwerfvuil op strand;OSPAR_SA208;Object;ja;
+zwerfvuil op strand;OSPAR_SA210;Object;ja;
+zwerfvuil op strand;OSPAR_SA0211;Object;ja;
+zwerfvuil op strand;OSPAR_SA0212;Object;ja;
+zwerfvuil op strand;OSPAR_SA0321;Object;ja;
+zwerfvuil op strand;OSPAR_SA0322;Object;ja;
+zwerfvuil op strand;OSPAR_SA0331;Object;ja;
+zwerfvuil op strand;OSPAR_SA0332;Object;ja;
+zwerfvuil op strand;OSPAR_SA0341;Object;ja;
+zwerfvuil op strand;OSPAR_SA0342;Object;ja;
+zwerfvuil op strand;OSPAR_SA0461;Object;ja;
+zwerfvuil op strand;OSPAR_SA0462;Object;ja;
+zwerfvuil op strand;OSPAR_SA0471;Object;ja;
+zwerfvuil op strand;OSPAR_SA0472;Object;ja;
+zwerfvuil op strand;OSPAR_SA0481;Object;ja;
+zwerfvuil op strand;OSPAR_SA0610;Object;ja;
+zwerfvuil op strand;OSPAR_SA0620;Object;ja;
+zwerfvuil op strand;OSPAR_SA0931;Object;ja;
+zwerfvuil op strand;OSPAR_SA0981;Object;ja;
+zwerfvuil op strand;OSPAR_SA0982;Object;ja;
+zwerfvuil op strand;OSPAR_SA1171;Object;ja;
+zwerfvuil op strand;OSPAR_SA1172;Object;ja;
+zeevogels;Alca torda;Biotaxon;nee;
+zeevogels;Chroicocephalus ridibundus;Biotaxon;nee;
+zeevogels;Fratercula arctica;Biotaxon;nee;
+zeevogels;Fulmarus glacialis;Biotaxon;nee;
+zeevogels;Gavia stellata;Biotaxon;nee;
+zeevogels;Larus argentatus;Biotaxon;nee;
+zeevogels;Larus canus;Biotaxon;nee;
+zeevogels;Larus fuscus s.l.;Biotaxon;nee;
+zeevogels;Larus marinus;Biotaxon;nee;
+zeevogels;Larus minutus;Biotaxon;nee;
+zeevogels;Larus ridibundus;Biotaxon;nee;
+zeevogels;Morus bassanus;Biotaxon;nee;
+zeevogels;Phalacrocorax carbo;Biotaxon;nee;
+zeevogels;Rissa tridactyla;Biotaxon;nee;
+zeevogels;Sterna hirundo;Biotaxon;nee;
+zeevogels;Sterna paradisaea;Biotaxon;nee;
+zeevogels;Sterna sandvicensis;Biotaxon;nee;
+zeevogels;Uria aalge;Biotaxon;nee;
+zeevogels;Stercorarius skua;Biotaxon;nee;
+Noordzeebenthos;Tritia reticulata;Biotaxon;nee;
+Noordzeebenthos;Fabulina fabula;Biotaxon;nee;
+Noordzeebenthos;Macomangulus tenuis;Biotaxon;nee;
+Noordzeebenthos;limecola balthica;Biotaxon;nee;
+Noordzeebenthos;Abludomelita obtusata;Biotaxon;nee;
+Noordzeebenthos;Abra;Biotaxon;nee;
+Noordzeebenthos;Abra alba;Biotaxon;nee;
+Noordzeebenthos;Abra nitida;Biotaxon;nee;
+Noordzeebenthos;Abra prismatica;Biotaxon;nee;
+Noordzeebenthos;Acanthocardia echinata;Biotaxon;nee;
+Noordzeebenthos;Acrocnida brachiata;Biotaxon;nee;
+Noordzeebenthos;Acteon tornatilis;Biotaxon;nee;
+Noordzeebenthos;Actiniaria;Biotaxon;nee;
+Noordzeebenthos;Actinopterygii;Biotaxon;nee;
+Noordzeebenthos;Aequipecten opercularis;Biotaxon;nee;
+Noordzeebenthos;Aglaophamus agilis;Biotaxon;nee;
+Noordzeebenthos;Agonus cataphractus;Biotaxon;nee;
+Noordzeebenthos;Alcyonidium;Biotaxon;nee;
+Noordzeebenthos;Alcyonidium condylocinereum;Biotaxon;nee;
+Noordzeebenthos;Alcyonidium diaphanum;Biotaxon;nee;
+Noordzeebenthos;Alcyonidium mamillatum;Biotaxon;nee;
+Noordzeebenthos;Alcyonidium parasiticum;Biotaxon;nee;
+Noordzeebenthos;Alcyonium;Biotaxon;nee;
+Noordzeebenthos;Alcyonium digitatum;Biotaxon;nee;
+Noordzeebenthos;Alloteuthis;Biotaxon;nee;
+Noordzeebenthos;Ammodytidae;Biotaxon;nee;
+Noordzeebenthos;Ampelisca;Biotaxon;nee;
+Noordzeebenthos;Ampelisca brevicornis;Biotaxon;nee;
+Noordzeebenthos;Ampelisca spinipes;Biotaxon;nee;
+Noordzeebenthos;Ampelisca typica;Biotaxon;nee;
+Noordzeebenthos;Ampharete;Biotaxon;nee;
+Noordzeebenthos;Ampharete lindstroemi agg.;Biotaxon;nee;
+Noordzeebenthos;Ampharetidae;Biotaxon;nee;
+Noordzeebenthos;Amphictene auricoma;Biotaxon;nee;
+Noordzeebenthos;Amphipholis squamata;Biotaxon;nee;
+Noordzeebenthos;Amphipoda;Biotaxon;nee;
+Noordzeebenthos;Amphiura;Biotaxon;nee;
+Noordzeebenthos;Amphiura filiformis;Biotaxon;nee;
+Noordzeebenthos;Amphiuridae;Biotaxon;nee;
+Noordzeebenthos;Animalia;Biotaxon;nee;
+Noordzeebenthos;Anobothrus gracilis;Biotaxon;nee;
+Noordzeebenthos;Anomiidae;Biotaxon;nee;
+Noordzeebenthos;Anthozoa;Biotaxon;nee;
+Noordzeebenthos;Aonides oxycephala;Biotaxon;nee;
+Noordzeebenthos;Aonides paucibranchiata;Biotaxon;nee;
+Noordzeebenthos;Apherusa bispinosa;Biotaxon;nee;
+Noordzeebenthos;Aphrodita aculeata;Biotaxon;nee;
+Noordzeebenthos;Aphroditidae;Biotaxon;nee;
+Noordzeebenthos;Aporrhais pespelecani;Biotaxon;nee;
+Noordzeebenthos;Arcopagia crassa;Biotaxon;nee;
+Noordzeebenthos;Arctica islandica;Biotaxon;nee;
+Noordzeebenthos;Argissa hamatipes;Biotaxon;nee;
+Noordzeebenthos;Aricidea minuta;Biotaxon;nee;
+Noordzeebenthos;Arnoglossus laterna;Biotaxon;nee;
+Noordzeebenthos;Ascidiacea;Biotaxon;nee;
+Noordzeebenthos;Ascidiidae;Biotaxon;nee;
+Noordzeebenthos;Astarte montagui;Biotaxon;nee;
+Noordzeebenthos;Asterias rubens;Biotaxon;nee;
+Noordzeebenthos;Asteroidea;Biotaxon;nee;
+Noordzeebenthos;Astropecten irregularis;Biotaxon;nee;
+Noordzeebenthos;Atelecyclus rotundatus;Biotaxon;nee;
+Noordzeebenthos;Atherospio guillei;Biotaxon;nee;
+Noordzeebenthos;Atylus vedlomensis;Biotaxon;nee;
+Noordzeebenthos;Autonoe longipes;Biotaxon;nee;
+Noordzeebenthos;Axinella dissimilis;Biotaxon;nee;
+Noordzeebenthos;Balanus;Biotaxon;nee;
+Noordzeebenthos;Balanus balanus;Biotaxon;nee;
+Noordzeebenthos;Balanus crenatus;Biotaxon;nee;
+Noordzeebenthos;Barnea candida;Biotaxon;nee;
+Noordzeebenthos;Bathyporeia;Biotaxon;nee;
+Noordzeebenthos;Bathyporeia elegans;Biotaxon;nee;
+Noordzeebenthos;Bathyporeia guilliamsoniana;Biotaxon;nee;
+Noordzeebenthos;Bela nebula;Biotaxon;nee;
+Noordzeebenthos;Bivalvia;Biotaxon;nee;
+Noordzeebenthos;Bodotria arenosa;Biotaxon;nee;
+Noordzeebenthos;Bopyridae;Biotaxon;nee;
+Noordzeebenthos;Bothidae;Biotaxon;nee;
+Noordzeebenthos;Brachiopoda;Biotaxon;nee;
+Noordzeebenthos;Brachyura;Biotaxon;nee;
+Noordzeebenthos;Branchiostoma lanceolatum;Biotaxon;nee;
+Noordzeebenthos;Brissopsis lyrifera;Biotaxon;nee;
+Noordzeebenthos;Bryozoa;Biotaxon;nee;
+Noordzeebenthos;Buccinum undatum;Biotaxon;nee;
+Noordzeebenthos;Caecum glabrum;Biotaxon;nee;
+Noordzeebenthos;Callianassa;Biotaxon;nee;
+Noordzeebenthos;Callianassa subterranea;Biotaxon;nee;
+Noordzeebenthos;Callionymus;Biotaxon;nee;
+Noordzeebenthos;Callionymus lyra;Biotaxon;nee;
+Noordzeebenthos;Calliostoma zizyphinum;Biotaxon;nee;
+Noordzeebenthos;Campanulariidae;Biotaxon;nee;
+Noordzeebenthos;Cancer pagurus;Biotaxon;nee;
+Noordzeebenthos;Capitellidae;Biotaxon;nee;
+Noordzeebenthos;Carcinus maenas;Biotaxon;nee;
+Noordzeebenthos;Cardiidae;Biotaxon;nee;
+Noordzeebenthos;Caridea;Biotaxon;nee;
+Noordzeebenthos;Caryophyllia smithii;Biotaxon;nee;
+Noordzeebenthos;Caulleriella alata;Biotaxon;nee;
+Noordzeebenthos;Celleporella hyalina;Biotaxon;nee;
+Noordzeebenthos;Cerastoderma edule;Biotaxon;nee;
+Noordzeebenthos;Cerebratulus marginatus;Biotaxon;nee;
+Noordzeebenthos;Ceriantharia;Biotaxon;nee;
+Noordzeebenthos;Cerianthus lloydii;Biotaxon;nee;
+Noordzeebenthos;Chaetoderma nitidulum;Biotaxon;nee;
+Noordzeebenthos;Chaetopterus variopedatus;Biotaxon;nee;
+Noordzeebenthos;Chaetozone christiei;Biotaxon;nee;
+Noordzeebenthos;Chaetozone gibber;Biotaxon;nee;
+Noordzeebenthos;Chaetozone setosa;Biotaxon;nee;
+Noordzeebenthos;Chaetozone zetlandica;Biotaxon;nee;
+Noordzeebenthos;Chamelea striatula;Biotaxon;nee;
+Noordzeebenthos;Cheirocratus;Biotaxon;nee;
+Noordzeebenthos;Chone duneri;Biotaxon;nee;
+Noordzeebenthos;Cirratulidae;Biotaxon;nee;
+Noordzeebenthos;Colus gracilis;Biotaxon;nee;
+Noordzeebenthos;Corallinaceae;Biotaxon;nee;
+Noordzeebenthos;Corbula gibba;Biotaxon;nee;
+Noordzeebenthos;Corystes;Biotaxon;nee;
+Noordzeebenthos;Corystes cassivelaunus;Biotaxon;nee;
+Noordzeebenthos;Corystidae;Biotaxon;nee;
+Noordzeebenthos;Cottidae;Biotaxon;nee;
+Noordzeebenthos;Crangon crangon;Biotaxon;nee;
+Noordzeebenthos;Crepidula fornicata;Biotaxon;nee;
+Noordzeebenthos;Cressa dubia;Biotaxon;nee;
+Noordzeebenthos;Cribrilina punctata;Biotaxon;nee;
+Noordzeebenthos;Cumacea;Biotaxon;nee;
+Noordzeebenthos;Cylichna cylindracea;Biotaxon;nee;
+Noordzeebenthos;Decapoda;Biotaxon;nee;
+Noordzeebenthos;Dialychone dunerificta;Biotaxon;nee;
+Noordzeebenthos;Diastylis;Biotaxon;nee;
+Noordzeebenthos;Diastylis lucifera;Biotaxon;nee;
+Noordzeebenthos;Diastylis rugosa;Biotaxon;nee;
+Noordzeebenthos;Didemnidae;Biotaxon;nee;
+Noordzeebenthos;Diogenes pugilator;Biotaxon;nee;
+Noordzeebenthos;Diplocirrus glaucus;Biotaxon;nee;
+Noordzeebenthos;Dipolydora caulleryi;Biotaxon;nee;
+Noordzeebenthos;Donax vittatus;Biotaxon;nee;
+Noordzeebenthos;Dosinia;Biotaxon;nee;
+Noordzeebenthos;Dosinia exoleta;Biotaxon;nee;
+Noordzeebenthos;Dosinia lupinus;Biotaxon;nee;
+Noordzeebenthos;Drilonereis filum;Biotaxon;nee;
+Noordzeebenthos;Ebalia cranchii;Biotaxon;nee;
+Noordzeebenthos;Ebalia tumefacta;Biotaxon;nee;
+Noordzeebenthos;Echinocardium;Biotaxon;nee;
+Noordzeebenthos;Echinocardium cordatum;Biotaxon;nee;
+Noordzeebenthos;Echinocardium flavescens;Biotaxon;nee;
+Noordzeebenthos;Echinocyamus pusillus;Biotaxon;nee;
+Noordzeebenthos;Echinoidea;Biotaxon;nee;
+Noordzeebenthos;Eclysippe vanelli;Biotaxon;nee;
+Noordzeebenthos;Ectopleura dumortierii;Biotaxon;nee;
+Noordzeebenthos;Edwardsia;Biotaxon;nee;
+Noordzeebenthos;Electra pilosa;Biotaxon;nee;
+Noordzeebenthos;Electridae;Biotaxon;nee;
+Noordzeebenthos;Enipo kinbergi;Biotaxon;nee;
+Noordzeebenthos;Ensis;Biotaxon;nee;
+Noordzeebenthos;Ensis ensis;Biotaxon;nee;
+Noordzeebenthos;Ensis magnus;Biotaxon;nee;
+Noordzeebenthos;Ensis siliqua;Biotaxon;nee;
+Noordzeebenthos;Epitonium clathrus;Biotaxon;nee;
+Noordzeebenthos;Epitonium trevelyanum;Biotaxon;nee;
+Noordzeebenthos;Escharella;Biotaxon;nee;
+Noordzeebenthos;Eteone;Biotaxon;nee;
+Noordzeebenthos;Eteone flava agg.;Biotaxon;nee;
+Noordzeebenthos;Eteoninae;Biotaxon;nee;
+Noordzeebenthos;Eucheilota maculata;Biotaxon;nee;
+Noordzeebenthos;Euchone rubrocincta;Biotaxon;nee;
+Noordzeebenthos;Euclymene droebachiensis;Biotaxon;nee;
+Noordzeebenthos;Eudorellopsis deformis;Biotaxon;nee;
+Noordzeebenthos;Eulalia mustela;Biotaxon;nee;
+Noordzeebenthos;Eumida;Biotaxon;nee;
+Noordzeebenthos;Eumida bahusiensis;Biotaxon;nee;
+Noordzeebenthos;Eunereis elittoralis;Biotaxon;nee;
+Noordzeebenthos;Eunereis longissima;Biotaxon;nee;
+Noordzeebenthos;Euspira;Biotaxon;nee;
+Noordzeebenthos;Euspira catena;Biotaxon;nee;
+Noordzeebenthos;Euspira nitida;Biotaxon;nee;
+Noordzeebenthos;Exogone naidina;Biotaxon;nee;
+Noordzeebenthos;Exogone verugera;Biotaxon;nee;
+Noordzeebenthos;Flustra foliacea;Biotaxon;nee;
+Noordzeebenthos;Fucus;Biotaxon;nee;
+Noordzeebenthos;Gadidae;Biotaxon;nee;
+Noordzeebenthos;Gadus morhua;Biotaxon;nee;
+Noordzeebenthos;Galathea;Biotaxon;nee;
+Noordzeebenthos;Galathowenia;Biotaxon;nee;
+Noordzeebenthos;Galathowenia oculata;Biotaxon;nee;
+Noordzeebenthos;Gammaridea;Biotaxon;nee;
+Noordzeebenthos;Gari fervensis;Biotaxon;nee;
+Noordzeebenthos;Gastropoda;Biotaxon;nee;
+Noordzeebenthos;Gastrosaccus spinifer;Biotaxon;nee;
+Noordzeebenthos;Gattyana cirrhosa;Biotaxon;nee;
+Noordzeebenthos;Gitana sarsi;Biotaxon;nee;
+Noordzeebenthos;Glycera;Biotaxon;nee;
+Noordzeebenthos;Glycera alba;Biotaxon;nee;
+Noordzeebenthos;Glycera celtica;Biotaxon;nee;
+Noordzeebenthos;Glycera fallax;Biotaxon;nee;
+Noordzeebenthos;Glycera lapidum;Biotaxon;nee;
+Noordzeebenthos;Glycera tridactyla;Biotaxon;nee;
+Noordzeebenthos;Glycera unicornis;Biotaxon;nee;
+Noordzeebenthos;Glycinde nordmanni;Biotaxon;nee;
+Noordzeebenthos;Glyphohesione klatti;Biotaxon;nee;
+Noordzeebenthos;Gnathiidae;Biotaxon;nee;
+Noordzeebenthos;Golfingia;Biotaxon;nee;
+Noordzeebenthos;Golfingia elongata;Biotaxon;nee;
+Noordzeebenthos;Golfingia vulgaris;Biotaxon;nee;
+Noordzeebenthos;Goneplax rhomboides;Biotaxon;nee;
+Noordzeebenthos;Goniada maculata;Biotaxon;nee;
+Noordzeebenthos;Goniadella bobrezkii;Biotaxon;nee;
+Noordzeebenthos;Grania maricola;Biotaxon;nee;
+Noordzeebenthos;Grania postclitellochaeta;Biotaxon;nee;
+Noordzeebenthos;Grania variochaeta;Biotaxon;nee;
+Noordzeebenthos;Grania vikinga;Biotaxon;nee;
+Noordzeebenthos;Graphis albida;Biotaxon;nee;
+Noordzeebenthos;Guernea coalita;Biotaxon;nee;
+Noordzeebenthos;Gyge branchialis;Biotaxon;nee;
+Noordzeebenthos;Halecium;Biotaxon;nee;
+Noordzeebenthos;Harmothoe;Biotaxon;nee;
+Noordzeebenthos;Harpinia antennaria;Biotaxon;nee;
+Noordzeebenthos;Haustorius arenarius;Biotaxon;nee;
+Noordzeebenthos;Hemilepton nitidum;Biotaxon;nee;
+Noordzeebenthos;Hesionidae;Biotaxon;nee;
+Noordzeebenthos;Hesionura elongata;Biotaxon;nee;
+Noordzeebenthos;Heteromysis microps;Biotaxon;nee;
+Noordzeebenthos;Heteronemertea;Biotaxon;nee;
+Noordzeebenthos;Hiatella arctica;Biotaxon;nee;
+Noordzeebenthos;Hippomedon denticulatus;Biotaxon;nee;
+Noordzeebenthos;Homarus gammarus;Biotaxon;nee;
+Noordzeebenthos;Hyala vitrea;Biotaxon;nee;
+Noordzeebenthos;Hydractinia echinata;Biotaxon;nee;
+Noordzeebenthos;Hydractiniidae;Biotaxon;nee;
+Noordzeebenthos;Hydroides norvegica;Biotaxon;nee;
+Noordzeebenthos;Hydrozoa;Biotaxon;nee;
+Noordzeebenthos;Inachus;Biotaxon;nee;
+Noordzeebenthos;Kurtiella bidentata;Biotaxon;nee;
+Noordzeebenthos;Laevicardium crassum;Biotaxon;nee;
+Noordzeebenthos;Lagis koreni;Biotaxon;nee;
+Noordzeebenthos;Lanice conchilega;Biotaxon;nee;
+Noordzeebenthos;Laonice bahusiensis;Biotaxon;nee;
+Noordzeebenthos;Leptocheirus hirsutimanus;Biotaxon;nee;
+Noordzeebenthos;Leptochiton asellus;Biotaxon;nee;
+Noordzeebenthos;Lepton squamosum;Biotaxon;nee;
+Noordzeebenthos;Leptopentacta elongata;Biotaxon;nee;
+Noordzeebenthos;Leptosynapta bergensis;Biotaxon;nee;
+Noordzeebenthos;Leptosynapta inhaerens;Biotaxon;nee;
+Noordzeebenthos;Leucothoe incisa;Biotaxon;nee;
+Noordzeebenthos;Leucothoe procera;Biotaxon;nee;
+Noordzeebenthos;Liljeborgia kinahani;Biotaxon;nee;
+Noordzeebenthos;Limanda limanda;Biotaxon;nee;
+Noordzeebenthos;Limnodriloides scandinavicus;Biotaxon;nee;
+Noordzeebenthos;Lineus bilineatus;Biotaxon;nee;
+Noordzeebenthos;Liocarcinus;Biotaxon;nee;
+Noordzeebenthos;Liocarcinus depurator;Biotaxon;nee;
+Noordzeebenthos;Liocarcinus holsatus;Biotaxon;nee;
+Noordzeebenthos;Liocarcinus navigator;Biotaxon;nee;
+Noordzeebenthos;Liocarcinus pusillus;Biotaxon;nee;
+Noordzeebenthos;Lophius piscatorius;Biotaxon;nee;
+Noordzeebenthos;Loveniidae;Biotaxon;nee;
+Noordzeebenthos;Loxosomella harmeri;Biotaxon;nee;
+Noordzeebenthos;Loxosomella phascolosomata;Biotaxon;nee;
+Noordzeebenthos;Lucinoma borealis;Biotaxon;nee;
+Noordzeebenthos;Luidia sarsii;Biotaxon;nee;
+Noordzeebenthos;Lumbrineridae;Biotaxon;nee;
+Noordzeebenthos;Lumbrineris;Biotaxon;nee;
+Noordzeebenthos;Lumbrineris futilis;Biotaxon;nee;
+Noordzeebenthos;Lutraria;Biotaxon;nee;
+Noordzeebenthos;Lutraria lutraria;Biotaxon;nee;
+Noordzeebenthos;Lysianassidae;Biotaxon;nee;
+Noordzeebenthos;Lysilla loveni;Biotaxon;nee;
+Noordzeebenthos;Macoma balthica;Biotaxon;nee;
+Noordzeebenthos;Macropodia;Biotaxon;nee;
+Noordzeebenthos;Mactra stultorum;Biotaxon;nee;
+Noordzeebenthos;Magelona;Biotaxon;nee;
+Noordzeebenthos;Magelona alleni;Biotaxon;nee;
+Noordzeebenthos;Magelona filiformis;Biotaxon;nee;
+Noordzeebenthos;Magelona johnstoni;Biotaxon;nee;
+Noordzeebenthos;Maldanidae;Biotaxon;nee;
+Noordzeebenthos;Malmgrenia;Biotaxon;nee;
+Noordzeebenthos;Malmgrenia arenicolae;Biotaxon;nee;
+Noordzeebenthos;Malmgrenia darbouxi;Biotaxon;nee;
+Noordzeebenthos;Marphysa bellii;Biotaxon;nee;
+Noordzeebenthos;Maxmuelleria lankesteri;Biotaxon;nee;
+Noordzeebenthos;Mediomastus fragilis;Biotaxon;nee;
+Noordzeebenthos;Megaluropus agilis;Biotaxon;nee;
+Noordzeebenthos;Megamphopus cornutus;Biotaxon;nee;
+Noordzeebenthos;Megastomia conoidea;Biotaxon;nee;
+Noordzeebenthos;Melanogrammus aeglefinus;Biotaxon;nee;
+Noordzeebenthos;Merlangius merlangus;Biotaxon;nee;
+Noordzeebenthos;Metopa bruzelii;Biotaxon;nee;
+Noordzeebenthos;Metridium senile;Biotaxon;nee;
+Noordzeebenthos;Microclymene tricirrata;Biotaxon;nee;
+Noordzeebenthos;Microprotopus maculatus;Biotaxon;nee;
+Noordzeebenthos;Microstomus kitt;Biotaxon;nee;
+Noordzeebenthos;Moerella pygmaea;Biotaxon;nee;
+Noordzeebenthos;Monia patelliformis;Biotaxon;nee;
+Noordzeebenthos;Monoculodes carinatus;Biotaxon;nee;
+Noordzeebenthos;Monopseudocuma gilsoni;Biotaxon;nee;
+Noordzeebenthos;Mullus surmuletus;Biotaxon;nee;
+Noordzeebenthos;Musculus subpictus;Biotaxon;nee;
+Noordzeebenthos;Mya arenaria;Biotaxon;nee;
+Noordzeebenthos;Mya truncata;Biotaxon;nee;
+Noordzeebenthos;Myoxocephalus;Biotaxon;nee;
+Noordzeebenthos;Myoxocephalus scorpius;Biotaxon;nee;
+Noordzeebenthos;Myrianida;Biotaxon;nee;
+Noordzeebenthos;Mysia undata;Biotaxon;nee;
+Noordzeebenthos;Mytilus edulis;Biotaxon;nee;
+Noordzeebenthos;Nassarius nitidus;Biotaxon;nee;
+Noordzeebenthos;Nassarius reticulatus;Biotaxon;nee;
+Noordzeebenthos;Natatolana borealis;Biotaxon;nee;
+Noordzeebenthos;Neanthes fucata;Biotaxon;nee;
+Noordzeebenthos;Nebalia bipes;Biotaxon;nee;
+Noordzeebenthos;Necora puber;Biotaxon;nee;
+Noordzeebenthos;Nemertea;Biotaxon;nee;
+Noordzeebenthos;Nephrops norvegicus;Biotaxon;nee;
+Noordzeebenthos;Nephtyidae;Biotaxon;nee;
+Noordzeebenthos;Nephtys;Biotaxon;nee;
+Noordzeebenthos;Nephtys cirrosa;Biotaxon;nee;
+Noordzeebenthos;Neptunea antiqua;Biotaxon;nee;
+Noordzeebenthos;Nereididae;Biotaxon;nee;
+Noordzeebenthos;Nereidinae;Biotaxon;nee;
+Noordzeebenthos;Nothria conchylega;Biotaxon;nee;
+Noordzeebenthos;Notomastus latericeus;Biotaxon;nee;
+Noordzeebenthos;Nucula nitidosa;Biotaxon;nee;
+Noordzeebenthos;Nucula nucleus;Biotaxon;nee;
+Noordzeebenthos;Nucula sulcata;Biotaxon;nee;
+Noordzeebenthos;Nudibranchia;Biotaxon;nee;
+Noordzeebenthos;Odostomia;Biotaxon;nee;
+Noordzeebenthos;Odostomia plicata;Biotaxon;nee;
+Noordzeebenthos;Onchidoris muricata;Biotaxon;nee;
+Noordzeebenthos;Ophelia;Biotaxon;nee;
+Noordzeebenthos;Ophelia borealis;Biotaxon;nee;
+Noordzeebenthos;Ophelia celtica;Biotaxon;nee;
+Noordzeebenthos;Ophelina acuminata;Biotaxon;nee;
+Noordzeebenthos;Ophiothrix fragilis;Biotaxon;nee;
+Noordzeebenthos;Ophiura;Biotaxon;nee;
+Noordzeebenthos;Ophiura albida;Biotaxon;nee;
+Noordzeebenthos;Ophiura ophiura;Biotaxon;nee;
+Noordzeebenthos;Ophiuroidea;Biotaxon;nee;
+Noordzeebenthos;Orbinia armandi;Biotaxon;nee;
+Noordzeebenthos;Orbinia latreillii;Biotaxon;nee;
+Noordzeebenthos;Orbinia sertulata;Biotaxon;nee;
+Noordzeebenthos;Orbiniidae;Biotaxon;nee;
+Noordzeebenthos;Othomaera othonis;Biotaxon;nee;
+Noordzeebenthos;Owenia fusiformis;Biotaxon;nee;
+Noordzeebenthos;Oxydromus flexuosus;Biotaxon;nee;
+Noordzeebenthos;Paguridae;Biotaxon;nee;
+Noordzeebenthos;Pagurus bernhardus;Biotaxon;nee;
+Noordzeebenthos;Pagurus cuanensis;Biotaxon;nee;
+Noordzeebenthos;Paradoneis lyra;Biotaxon;nee;
+Noordzeebenthos;Parexogone;Biotaxon;nee;
+Noordzeebenthos;Parexogone hebes;Biotaxon;nee;
+Noordzeebenthos;Pariambus typicus;Biotaxon;nee;
+Noordzeebenthos;Parvicardium scabrum;Biotaxon;nee;
+Noordzeebenthos;Peachia cylindrica;Biotaxon;nee;
+Noordzeebenthos;Pecten maximus;Biotaxon;nee;
+Noordzeebenthos;Pectinaria;Biotaxon;nee;
+Noordzeebenthos;Pectinaria belgica;Biotaxon;nee;
+Noordzeebenthos;Pectinidae;Biotaxon;nee;
+Noordzeebenthos;Pelonaia corrugata;Biotaxon;nee;
+Noordzeebenthos;Pentapora;Biotaxon;nee;
+Noordzeebenthos;Pentapora foliacea;Biotaxon;nee;
+Noordzeebenthos;Perioculodes longimanus;Biotaxon;nee;
+Noordzeebenthos;Petricolaria pholadiformis;Biotaxon;nee;
+Noordzeebenthos;Pharidae;Biotaxon;nee;
+Noordzeebenthos;Phascolion strombus;Biotaxon;nee;
+Noordzeebenthos;Phaxas pellucidus;Biotaxon;nee;
+Noordzeebenthos;Philine aperta;Biotaxon;nee;
+Noordzeebenthos;Philine catena;Biotaxon;nee;
+Noordzeebenthos;Philocheras trispinosus;Biotaxon;nee;
+Noordzeebenthos;Pholis gunnellus;Biotaxon;nee;
+Noordzeebenthos;Pholoe baltica;Biotaxon;nee;
+Noordzeebenthos;Phoronida;Biotaxon;nee;
+Noordzeebenthos;Phoronis;Biotaxon;nee;
+Noordzeebenthos;Phtisica marina;Biotaxon;nee;
+Noordzeebenthos;Phyllodoce;Biotaxon;nee;
+Noordzeebenthos;Phyllodoce groenlandica;Biotaxon;nee;
+Noordzeebenthos;Phyllodoce laminosa;Biotaxon;nee;
+Noordzeebenthos;Phyllodoce mucosa;Biotaxon;nee;
+Noordzeebenthos;Phyllodoce rosea;Biotaxon;nee;
+Noordzeebenthos;Phyllodocidae;Biotaxon;nee;
+Noordzeebenthos;Pinnotheres pisum;Biotaxon;nee;
+Noordzeebenthos;Pirodrilus minutus;Biotaxon;nee;
+Noordzeebenthos;Pisidia longicornis;Biotaxon;nee;
+Noordzeebenthos;Pisione remota;Biotaxon;nee;
+Noordzeebenthos;Pista cristata;Biotaxon;nee;
+Noordzeebenthos;Platichthys flesus;Biotaxon;nee;
+Noordzeebenthos;Platyhelminthes;Biotaxon;nee;
+Noordzeebenthos;Pleuronectes platessa;Biotaxon;nee;
+Noordzeebenthos;Pleuronectiformes;Biotaxon;nee;
+Noordzeebenthos;Podarkeopsis capensis;Biotaxon;nee;
+Noordzeebenthos;Poecilochaetus serpens;Biotaxon;nee;
+Noordzeebenthos;Polititapes rhomboides;Biotaxon;nee;
+Noordzeebenthos;Polycera faeroensis;Biotaxon;nee;
+Noordzeebenthos;Polychaeta;Biotaxon;nee;
+Noordzeebenthos;Polycirrus;Biotaxon;nee;
+Noordzeebenthos;Polynoidae;Biotaxon;nee;
+Noordzeebenthos;Pontocrates arenarius;Biotaxon;nee;
+Noordzeebenthos;Porifera;Biotaxon;nee;
+Noordzeebenthos;Portumnus latipes;Biotaxon;nee;
+Noordzeebenthos;Priapulus caudatus;Biotaxon;nee;
+Noordzeebenthos;Prionospio multibranchiata;Biotaxon;nee;
+Noordzeebenthos;Processa;Biotaxon;nee;
+Noordzeebenthos;Progebiophilus euxinicus;Biotaxon;nee;
+Noordzeebenthos;Prosphaerosyllis tetralix;Biotaxon;nee;
+Noordzeebenthos;Protodorvillea kefersteini;Biotaxon;nee;
+Noordzeebenthos;Psammechinus miliaris;Biotaxon;nee;
+Noordzeebenthos;Pseudione borealis;Biotaxon;nee;
+Noordzeebenthos;Pseudocuma longicorne;Biotaxon;nee;
+Noordzeebenthos;Pseudopolydora pulchra;Biotaxon;nee;
+Noordzeebenthos;Pseudoprotella phasma;Biotaxon;nee;
+Noordzeebenthos;Raja;Biotaxon;nee;
+Noordzeebenthos;Raja montagui;Biotaxon;nee;
+Noordzeebenthos;Rajiformes;Biotaxon;nee;
+Noordzeebenthos;Retusa umbilicata;Biotaxon;nee;
+Noordzeebenthos;Retusidae;Biotaxon;nee;
+Noordzeebenthos;Rissoides desmaresti;Biotaxon;nee;
+Noordzeebenthos;Sabellaria spinulosa;Biotaxon;nee;
+Noordzeebenthos;Sabellidae;Biotaxon;nee;
+Noordzeebenthos;Sagartia troglodytes;Biotaxon;nee;
+Noordzeebenthos;Sagartiogeton;Biotaxon;nee;
+Noordzeebenthos;Scalibregma inflatum;Biotaxon;nee;
+Noordzeebenthos;Scalibregmatidae;Biotaxon;nee;
+Noordzeebenthos;Scaphander lignarius;Biotaxon;nee;
+Noordzeebenthos;Schistomysis ornata;Biotaxon;nee;
+Noordzeebenthos;Scolelepis bonnieri;Biotaxon;nee;
+Noordzeebenthos;Scolelepis foliosa;Biotaxon;nee;
+Noordzeebenthos;Scolelepis korsuni;Biotaxon;nee;
+Noordzeebenthos;Scoletoma magnidentata;Biotaxon;nee;
+Noordzeebenthos;Scoloplos armiger;Biotaxon;nee;
+Noordzeebenthos;Scophthalmus rhombus;Biotaxon;nee;
+Noordzeebenthos;Securiflustra securifrons;Biotaxon;nee;
+Noordzeebenthos;Serpulidae;Biotaxon;nee;
+Noordzeebenthos;Sertulariidae;Biotaxon;nee;
+Noordzeebenthos;Sessilia;Biotaxon;nee;
+Noordzeebenthos;Sigalion mathildae;Biotaxon;nee;
+Noordzeebenthos;Sigalionidae;Biotaxon;nee;
+Noordzeebenthos;Simnia patula;Biotaxon;nee;
+Noordzeebenthos;Sipuncula;Biotaxon;nee;
+Noordzeebenthos;Solea solea;Biotaxon;nee;
+Noordzeebenthos;Soleidae;Biotaxon;nee;
+Noordzeebenthos;Spatangus purpureus;Biotaxon;nee;
+Noordzeebenthos;Sphaerodorum gracilis;Biotaxon;nee;
+Noordzeebenthos;Sphaerosyllis bulbosa;Biotaxon;nee;
+Noordzeebenthos;Sphaerosyllis hystrix;Biotaxon;nee;
+Noordzeebenthos;Sphenia binghami;Biotaxon;nee;
+Noordzeebenthos;Spio armata;Biotaxon;nee;
+Noordzeebenthos;Spio decoratus;Biotaxon;nee;
+Noordzeebenthos;Spio symphyta;Biotaxon;nee;
+Noordzeebenthos;Spiophanes bombyx;Biotaxon;nee;
+Noordzeebenthos;Spiophanes kroyeri;Biotaxon;nee;
+Noordzeebenthos;Spirobranchus;Biotaxon;nee;
+Noordzeebenthos;Spirobranchus triqueter;Biotaxon;nee;
+Noordzeebenthos;Spisula;Biotaxon;nee;
+Noordzeebenthos;Spisula elliptica;Biotaxon;nee;
+Noordzeebenthos;Spisula solida;Biotaxon;nee;
+Noordzeebenthos;Spisula subtruncata;Biotaxon;nee;
+Noordzeebenthos;Stenothoe marina;Biotaxon;nee;
+Noordzeebenthos;Sthenelais limicola;Biotaxon;nee;
+Noordzeebenthos;Streptosyllis;Biotaxon;nee;
+Noordzeebenthos;Streptosyllis bidentata;Biotaxon;nee;
+Noordzeebenthos;Syllidae;Biotaxon;nee;
+Noordzeebenthos;Syllis armillaris;Biotaxon;nee;
+Noordzeebenthos;Syllis cornuta;Biotaxon;nee;
+Noordzeebenthos;Tanaopsis graciloides;Biotaxon;nee;
+Noordzeebenthos;Tellimya ferruginosa;Biotaxon;nee;
+Noordzeebenthos;Tellimya tenella;Biotaxon;nee;
+Noordzeebenthos;Tellina fabula;Biotaxon;nee;
+Noordzeebenthos;Tellina tenuis;Biotaxon;nee;
+Noordzeebenthos;Terebellides stroemii;Biotaxon;nee;
+Noordzeebenthos;Terebratulina retusa;Biotaxon;nee;
+Noordzeebenthos;Thalassodrilus klarae;Biotaxon;nee;
+Noordzeebenthos;Tharyx killariensis;Biotaxon;nee;
+Noordzeebenthos;Thia scutellata;Biotaxon;nee;
+Noordzeebenthos;Thracia;Biotaxon;nee;
+Noordzeebenthos;Thracia convexa;Biotaxon;nee;
+Noordzeebenthos;Thracia phaseolina;Biotaxon;nee;
+Noordzeebenthos;Thracia villosiuscula;Biotaxon;nee;
+Noordzeebenthos;Thyasira flexuosa;Biotaxon;nee;
+Noordzeebenthos;Timoclea ovata;Biotaxon;nee;
+Noordzeebenthos;Travisia forbesii;Biotaxon;nee;
+Noordzeebenthos;Tricellaria ternata;Biotaxon;nee;
+Noordzeebenthos;Trichobranchus roseus;Biotaxon;nee;
+Noordzeebenthos;Triglidae;Biotaxon;nee;
+Noordzeebenthos;Trisopterus luscus;Biotaxon;nee;
+Noordzeebenthos;Triticella flava;Biotaxon;nee;
+Noordzeebenthos;Triticella pedicellata;Biotaxon;nee;
+Noordzeebenthos;Tryphosa nana;Biotaxon;nee;
+Noordzeebenthos;Tubificidae;Biotaxon;nee;
+Noordzeebenthos;Tubulariidae;Biotaxon;nee;
+Noordzeebenthos;Turbellaria;Biotaxon;nee;
+Noordzeebenthos;Turritella communis;Biotaxon;nee;
+Noordzeebenthos;Upogebia;Biotaxon;nee;
+Noordzeebenthos;Upogebia deltaura;Biotaxon;nee;
+Noordzeebenthos;Upogebia stellata;Biotaxon;nee;
+Noordzeebenthos;Urothoe;Biotaxon;nee;
+Noordzeebenthos;Urothoe brevicornis;Biotaxon;nee;
+Noordzeebenthos;Urothoe elegans;Biotaxon;nee;
+Noordzeebenthos;Urothoe marina;Biotaxon;nee;
+Noordzeebenthos;Urticina;Biotaxon;nee;
+Noordzeebenthos;Urticina felina;Biotaxon;nee;
+Noordzeebenthos;Venerupis corrugata;Biotaxon;nee;
+Noordzeebenthos;Verruca stroemia;Biotaxon;nee;
+Noordzeebenthos;Vitreolina antiflexa;Biotaxon;nee;
+Noordzeebenthos;Littorina littorea;Biotaxon;nee;
+Noordzeebenthos;Mulinia lateralis;Biotaxon;nee;
+Noordzeebenthos;abyssoninoe hibernica;Biotaxon;nee;
+Noordzeebenthos;alitta succinea;Biotaxon;nee;
+Noordzeebenthos;ampelisca tenuicornis;Biotaxon;nee;
+Noordzeebenthos;aora gracilis;Biotaxon;nee;
+Noordzeebenthos;aoridae;Biotaxon;nee;
+Noordzeebenthos;arenicola;Biotaxon;nee;
+Noordzeebenthos;aspidelectra melolontha;Biotaxon;nee;
+Noordzeebenthos;asterias;Biotaxon;nee;
+Noordzeebenthos;astropecten;Biotaxon;nee;
+Noordzeebenthos;austrominius modestus;Biotaxon;nee;
+Noordzeebenthos;bathyporeia pelagica;Biotaxon;nee;
+Noordzeebenthos;bathyporeia sarsi;Biotaxon;nee;
+Noordzeebenthos;bathyporeia tenuipes;Biotaxon;nee;
+Noordzeebenthos;bodotria scorpioides;Biotaxon;nee;
+Noordzeebenthos;branchiostoma;Biotaxon;nee;
+Noordzeebenthos;bylgides;Biotaxon;nee;
+Noordzeebenthos;bylgides sarsi;Biotaxon;nee;
+Noordzeebenthos;callianassidae;Biotaxon;nee;
+Noordzeebenthos;capitella;Biotaxon;nee;
+Noordzeebenthos;chaetognatha;Biotaxon;nee;
+Noordzeebenthos;chaetozone;Biotaxon;nee;
+Noordzeebenthos;chamelea;Biotaxon;nee;
+Noordzeebenthos;cirripedia;Biotaxon;nee;
+Noordzeebenthos;cliona celata;Biotaxon;nee;
+Noordzeebenthos;clytia hemisphaerica;Biotaxon;nee;
+Noordzeebenthos;conopeum reticulum;Biotaxon;nee;
+Noordzeebenthos;diastylidae;Biotaxon;nee;
+Noordzeebenthos;diastylis bradyi;Biotaxon;nee;
+Noordzeebenthos;diastylis laevis;Biotaxon;nee;
+Noordzeebenthos;ebalia;Biotaxon;nee;
+Noordzeebenthos;einhornia crustulenta;Biotaxon;nee;
+Noordzeebenthos;enipo elisabethae;Biotaxon;nee;
+Noordzeebenthos;ennucula tenuis;Biotaxon;nee;
+Noordzeebenthos;ensis leei;Biotaxon;nee;
+Noordzeebenthos;enteropneusta;Biotaxon;nee;
+Noordzeebenthos;eudorella;Biotaxon;nee;
+Noordzeebenthos;eudorella emarginata;Biotaxon;nee;
+Noordzeebenthos;eudorella truncatula;Biotaxon;nee;
+Noordzeebenthos;eunereis;Biotaxon;nee;
+Noordzeebenthos;eunereis elitoralis;Biotaxon;nee;
+Noordzeebenthos;eurydice spinigera;Biotaxon;nee;
+Noordzeebenthos;exogoninae;Biotaxon;nee;
+Noordzeebenthos;flabelligeridae;Biotaxon;nee;
+Noordzeebenthos;gammarus crinicornis;Biotaxon;nee;
+Noordzeebenthos;gastrosaccus;Biotaxon;nee;
+Noordzeebenthos;glycera oxycephala;Biotaxon;nee;
+Noordzeebenthos;golfingiidae;Biotaxon;nee;
+Noordzeebenthos;goniadidae;Biotaxon;nee;
+Noordzeebenthos;goodallia triangularis;Biotaxon;nee;
+Noordzeebenthos;harmothoe glabra;Biotaxon;nee;
+Noordzeebenthos;harpinia crenulata;Biotaxon;nee;
+Noordzeebenthos;harrimaniidae;Biotaxon;nee;
+Noordzeebenthos;heteromastus filiformis;Biotaxon;nee;
+Noordzeebenthos;hypereteone foliosa;Biotaxon;nee;
+Noordzeebenthos;hyperia galba;Biotaxon;nee;
+Noordzeebenthos;hypophorella expansa;Biotaxon;nee;
+Noordzeebenthos;ione thoracica;Biotaxon;nee;
+Noordzeebenthos;iphinoe trispinosa;Biotaxon;nee;
+Noordzeebenthos;leiochone leiopygos;Biotaxon;nee;
+Noordzeebenthos;lepidepecreum longicornis;Biotaxon;nee;
+Noordzeebenthos;leptosynapta;Biotaxon;nee;
+Noordzeebenthos;leuckartiara octona;Biotaxon;nee;
+Noordzeebenthos;leucothoe lilljeborgi;Biotaxon;nee;
+Noordzeebenthos;levinsenia gracilis;Biotaxon;nee;
+Noordzeebenthos;lovenella clausa;Biotaxon;nee;
+Noordzeebenthos;mactridae;Biotaxon;nee;
+Noordzeebenthos;magelona mirabilis;Biotaxon;nee;
+Noordzeebenthos;malmgrenia andreapolis;Biotaxon;nee;
+Noordzeebenthos;marenzelleria viridis;Biotaxon;nee;
+Noordzeebenthos;microphthalmus;Biotaxon;nee;
+Noordzeebenthos;mimachlamys varia;Biotaxon;nee;
+Noordzeebenthos;mysida;Biotaxon;nee;
+Noordzeebenthos;mytilidae;Biotaxon;nee;
+Noordzeebenthos;nephtys assimilis;Biotaxon;nee;
+Noordzeebenthos;nephtys caeca;Biotaxon;nee;
+Noordzeebenthos;nephtys hombergii;Biotaxon;nee;
+Noordzeebenthos;nephtys incisa;Biotaxon;nee;
+Noordzeebenthos;nephtys longosetosa;Biotaxon;nee;
+Noordzeebenthos;nothria;Biotaxon;nee;
+Noordzeebenthos;nototropis falcatus;Biotaxon;nee;
+Noordzeebenthos;nototropis swammerdamei;Biotaxon;nee;
+Noordzeebenthos;nototropis vedlomensis;Biotaxon;nee;
+Noordzeebenthos;nucula;Biotaxon;nee;
+Noordzeebenthos;obelia;Biotaxon;nee;
+Noordzeebenthos;obelia dichotoma;Biotaxon;nee;
+Noordzeebenthos;ophiura sarsii;Biotaxon;nee;
+Noordzeebenthos;ophiurida;Biotaxon;nee;
+Noordzeebenthos;ophiuridae;Biotaxon;nee;
+Noordzeebenthos;orbinia;Biotaxon;nee;
+Noordzeebenthos;owenia;Biotaxon;nee;
+Noordzeebenthos;paramysis;Biotaxon;nee;
+Noordzeebenthos;paraonidae;Biotaxon;nee;
+Noordzeebenthos;paraonis fulgens;Biotaxon;nee;
+Noordzeebenthos;peringia ulvae;Biotaxon;nee;
+Noordzeebenthos;pestarella tyrrhena;Biotaxon;nee;
+Noordzeebenthos;phallodrilinae;Biotaxon;nee;
+Noordzeebenthos;phallodrilus parthenopaeus;Biotaxon;nee;
+Noordzeebenthos;phialella quadrata;Biotaxon;nee;
+Noordzeebenthos;phyllodoce lineata;Biotaxon;nee;
+Noordzeebenthos;polydora;Biotaxon;nee;
+Noordzeebenthos;polydora cornuta;Biotaxon;nee;
+Noordzeebenthos;polygordius;Biotaxon;nee;
+Noordzeebenthos;polygordius appendiculatus;Biotaxon;nee;
+Noordzeebenthos;pontocrates altamarinus;Biotaxon;nee;
+Noordzeebenthos;pontocrates arcticus;Biotaxon;nee;
+Noordzeebenthos;processa modica;Biotaxon;nee;
+Noordzeebenthos;processa nouveli holthuisi;Biotaxon;nee;
+Noordzeebenthos;pseudocuma simile;Biotaxon;nee;
+Noordzeebenthos;pseudopolydora paucibranchiata;Biotaxon;nee;
+Noordzeebenthos;sagartiidae;Biotaxon;nee;
+Noordzeebenthos;sagitta setosa;Biotaxon;nee;
+Noordzeebenthos;schistomysis spiritus;Biotaxon;nee;
+Noordzeebenthos;scolelepis;Biotaxon;nee;
+Noordzeebenthos;scolelepis squamata;Biotaxon;nee;
+Noordzeebenthos;scyphozoa;Biotaxon;nee;
+Noordzeebenthos;semelidae;Biotaxon;nee;
+Noordzeebenthos;siphonoecetes kroyeranus;Biotaxon;nee;
+Noordzeebenthos;spatangidae;Biotaxon;nee;
+Noordzeebenthos;spatangoida;Biotaxon;nee;
+Noordzeebenthos;spio;Biotaxon;nee;
+Noordzeebenthos;spio goniocephala;Biotaxon;nee;
+Noordzeebenthos;spio martinensis;Biotaxon;nee;
+Noordzeebenthos;spionidae;Biotaxon;nee;
+Noordzeebenthos;spiophanes;Biotaxon;nee;
+Noordzeebenthos;stenothoidae;Biotaxon;nee;
+Noordzeebenthos;streblospio;Biotaxon;nee;
+Noordzeebenthos;synchelidium maculatum;Biotaxon;nee;
+Noordzeebenthos;tanaissus lilljeborgi;Biotaxon;nee;
+Noordzeebenthos;tellinidae;Biotaxon;nee;
+Noordzeebenthos;terebellidae;Biotaxon;nee;
+Noordzeebenthos;terebellides;Biotaxon;nee;
+Noordzeebenthos;terebellides shetlandica;Biotaxon;nee;
+Noordzeebenthos;tharyx;Biotaxon;nee;
+Noordzeebenthos;thoracophelia flabellifera;Biotaxon;nee;
+Noordzeebenthos;thyasira;Biotaxon;nee;
+Noordzeebenthos;thyasiridae;Biotaxon;nee;
+Noordzeebenthos;thysanocardia procera;Biotaxon;nee;
+Noordzeebenthos;tornus subcarinatus;Biotaxon;nee;
+Noordzeebenthos;tryphosa crenata;Biotaxon;nee;
+Noordzeebenthos;tubificoides;Biotaxon;nee;
+Noordzeebenthos;tubificoides brownae;Biotaxon;nee;
+Noordzeebenthos;tubificoides diazi;Biotaxon;nee;
+Noordzeebenthos;tubificoides pseudogaster;Biotaxon;nee;
+Noordzeebenthos;unciola planipes;Biotaxon;nee;
+Noordzeebenthos;urothoe poseidonis;Biotaxon;nee;
+Noordzeebenthos;veneridae;Biotaxon;nee;
+Noordzeebenthos;paramysis arenosa;Biotaxon;nee;
+Noordzeebenthos;opheliidae;Biotaxon;nee;
+Noordzeebenthos;psammodrilus balanoglossoides;Biotaxon;nee;
+Noordzeebenthos;maerella tenuimana;Biotaxon;nee;
+Noordzeebenthos;malmgrenia castanea;Biotaxon;nee;
+Noordzeebenthos;roxania utriculus;Biotaxon;nee;
+metalen_in_vis;Cd;Chemische stof;ja;
+metalen_in_vis;Cu;Chemische stof;ja;
+metalen_in_vis;Pb;Chemische stof;ja;
+metalen_in_vis;Zn;Chemische stof;ja;
+verontr_in_vis;HBCD;Chemische stof;ja;
+verontr_in_vis;HCB;Chemische stof;ja;
+verontr_in_vis;HpCl;Chemische stof;ja;
+verontr_in_vis;HxClbtDen;Chemische stof;ja;
+verontr_in_vis;L_PFBS;Chemische stof;ja;
+verontr_in_vis;L_PFDS;Chemische stof;ja;
+verontr_in_vis;L_PFHpS;Chemische stof;ja;
+verontr_in_vis;L_PFHxS;Chemische stof;ja;
+verontr_in_vis;PBDE100;Chemische stof;ja;
+verontr_in_vis;PBDE153;Chemische stof;ja;
+verontr_in_vis;PBDE183;Chemische stof;ja;
+verontr_in_vis;PBDE28;Chemische stof;ja;
+verontr_in_vis;PBDE47;Chemische stof;ja;
+verontr_in_vis;PBDE66;Chemische stof;ja;
+verontr_in_vis;PBDE85;Chemische stof;ja;
+verontr_in_vis;PBDE99;Chemische stof;ja;
+verontr_in_vis;PCB101;Chemische stof;ja;
+verontr_in_vis;PCB105;Chemische stof;ja;
+verontr_in_vis;PCB110;Chemische stof;ja;
+verontr_in_vis;PCB118;Chemische stof;ja;
+verontr_in_vis;PCB128;Chemische stof;ja;
+verontr_in_vis;PCB137;Chemische stof;ja;
+verontr_in_vis;PCB138;Chemische stof;ja;
+verontr_in_vis;PCB141;Chemische stof;ja;
+verontr_in_vis;PCB149;Chemische stof;ja;
+verontr_in_vis;PCB151;Chemische stof;ja;
+verontr_in_vis;PCB153;Chemische stof;ja;
+verontr_in_vis;PCB156;Chemische stof;ja;
+verontr_in_vis;PCB170;Chemische stof;ja;
+verontr_in_vis;PCB180;Chemische stof;ja;
+verontr_in_vis;PCB187;Chemische stof;ja;
+verontr_in_vis;PCB194;Chemische stof;ja;
+verontr_in_vis;PCB202;Chemische stof;ja;
+verontr_in_vis;PCB206;Chemische stof;ja;
+verontr_in_vis;PCB28;Chemische stof;ja;
+verontr_in_vis;PCB31;Chemische stof;ja;
+verontr_in_vis;PCB47;Chemische stof;ja;
+verontr_in_vis;PCB49;Chemische stof;ja;
+verontr_in_vis;PCB52;Chemische stof;ja;
+verontr_in_vis;PCB56;Chemische stof;ja;
+verontr_in_vis;PCB66;Chemische stof;ja;
+verontr_in_vis;PCB85;Chemische stof;ja;
+verontr_in_vis;PCB87;Chemische stof;ja;
+verontr_in_vis;PCB97;Chemische stof;ja;
+verontr_in_vis;PFBA;Chemische stof;ja;
+verontr_in_vis;PFDA;Chemische stof;ja;
+verontr_in_vis;PFDoA;Chemische stof;ja;
+verontr_in_vis;PFHpA;Chemische stof;ja;
+verontr_in_vis;PFHxA;Chemische stof;ja;
+verontr_in_vis;PFNA;Chemische stof;ja;
+verontr_in_vis;PFOA;Chemische stof;ja;
+verontr_in_vis;PFOS;Chemische stof;ja;
+verontr_in_vis;PFPA;Chemische stof;ja;
+verontr_in_vis;PFTDA;Chemische stof;ja;
+verontr_in_vis;PFTeDA;Chemische stof;ja;
+verontr_in_vis;PFUdA;Chemische stof;ja;
+verontr_in_vis;sPBB153DE154;Chemische stof;ja;
+microverontrsed_mg_kg;Al;Chemische stof;ja;
+microverontrsed_mg_kg;Ant;Chemische stof;ja;
+microverontrsed_mg_kg;BaA;Chemische stof;ja;
+microverontrsed_mg_kg;BaP;Chemische stof;ja;
+microverontrsed_mg_kg;BghiPe;Chemische stof;ja;
+microverontrsed_mg_kg;Cd;Chemische stof;ja;
+microverontrsed_mg_kg;Chr;Chemische stof;ja;
+microverontrsed_mg_kg;Fen;Chemische stof;ja;
+microverontrsed_mg_kg;Flu;Chemische stof;ja;
+microverontrsed_mg_kg;Hg;Chemische stof;ja;
+microverontrsed_mg_kg;InP;Chemische stof;ja;
+microverontrsed_mg_kg;Pb;Chemische stof;ja;
+microverontrsed_mg_kg;Pyr;Chemische stof;ja;
+microverontrsed_ug_kg;PBDE100;Chemische stof;ja;
+microverontrsed_ug_kg;PBDE153;Chemische stof;ja;
+microverontrsed_ug_kg;PBDE154;Chemische stof;ja;
+microverontrsed_ug_kg;PBDE209;Chemische stof;ja;
+microverontrsed_ug_kg;PBDE28;Chemische stof;ja;
+microverontrsed_ug_kg;PBDE47;Chemische stof;ja;
+microverontrsed_ug_kg;PBDE99;Chemische stof;ja;
+microverontrsed_ug_kg;PCB101;Chemische stof;ja;
+microverontrsed_ug_kg;PCB118;Chemische stof;ja;
+microverontrsed_ug_kg;PCB138;Chemische stof;ja;
+microverontrsed_ug_kg;PCB153;Chemische stof;ja;
+microverontrsed_ug_kg;PCB180;Chemische stof;ja;
+microverontrsed_ug_kg;PCB28;Chemische stof;ja;
+microverontrsed_ug_kg;PCB52;Chemische stof;ja;
+microverontrsed_ug_kg;DC4ySn;Chemische stof;ja;
+microverontrsed_ug_kgX;MC4ySn;Chemische stof;ja;ontbrak in levering 2022
+microverontrsed_ug_kg;TC4ySn;Chemische stof;ja;
+verontr_in_vis_X;1HOxPyr;Chemische stof;nee;
+Noordzeebenthos;tritia nitida;Biotaxon;nee;
+Noordzeebenthos;diplodonta rotundata;Biotaxon;nee;
+Noordzeebenthos;liocarcinus marmoreus;Biotaxon;nee;
+Noordzeebenthos;hemigrapsus;Biotaxon;nee;
+Noordzeebenthos;acanthocardia paucicostata;Biotaxon;nee;
+Noordzeebenthos;ruditapes philippinarum;Biotaxon;nee;
+Noordzeebenthos;asthenognathus;Biotaxon;nee;
+Noordzeebenthos;cerebratulus;Biotaxon;nee;
+Noordzeebenthos;crangon allmanni;Biotaxon;nee;
+Noordzeebenthos;cuspidaria cuspidata;Biotaxon;nee;
+Noordzeebenthos;galathea intermedia;Biotaxon;nee;
+Noordzeebenthos;halichondria;Biotaxon;nee;
+Noordzeebenthos;halichondria panicea;Biotaxon;nee;
+Noordzeebenthos;liocarcinus vernalis;Biotaxon;nee;
+Noordzeebenthos;luidia;Biotaxon;nee;
+Noordzeebenthos;macropodia parva;Biotaxon;nee;
+Noordzeebenthos;macropodia rostrata;Biotaxon;nee;
+Noordzeebenthos;musculus niger;Biotaxon;nee;
+Noordzeebenthos;nephasoma;Biotaxon;nee;
+Noordzeebenthos;ophiocten affinis;Biotaxon;nee;
+Noordzeebenthos;pandalus montagui;Biotaxon;nee;
+Noordzeebenthos;phaenopsectra;Biotaxon;nee;
+Noordzeebenthos;processa canaliculata;Biotaxon;nee;
+Noordzeebenthos;processa nouveli;Biotaxon;nee;
+Noordzeebenthos;psammechinus;Biotaxon;nee;
+Noordzeebenthos;sagartiogeton undatus;Biotaxon;nee;
+Noordzeebenthos;sipunculidae;Biotaxon;nee;
+Noordzeebenthos;scolelepis cantabra;Biotaxon;nee;
+Noordzeebenthos;oweniidae;Biotaxon;nee;
+Noordzeebenthos;acanthocardia;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;acidostoma obesum;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;actinia;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;alcyonidium mytili;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;alitta virens;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;alvania lactea;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;ampelisca diadema;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;ampeliscidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;ampharete acutifrons;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;ampharetinae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;anoplodactylus petiolatus;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;antoathecata;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;apherusa ovalipes;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;aricidea;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;autolytinae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;calliopiidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;campanulinidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;campylaspis rubicunda;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;caprella equilibra;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;caprella mutica;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;caulleriella;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;chaetozone chambersae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;crangonidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;crustacea;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;cylista troglodytes;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;diogenes;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;echinodermata;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;ectopleura;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;eulalia viridis;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;eumida ockelmanni;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;eumida sanguinea;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;eunicidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;euspira montagui;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;halacaridae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;halcampa chrysanthellum;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;harmothoe fernandi;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;harmothoe mariannae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;harpinia;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;harpinia pectinata;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;holothuroidea;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;hyperiidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;idotea linearis;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;ischyroceridae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;jassa;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;labidoplax buski;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;leuconidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;lovenellidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;malmgrenia bicki;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;malmgrenia ljungmani;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;microphthalmus similis;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;montacuta substriata;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;mysidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;mysta barbata;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;naticidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;nyctiphanes couchii;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;obelia longissima;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;oedicerotidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;oligochaeta;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;parajassa pelagica;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;parougia eliasoni;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;parthenopea subterranea;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;pectinariidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;pholoe;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;pholoe assimilis;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;portunidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;prionospio cirrifera;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;prionospio fallax;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;pseudocuma;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;pseudocumatidae;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;pseudopolydora antennata;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;pygospio elegans;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;saccoglossus;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;schistomysis;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;schistomysis kervillei;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;sigalion;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;sthenelais boa;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;streptosyllis nunezi;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;streptosyllis websteri;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;syllidia armata;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;syllis gracilis;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;tubificoides benedii;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;turbonilla pusilla;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;turritellinella tricarinata;Biotaxon;nee;added 2021 dataset boxcore
+Noordzeebenthos;anthoathecata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;amphiura chiajei;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;tellimya;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;paucibranchia bellii;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;terebellides gentili;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;tmetonyx similis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;oxydromus pallidus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;nebalia;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;nucula hanleyi;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;leptothecata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;tellimya;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;dipolydora giardi;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;medicorophium affine;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;euclymene lombricoides;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;cylichna;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;arachnidium fibrosum;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;thyone fusus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;podarkeopsis helgolandicus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;malacobdella grossa;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;leptothecata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;anthoathecata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;pedicellina;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;terebellides europaea;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;pista;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;arachnidium fibrosum;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;hydrallmania falcata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;anthoathecata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;ampharete finmarchica;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;thyone fusus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;atherospio;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;aphrodita;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;medicorophium affine;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;nebaliidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;diastylis goodsiri;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;terebellides gentili;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;nucula hanleyi;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;medicorophium affine;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;amphiura chiajei;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;gnathia oxyuraea;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;pyramidellidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;lasaeidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;medicorophium affine;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;tellimya;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;westwoodilla caecula;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;terebellides gentili;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;metopa alderi;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;pista;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;paucibranchia bellii;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;cylichna;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;hypereteone;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;nucula hanleyi;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;lasaeidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;lasaeidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;malmgreniella;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;lasaeidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;tellimya;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;protodrilus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;lasaeidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;bathyporeia gracilis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;tmetonyx similis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;protodrilus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;paucibranchia bellii;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;hypereteone;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;ampithoe;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;dialychone;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;protodriloides;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;isaeidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;paucibranchia bellii;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;nucula hanleyi;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;lutraria angustior;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;hyperiidea;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;nucula hanleyi;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;cheilostomatida;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;myrianida edwardsi;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;jasmineira;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;oxydromus pallidus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;gattyana;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;terebellides gentili;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;paucibranchia bellii;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;isaeidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;sabellaria alveolata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;laonice;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;entoprocta;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;cheirocratus robustus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;amphicteis gunneri;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;halecium halecinum;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;gnathia oxyuraea;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;subadyte pellucida;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;scrupocellaria scruposa;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;grania;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;escharella immersa;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;ericthonius;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;dodecaceria;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;apherusa;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;xanthidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;primavelans;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;philine;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;ericthonius punctatus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;parasabella cambrensis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;leptothecata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;harmothoe impar;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;bugulina flabellata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;pacificincolidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;aphrodita;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;aphelochaeta marioni;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;dipolydora;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;medicorophium affine;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;pyramidellidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;gnathia;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;terebellides gentili;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;gnathia oxyuraea;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;amphicteis gunneri;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;medicorophium affine;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;paucibranchia bellii;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;leptognathiidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;dipolydora;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;aphrodita;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;photis longicaudata;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;aphrodita;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;trichobranchus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;pista;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;grania;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;kellia suborbicularis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;pyramidellidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;protodrilus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;paramphilochoides odontonyx;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;paucibranchia bellii;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;nucula hanleyi;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;kellia suborbicularis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;pista;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;protodrilus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;sarsinebalia urgorrii;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;cheirocratus assimilis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;syllis garciai;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;kellia suborbicularis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;protodrilus;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;lasaeidae;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;gyptis;Biotaxon;nee;added 2019 dataset hamon
+Noordzeebenthos;alcyonidiidae;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;annelida;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;antiopella cristata;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;athanas nitescens;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;bugulidae;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;cnidaria;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;crisularia plumosa;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;diaphorodoris luteocincta;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;doto;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;edmundsella pedata;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;epitonium;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;facelinidae;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;flabellinidae;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;haliclona;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;hyas;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;jorunna tomentosa;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;littorinimorpha;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;majoidea;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;metridium dianthus;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;nemertesia;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;pandalidae;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;sagartia;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;scaphopoda;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;suberites ficus;Biotaxon;nee;added 2018 dataset video
+Noordzeebenthos;bryoz_hydroz;Biotaxon;nee;added 2018 dataset video BEDKG
+Noordzeebenthos;amphiura securigera;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;aphelochaeta;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;bougainvilliidae;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;chaetopterus;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;clymenella cincta;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;deflexilodes subnudus;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;edwardsiidae;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;eulimella;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;euphausiidae;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;euphysa aurata;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;glyceridae;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;halecium sessile;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;heteranomia squamula;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;jasmineira elegans;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;laomedea exigua;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;loxosomella marsypos;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;lumbrineris cingulata;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;lyonsia norwegica;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;nebalia reboredae;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;owenia assimilis;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;paucibranchia;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;penetrantia concharum;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;polyplacophora;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;praxillella affinis;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;pseudomystides limbata;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;pseudopolydora;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;sphaerosyllis;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;streptosyllis campoyi;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;terebellides resomari;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;themisto abyssorum;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;thyone inermis;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;tritonia;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;upogebiidae;;nee;added 2021 dataset aquadesk hamon
+Noordzeebenthos;ascidiella;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;abietinaria abietina;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;bryozoa or porifera;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;suberites;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;nemertesia antennina;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;kirchenpaueria;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;sabella pavonina;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;pagurus;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;id not sure;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;paguridae or gastropoda;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;balanidae;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;hyas araneus;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;simnia or tritonia;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;malacostraca;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;acteon tornatilis-spawn;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;inachidae;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;loliginidae;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;dorididae;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;flabellina pedata;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;heteromysis;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;cyanea lamarckii;;nee;added 2021 dataset AQUO! video
+Noordzeebenthos;lineus;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;sepiola;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;sepiolidae;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;striarca lactea;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;sepiolidae;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;processa edulis crassipes;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;onchidoris bilamellata;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;striarca lactea;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;priapulida;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;sabellaria;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;isopoda;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;hyas coarctatus;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;sepiola atlantica;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;ebalia granulosa;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;styela clava;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;echiura;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;hippolyte varians;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;atelecyclus;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;moerella donacina;;nee;added 2021 dataset AQUA bodemschaaf
+Noordzeebenthos;mytilus;;nee;added 2021 dataset AQUA bodemschaaf
+WSFR-1 mg/kg;As;Chemische stof;ja;
+WSFR-1 mg/kg;Cd;Chemische stof;ja;
+WSFR-1 mg/kg;Hg;Chemische stof;ja;
+WSFR-1 mg/kg;Pb;Chemische stof;ja;
+WSFR-1 ng/g;5C1yChr;Chemische stof;ja;
+WSFR-1 ng/gX;BaA;Chemische stof;ja;
+WSFR-1 ng/gX;BaP;Chemische stof;ja;
+WSFR-1 ng/g;BbF;Chemische stof;ja;
+WSFR-1 ng/gX;BcFle;Chemische stof;ja;
+WSFR-1 ng/gX;BghiPe;Chemische stof;ja;
+WSFR-1 ng/g;BjF;Chemische stof;ja;
+WSFR-1 ng/gX;BkF;Chemische stof;ja;
+WSFR-1 ng/gX;Chr;Chemische stof;ja;
+WSFR-1 ng/gX;cycPecdPyr;Chemische stof;ja;
+WSFR-1 ng/gX;DBaeP;Chemische stof;ja;
+WSFR-1 ng/g;DBahAnt;Chemische stof;ja;
+WSFR-1 ng/g;DBahP;Chemische stof;ja;
+WSFR-1 ng/g;DBaiP;Chemische stof;ja;
+WSFR-1 ng/gX;DBalP;Chemische stof;ja;
+WSFR-1 ng/gX;InP;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE100;Chemische stof;ja;
+WSFR-1 ng/g;PBDE119;Chemische stof;ja;
+WSFR-1 ng/g;PBDE138;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE153;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE154;Chemische stof;ja;
+WSFR-1 ng/g;PBDE17;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE183;Chemische stof;ja;
+WSFR-1 ng/g;PBDE190;Chemische stof;ja;
+WSFR-1 ng/g;PBDE209;Chemische stof;ja;
+WSFR-1 ng/g;PBDE28;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE47;Chemische stof;ja;
+WSFR-1 ng/g;PBDE49;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE66;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE71;Chemische stof;ja;
+WSFR-1 ng/g;PBDE75;Chemische stof;ja;
+WSFR-1 ng/g;PBDE77;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE85;Chemische stof;ja;
+WSFR-1 ng/gX;PBDE99;Chemische stof;ja;
+WSFR-1 ng/g;PCB101;Chemische stof;ja;
+WSFR-1 ng/g;PCB138;Chemische stof;ja;
+WSFR-1 ng/g;PCB153;Chemische stof;ja;
+WSFR-1 ng/g;PCB180;Chemische stof;ja;
+WSFR-1 ng/g;PCB28;Chemische stof;ja;
+WSFR-1 ng/g;PCB52;Chemische stof;ja;
+WSFR-1 ng/g;L_PFBS;Chemische stof;ja;
+WSFR-1 ng/g;L_PFDS;Chemische stof;ja;
+WSFR-1 ng/g;L_PFHpS;Chemische stof;ja;
+WSFR-1 ng/g;L_PFHxS;Chemische stof;ja;
+WSFR-1 ng/gX;oCldn;Chemische stof;ja;OCP/niet
+WSFR-1 ng/gX;PeClBen;Chemische stof;ja;OCP/niet
+WSFR-1 ng/gX;PFBA;Chemische stof;ja;
+WSFR-1 ng/g;PFDA;Chemische stof;ja;
+WSFR-1 ng/g;PFDoA;Chemische stof;ja;
+WSFR-1 ng/g;PFHpA;Chemische stof;ja;
+WSFR-1 ng/g;PFHxA;Chemische stof;ja;
+WSFR-1 ng/g;PFNA;Chemische stof;ja;
+WSFR-1 ng/g;PFOA;Chemische stof;ja;
+WSFR-1 ng/g;PFOS;Chemische stof;ja;
+WSFR-1 ng/gX;PFPA;Chemische stof;ja;
+WSFR-1 ng/gX;PFTDA;Chemische stof;ja;
+WSFR-1 ng/g;PFTeDA;Chemische stof;ja;
+WSFR-1 ng/g;PFUdA;Chemische stof;ja;
+WSFR-1 ng/g;SCB6;Chemische stof;ja;
+WSFR-1 ng/g;som PAH [ub];Chemische stof;ja;
+WSFR-1 ng/gX;som PAH4 [lb];Chemische stof;ja;
+WSFR-1 ng/gX;SCB6;Chemische stof;ja;
+WSFR-1 ng/gX;SumDioxins;Chemische stof;ja;
+WSFR-1 pg/g;PCB101;Chemische stof;ja;
+WSFR-1 pg/g;PCB105;Chemische stof;ja;
+WSFR-1 pg/g;PCB114;Chemische stof;ja;
+WSFR-1 pg/g;PCB118;Chemische stof;ja;
+WSFR-1 pg/g;PCB123;Chemische stof;ja;
+WSFR-1 pg/g;PCB126;Chemische stof;ja;
+WSFR-1 pg/g;PCB138;Chemische stof;ja;
+WSFR-1 pg/g;PCB153;Chemische stof;ja;
+WSFR-1 pg/g;PCB156;Chemische stof;ja;
+WSFR-1 pg/g;PCB157;Chemische stof;ja;
+WSFR-1 pg/g;PCB167;Chemische stof;ja;
+WSFR-1 pg/g;PCB169;Chemische stof;ja;
+WSFR-1 pg/g;PCB180;Chemische stof;ja;
+WSFR-1 pg/g;PCB189;Chemische stof;ja;
+WSFR-1 pg/g;PCB28;Chemische stof;ja;
+WSFR-1 pg/g;PCB52;Chemische stof;ja;
+WSFR-1 pg/g;PCB77;Chemische stof;ja;
+WSFR-1 pg/g;PCB81;Chemische stof;ja;
+WSFR-1 pg/g;PCDD48;Chemische stof;ja;
+WSFR-1 pg/g;PCDD54;Chemische stof;ja;
+WSFR-1 pg/g;PCDD66;Chemische stof;ja;
+WSFR-1 pg/g;PCDD67;Chemische stof;ja;
+WSFR-1 pg/g;PCDD70;Chemische stof;ja;
+WSFR-1 pg/g;PCDD73;Chemische stof;ja;
+WSFR-1 pg/g;PCDD75;Chemische stof;ja;
+WSFR-1 pg/g;PCDF114;Chemische stof;ja;
+WSFR-1 pg/g;PCDF118;Chemische stof;ja;
+WSFR-1 pg/g;PCDF121;Chemische stof;ja;
+WSFR-1 pg/g;PCDF124;Chemische stof;ja;
+WSFR-1 pg/g;PCDF130;Chemische stof;ja;
+WSFR-1 pg/g;PCDF131;Chemische stof;ja;
+WSFR-1 pg/g;PCDF134;Chemische stof;ja;
+WSFR-1 pg/g;PCDF135;Chemische stof;ja;
+WSFR-1 pg/g;PCDF83;Chemische stof;ja;
+WSFR-1 pg/g;PCDF94;Chemische stof;ja;
+WSFR-1 pg/g;sdoxns17;Chemische stof;ja;added 2021 dataset
+Salmo salar;Salmo salar;Biotaxon;nee;
+Barbus barbus;Barbus barbus;Biotaxon;nee;
+Alosa alosa;Alosa alosa;Biotaxon;nee;
+Alosa fallax;Alosa fallax;Biotaxon;nee;
+Coregonus oxyrhynchus;Coregonus oxyrhynchus;Biotaxon;nee;
+Petromyzon marinus;Petromyzon marinus;Biotaxon;nee;
+Lampetra fluviatilis;Lampetra fluviatilis;Biotaxon;nee;
+zeevogels;alle alle;Biotaxon;nee;added 2021 dataset
+zeevogels;podiceps cristatus;Biotaxon;nee;added 2021 dataset
+trekvissen;Salmo salar;Biotaxon;nee;
+trekvissen;Alosa alosa;Biotaxon;nee;
+trekvissen;Alosa fallax;Biotaxon;nee;
+trekvissen;Petromyzon marinus;Biotaxon;nee;
+trekvissen;Lampetra fluviatilis;Biotaxon;nee;
+WSFR-1 ng/g;spcb12doxnat;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;sdoxn17pcb12;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;spcb6;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde17;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde28;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde47;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde49;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde66;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde71;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde75;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde77;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde85;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde99;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde100;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde119;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde138;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde153;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde154;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde183;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde190;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bde209;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;aldn;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;ccldn;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;tcldn;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;24ddd;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;44ddd;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;24dde;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;44dde;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;24ddt;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;44ddt;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;dieldn;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;aedsfn;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bedsfn;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;endsfso4;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;endn;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;hcb;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;hxclbtden;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;ahch;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;bhch;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;chch;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;dhch;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;hpcl;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;chpclepo;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;idn;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;c1oxcl;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;cnncl;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;tnncl;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;ocldn;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;peclben;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;11clpf3ouds;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;9-cl-pf3ons;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;genx;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/g;nadona;Chemische stof;ja;added 2021 dataset
+WSFR-1 ng/gX;sdoxns17;Chemische stof;ja;added 2021 dataset
+microverontrsed_mg_kg;Ag;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;As;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Ba;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;BbF;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Be;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;BeP;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;BkF;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Ce;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Co;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Cr;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Cs;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Cu;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;DBahAnt;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Dy;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Er;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Eu;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Ga;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Gd;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Ge;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Ho;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;K;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;La;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Li;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Lu;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Mg;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Mn;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Mo;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Na;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Nb;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Nd;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Ni;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Pr;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Rb;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Sb;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Se;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Sm;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Sn;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Sr;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Stot;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Tb;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Te;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Th;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Ti;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Tl;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Tm;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;U;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;V;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;W;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Y;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Yb;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Zn;Chemische stof;ja;added 2022 dataset
+microverontrsed_mg_kg;Zr;Chemische stof;ja;added 2022 dataset
+microverontrsed_ug_kg;HCB;Chemische stof;ja;added 2022 dataset
+microverontrsed_ug_kg;HxClbtDen;Chemische stof;ja;added 2022 dataset
+microverontrsed_ug_kg;PBDE138;Chemische stof;ja;added 2022 dataset
+microverontrsed_ug_kg;PBDE183;Chemische stof;ja;added 2022 dataset
+microverontrsed_ug_kg;PBDE66;Chemische stof;ja;added 2022 dataset
+microverontrsed_ug_kg;PBDE85;Chemische stof;ja;added 2022 dataset
+microverontrsed_ug_kg;PCB52;Chemische stof;ja;added 2022 dataset
+WSFR-22 mg/kg;As;Chemische stof;ja;
+WSFR-22 mg/kg;Cd;Chemische stof;ja;
+WSFR-22 mg/kg;Hg;Chemische stof;ja;
+WSFR-22 mg/kg;Pb;Chemische stof;ja;
+WSFR-22 ng/gX;5C1yChr;Chemische stof;ja;
+WSFR-22 ng/gX;BbF;Chemische stof;ja;
+WSFR-22 ng/gX;BjF;Chemische stof;ja;
+WSFR-22 ng/gX;DBahAnt;Chemische stof;ja;
+WSFR-22 ng/gX;DBahP;Chemische stof;ja;
+WSFR-22 ng/gX;DBaiP;Chemische stof;ja;
+WSFR-22 ng/gX;PBDE119;Chemische stof;ja;
+WSFR-22 ng/gX;PBDE138;Chemische stof;ja;
+WSFR-22 ng/gX;PBDE17;Chemische stof;ja;
+WSFR-22 ng/gX;PBDE190;Chemische stof;ja;
+WSFR-22 ng/gX;PBDE209;Chemische stof;ja;
+WSFR-22 ng/gX;PBDE28;Chemische stof;ja;
+WSFR-22 ng/gX;PBDE49;Chemische stof;ja;
+WSFR-22 ng/gX;PBDE75;Chemische stof;ja;
+WSFR-22 ng/gX;PBDE77;Chemische stof;ja;
+WSFR-22 ng/g;PCB101;Chemische stof;ja;
+WSFR-22 ng/g;PCB138;Chemische stof;ja;
+WSFR-22 ng/g;PCB153;Chemische stof;ja;
+WSFR-22 ng/g;PCB180;Chemische stof;ja;
+WSFR-22 ng/g;PCB28;Chemische stof;ja;
+WSFR-22 ng/g;PCB52;Chemische stof;ja;
+WSFR-22 ng/gX;L_PFBS;Chemische stof;ja;
+WSFR-22 ng/gX;L_PFDS;Chemische stof;ja;
+WSFR-22 ng/gX;L_PFHpS;Chemische stof;ja;
+WSFR-22 ng/gX;L_PFHxS;Chemische stof;ja;
+WSFR-22 ng/gX;PFDA;Chemische stof;ja;
+WSFR-22 ng/gX;PFDoA;Chemische stof;ja;
+WSFR-22 ng/gX;PFHpA;Chemische stof;ja;
+WSFR-22 ng/gX;PFHxA;Chemische stof;ja;
+WSFR-22 ng/gX;PFNA;Chemische stof;ja;
+WSFR-22 ng/gX;PFOA;Chemische stof;ja;
+WSFR-22 ng/gX;PFOS;Chemische stof;ja;
+WSFR-22 ng/gX;PFTeDA;Chemische stof;ja;
+WSFR-22 ng/gX;PFUdA;Chemische stof;ja;
+WSFR-22 ng/gX;SCB6;Chemische stof;ja;
+WSFR-22 ng/gX;som PAH [ub];Chemische stof;ja;
+WSFR-22 pg/g;PCB101;Chemische stof;ja;
+WSFR-22 pg/g;PCB105;Chemische stof;ja;
+WSFR-22 pg/g;PCB114;Chemische stof;ja;
+WSFR-22 pg/g;PCB118;Chemische stof;ja;
+WSFR-22 pg/g;PCB123;Chemische stof;ja;
+WSFR-22 pg/g;PCB126;Chemische stof;ja;
+WSFR-22 pg/g;PCB138;Chemische stof;ja;
+WSFR-22 pg/g;PCB153;Chemische stof;ja;
+WSFR-22 pg/g;PCB156;Chemische stof;ja;
+WSFR-22 pg/g;PCB157;Chemische stof;ja;
+WSFR-22 pg/g;PCB167;Chemische stof;ja;
+WSFR-22 pg/g;PCB169;Chemische stof;ja;
+WSFR-22 pg/g;PCB180;Chemische stof;ja;
+WSFR-22 pg/g;PCB189;Chemische stof;ja;
+WSFR-22 pg/g;PCB28;Chemische stof;ja;
+WSFR-22 pg/g;PCB52;Chemische stof;ja;
+WSFR-22 pg/g;PCB77;Chemische stof;ja;
+WSFR-22 pg/g;PCB81;Chemische stof;ja;
+WSFR-22 pg/g;PCDD48;Chemische stof;ja;
+WSFR-22 pg/g;PCDD54;Chemische stof;ja;
+WSFR-22 pg/g;PCDD66;Chemische stof;ja;
+WSFR-22 pg/g;PCDD67;Chemische stof;ja;
+WSFR-22 pg/g;PCDD70;Chemische stof;ja;
+WSFR-22 pg/g;PCDD73;Chemische stof;ja;
+WSFR-22 pg/g;PCDD75;Chemische stof;ja;
+WSFR-22 pg/g;PCDF114;Chemische stof;ja;
+WSFR-22 pg/g;PCDF118;Chemische stof;ja;
+WSFR-22 pg/g;PCDF121;Chemische stof;ja;
+WSFR-22 pg/g;PCDF124;Chemische stof;ja;
+WSFR-22 pg/g;PCDF130;Chemische stof;ja;
+WSFR-22 pg/g;PCDF131;Chemische stof;ja;
+WSFR-22 pg/g;PCDF134;Chemische stof;ja;
+WSFR-22 pg/g;PCDF135;Chemische stof;ja;
+WSFR-22 pg/g;PCDF83;Chemische stof;ja;
+WSFR-22 pg/g;PCDF94;Chemische stof;ja;
+WSFR-22 pg/g;sdoxns17;Chemische stof;ja;
+WSFR-22 ng/g;spcb12doxnat;Chemische stof;ja;
+WSFR-22 ng/g;sdoxn17pcb12;Chemische stof;ja;
+WSFR-22 ng/g;spcb6;Chemische stof;ja;
+WSFR-22 ng/g;bde17;Chemische stof;ja;
+WSFR-22 ng/g;bde28;Chemische stof;ja;
+WSFR-22 ng/g;bde47;Chemische stof;ja;
+WSFR-22 ng/g;bde49;Chemische stof;ja;
+WSFR-22 ng/g;bde66;Chemische stof;ja;
+WSFR-22 ng/g;bde71;Chemische stof;ja;
+WSFR-22 ng/g;bde75;Chemische stof;ja;
+WSFR-22 ng/g;bde77;Chemische stof;ja;
+WSFR-22 ng/g;bde85;Chemische stof;ja;
+WSFR-22 ng/g;bde99;Chemische stof;ja;
+WSFR-22 ng/g;bde100;Chemische stof;ja;
+WSFR-22 ng/g;bde119;Chemische stof;ja;
+WSFR-22 ng/g;bde138;Chemische stof;ja;
+WSFR-22 ng/g;bde153;Chemische stof;ja;
+WSFR-22 ng/g;bde154;Chemische stof;ja;
+WSFR-22 ng/g;bde183;Chemische stof;ja;
+WSFR-22 ng/g;bde190;Chemische stof;ja;
+WSFR-22 ng/g;bde209;Chemische stof;ja;
+WSFR-22 ng/g;aldn;Chemische stof;ja;
+WSFR-22 ng/g;ccldn;Chemische stof;ja;
+WSFR-22 ng/g;tcldn;Chemische stof;ja;
+WSFR-22 ng/g;24ddd;Chemische stof;ja;
+WSFR-22 ng/g;44ddd;Chemische stof;ja;
+WSFR-22 ng/g;24dde;Chemische stof;ja;
+WSFR-22 ng/g;44dde;Chemische stof;ja;
+WSFR-22 ng/g;24ddt;Chemische stof;ja;
+WSFR-22 ng/g;44ddt;Chemische stof;ja;
+WSFR-22 ng/g;dieldn;Chemische stof;ja;
+WSFR-22 ng/g;aedsfn;Chemische stof;ja;
+WSFR-22 ng/g;bedsfn;Chemische stof;ja;
+WSFR-22 ng/g;endsfso4;Chemische stof;ja;
+WSFR-22 ng/g;endn;Chemische stof;ja;
+WSFR-22 ng/g;hcb;Chemische stof;ja;
+WSFR-22 ng/g;hxclbtden;Chemische stof;ja;
+WSFR-22 ng/g;ahch;Chemische stof;ja;
+WSFR-22 ng/g;bhch;Chemische stof;ja;
+WSFR-22 ng/g;chch;Chemische stof;ja;
+WSFR-22 ng/g;dhch;Chemische stof;ja;
+WSFR-22 ng/g;hpcl;Chemische stof;ja;
+WSFR-22 ng/g;chpclepo;Chemische stof;ja;
+WSFR-22 ng/g;idn;Chemische stof;ja;
+WSFR-22 ng/g;c1oxcl;Chemische stof;ja;
+WSFR-22 ng/g;cnncl;Chemische stof;ja;
+WSFR-22 ng/g;tnncl;Chemische stof;ja;
+WSFR-22 ng/g;ocldn;Chemische stof;ja;
+WSFR-22 ng/g;peclben;Chemische stof;ja;
+WSFR-22 ng/gX;11clpf3ouds;Chemische stof;ja;
+WSFR-22 ng/gX;9-cl-pf3ons;Chemische stof;ja;
+WSFR-22 ng/gX;genx;Chemische stof;ja;
+WSFR-22 ng/gX;nadona;Chemische stof;ja;
+WSFR-22 ng/g;11CLPF3OUDS;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;9-CL-PF3ONS;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;GENX;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;L_PFBS;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;L_PFDS;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;L_PFHPS;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;L_PFHXS;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;NADONA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFDA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFDOA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFHPA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFHXA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFNA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFOA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFOS;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFPA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFTDA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFTEDA;Chemische stof;ja;added 2022 dataset
+WSFR-22 ng/g;PFUDA;Chemische stof;ja;added 2022 dataset

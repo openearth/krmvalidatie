@@ -4,7 +4,7 @@ resource "aws_db_instance" "krmvalidatie" {
   max_allocated_storage  = 100
   db_name                = "postgres_krmvalidatie_${terraform.workspace}"
   engine                 = "postgres"
-  engine_version         = "16.1"
+  engine_version         = "16.3"
   instance_class         = "db.t3.micro"
   username               = "krmvalidatie"
   password               = random_password.db_password.result
