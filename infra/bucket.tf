@@ -11,7 +11,7 @@ resource "aws_iam_access_key" "s3_reader" {
 }
 
 resource "aws_secretsmanager_secret" "s3_reader_credentials" {
-  name = "s3-reader-credentials-${terraform.workspace}"
+  name = "s3-reader-credential-${terraform.workspace}"
 }
 
 resource "aws_secretsmanager_secret_version" "s3_reader_credentials" {

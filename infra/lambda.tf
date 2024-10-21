@@ -1,44 +1,47 @@
 # Lambda Function
 resource "aws_lambda_function" "krm_validatie_lambda" {
-  function_name = "krm-validatie-lambda"
-  runtime       = "python3.8"
+  function_name = "krm-validatie-lambda-${terraform.workspace}"
+  runtime       = "python3.11"
   role          = aws_iam_role.function_role.arn
   handler       = "krm-validatie.lambda_handler"
-  filename      = "functions/src/krm-validatie.zip"  # Make sure to create and upload this file
+  filename      = "functions/validatie/krm-validatie.zip"  # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda.output_base64sha256
   timeout       = 120
 
   layers = [
-    # "arn:aws:lambda:eu-west-1:336392948345:layer:AWSDataWrangler-Python38:1",
-    "arn:aws:lambda:eu-west-1:637423531264:layer:geopandas:1"
+    "arn:aws:lambda:eu-west-1:637423531264:layer:geopandas:2",
+    "arn:aws:lambda:eu-west-1:637423531264:layer:tabulate:1"
   ]
-
-  # environment {
-  #   #   variables = {
-  #   #     DB_HOST     = aws_db_instance.postgres.address
-  #   #     DB_NAME     = aws_db_instance.postgres.name
-  #   #     DB_USER     = aws_db_instance.postgres.username
-  #   #     DB_PASSWORD = aws_db_instance.postgres.password
-  #   #   }
-  # }
-
-  # vpc_config {
-  #   security_group_ids = [aws_security_group.lambda_sg.id]
-  #   subnet_ids         = aws_subnet.public.*.id
-  # }
 }
 
-# resource "aws_lambda_layer_version" "pandas_layer" {
-#   filename   = "pandas_layer.zip"
-#   layer_name = "pandas_layer"
-#   compatible_runtimes = ["python3.8"]
-# }
+# Lambda Function
+resource "aws_lambda_function" "krm_publicatie_lambda" {
+  function_name = "krm-publicatie-lambda-${terraform.workspace}"
+  runtime       = "python3.11"
+  role          = aws_iam_role.function_role.arn
+  handler       = "krm-publicatie.lambda_handler"
+  filename      = "functions/publicatie/krm-publicatie.zip"  # Make sure to create and upload this file
+  source_code_hash = data.archive_file.lambda_publicatie.output_base64sha256
+  timeout       = 900
+  memory_size   = 1024
+
+  layers = [
+    "arn:aws:lambda:eu-west-1:637423531264:layer:geopandas:2"
+  ]
+}
 
 # Create the function
 data "archive_file" "lambda" {
   type        = "zip"
-  source_file = "functions/src/krm-validatie.py"
-  output_path = "functions/src/krm-validatie.zip"
+  source_file = "functions/validatie/krm-validatie.py"
+  output_path = "functions/validatie/krm-validatie.zip"
+}
+
+# Create the function
+data "archive_file" "lambda_publicatie" {
+  type        = "zip"
+  source_file = "functions/publicatie/krm-publicatie.py"
+  output_path = "functions/publicatie/krm-publicatie.zip"
 }
 
 # IAM policy document for accessing Secrets Manager
@@ -111,23 +114,3 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
 
   depends_on = [aws_lambda_permission.allow_bucket]
 }
-
-# # (Optional) Lambda Permission to Access RDS
-# resource "aws_iam_policy" "lambda_rds_policy" {
-#   name   = "lambda_rds_policy"
-#   policy = jsonencode({
-#     Version = "2012-10-17",
-#     Statement = [
-#       {
-#         Effect   = "Allow",
-#         Action   = ["rds:Connect"],
-#         Resource = "*"
-#       }
-#     ]
-#   })
-# }
-
-# resource "aws_iam_role_policy_attachment" "lambda_rds_policy_attachment" {
-#   role       = aws_iam_role.lambda_role.name
-#   policy_arn = aws_iam_policy.lambda_rds_policy.arn
-# }
