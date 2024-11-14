@@ -1,0 +1,86 @@
+kolomnaam;opmerking_ihm;voorbeeld;ihw_verplicht;ihm_verplicht;testeis
+Meetobject.Namespace;tijdwaarde_Namespace (=monster_Namespace);NL80;;V;"moet ""NL80"" zijn"
+Meetobject.LokaalID;Dit is de locatiecode!;GOERE2;C ;V;cf validatielijst
+Namespace;voor IHM altijd identiek aan Meetobject.Namespace;NL80;;V;"moet ""NL80"" zijn"
+Monster.lokaalID;tijdwaarde_Monster.identificatie;;N ;V;mag niet leeg zijn
+MonsterCompartiment.code;monster_compartiment.code;OW;N?;C;cf validatielijst
+Orgaan.code;monster_orgaan.code;;C ;C;cf validatielijst
+Organisme.naam;monster_organisme.naam;;C ;C;cf validatielijst
+Bemonsteringsapparaat.code;monster_Veldapparaat.omschrijving;;O;O;cf validatielijst
+Monsterophaaldatum;;;N ;N;leeg of formaat moet deugen
+Monsterophaaltijd;;;N ;N;leeg of formaat moet deugen
+GeometriePunt.X;monster_GeometriePunt.x;;J ;V;cf shapefile
+GeometriePunt.Y;monster_GeometriePunt.y;;J ;V;cf shapefile
+Meetwaarde.lokaalID;tijdwaarde_Identificatie;GOERE2_1;J;V;mag niet leeg zijn
+ResultaatDatum;tijdwaarde_Resultaatdatum;23-1-2018;J ;V;formaat moet deugen
+Begindatum;tijdwaarde_Begindatum;23-1-2018;J ;V;cf validatielijst
+Begintijd;tijdwaarde_Begintijd;15:17;N ;N;leeg of formaat moet deugen
+Einddatum;tijdwaarde_Einddatum;;N ;N;leeg of formaat moet deugen
+Eindtijd;tijdwaarde_Eindtijd;;N ;N;leeg of formaat moet deugen
+Typering.code;tijdwaarde_Typering.code;;C ;C;cf validatielijst
+Grootheid.code;tijdwaarde_Grootheid.code;SALNTT;C ;C;cf validatielijst
+Parameter.code;tijdwaarde_Parameter.code;;C ;C;cf validatielijst
+Biotaxon.naam;nieuw conditioneel veld: mogelijk is dit wat vroeger in parameter.omschrijving stond;;C ;C;cf validatielijst
+Eenheid.code;tijdwaarde_Eenheid.code;DIMSLS;J;V;cf validatielijst
+Hoedanigheid.code;tijdwaarde_Hoedanigheid.code;NVT;N ;N;cf validatielijst
+Analysecompartiment.code;zal bijna altijd het monstercompartiment.code zijn;OW;N?;N;niet verplicht en niet cf validatielijst
+Levensstadium.code;nieuw veld;;N ;N;cf validatielijst
+Lengteklasse.code;nieuw veld;;N ;N;
+Geslacht.code;nieuw veld;;N ;N;
+Verschijningsvorm.code;nieuw veld;;N ;N;
+Levensvorm.code;nieuw veld;;N ;N;
+Gedrag.code;nieuw veld;;N ;N;
+Waardebewerkingsmethode.code;tijdwaarde_Waardebewerkingsmethode.code;NVT;N ;N;cf validatielijst
+Waardebepalingsmethode.code;tijdwaarde_Waardebepalingsmethode.code;;N ;N;
+Limietsymbool;tijdwaarde_Limietsymbool;;N ;N;Leeg of < of > 
+Numeriekewaarde;tijdwaarde_Numeriekewaarde;30,234509;C ;C;Numeriekewaarde en Alfanumeriekewaarde mogen niet beide leeg zijn. De vulling van deze velden is afhankelijk van het soort Result dat vastgelegd moet worden (zie bijlage B). 
+Alfanumeriekewaarde;tijdwaarde_Alfanumeriekewaarde;;C ;C;Numeriekewaarde en Alfanumeriekewaarde mogen niet beide leeg zijn. De vulling van deze velden is afhankelijk van het soort Result dat vastgelegd moet worden (zie bijlage B). 
+Kwaliteitsoordeel.code;tijdwaarde_Kwaliteitsoordeel.code;00;N ;V;"""00"" of ""99"" of ""03"" of.."
+GeaccrediteerdJN ;;;N ;N;Leeg of J of N
+AccreditatieOrganisatie.code ;;;C;C;Als het veld �GeaccrediteerdJN� de waarde �J� bevat, moet dit veld gevuld worden. 
+Certificering.code ;;;N ;C;
+GerelateerdObservatieobject ;;;N ;N;
+GerelateerdObservatieobjectRol.id ;;;C;N;
+Referentiehorizontaal.code;monster_Referentiehorizontaal.code;;J ;V;moet EPSG:4258 zijn
+GeoObject.lokaalID ;;;C;N;
+OpdrachtreferentieOpdrachtgever ;;;N;N;
+OpdrachtreferentieUitvoerder ;;;N;N;
+Opdracht.Namespace ;;;C;N;
+Opdracht.lokaalID ;;;C;N;
+Onderzoekssoort.id ;;;N;N;
+Monstertype.id ;;;N;N;
+BeginDiepte_m ;monster_begindiepte_m;;N;C;leeg of numeriek
+EindDiepte_m ;monster_einddiepte_m;;C;C;leeg of numeriek
+Referentievlak.code ;monster_referentievlak.code;;C;C;moet cf domeintabel indien een van bovenstaande 2 gevuld is
+Monsterbewerkingsmethode.code ;monster_monsterbewerkingsmethode.code;;N;N;cf validatielijst
+Monsterbewerkingsmethode.codespace ;;;C;N;
+Bemonsteringsmethode.code ;monster_bemonsteringsmethode.code;;N;N;
+Bemonsteringsmethode.codespace ;monster_bemonsteringsmethode.codespace;;C;C;
+Bemonsteringssoort.code ;nakijken in domeintabel, lijkt dubbel met bemonsteringsapparaat;;N;N;
+Monstercriterium.code ;"monster_monstercriterium.code  Henny gaat kijken of hij in bundel7 hier gaat leveren of dit voor ""<63um"" geldt. ";;N;N;
+Bemonsteringsapparaat.codespace ;soms wil WMR hier iets in aanleveren;;C;N;
+Tijd_UTCoffset ;monster_tijd_UTCoffset (=tijdwaarde_Tijd_UTCoffset);;C;N;
+GerelateerdMonsterobject ;navragen bij WMR/IHW;;N;N;
+GerelateerdMonsterobjectRol.id ;navragen bij WMR/IHW;;C;N;
+Monster.Opmerking ;;;N;N;
+Resultaattijd ;;;N;N;leeg of cf format
+Waardebewerkingsmethode.codespace ;;;C;N;
+Waardebepalingsmethode.codespace ;tijdwaarde_Waardebepalingsmethode.codespace;;C;N;
+Waardebepalingstechniek.code;;;;N;
+Meetapparaat.code;;;;N;
+Meetapparaat.codespace;;;;N;
+Meetinstantie.code;;;;N;
+Meetinstantie.codespace;;;;N;
+LocatieTypeWaardeBepaling.id;;;;N;
+Volgnummer;;;;N;
+MeetwaardeOpmerking;;;;N;
+Recovery;;;;N;
+Spread;;;;N;
+MeasurementUncertainty;;;;N;
+Z-score;;;;N;
+Drift;;;;N;
+AutomatedControl.code;;;;N;
+ExpertControl.code;;;;N;
+ValidationScore.code;;;;N;
+Bemonsteringsapparaat.omschrijving;;;V;V;
+Parameter.Omschrijving;;;;C;
