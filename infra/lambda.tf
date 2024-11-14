@@ -6,11 +6,15 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
   handler       = "krm-validatie.lambda_handler"
   filename      = "functions/validatie/krm-validatie.zip"  # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda.output_base64sha256
-  timeout       = 120
+  timeout       = 900
+  memory_size   = 2048
+  ephemeral_storage {
+    size = 1024
+  }
 
   layers = [
     "arn:aws:lambda:eu-west-1:637423531264:layer:geopandas:2",
-    "arn:aws:lambda:eu-west-1:637423531264:layer:tabulate:1"
+    "arn:aws:lambda:eu-west-1:637423531264:layer:tabulate:2"
   ]
 }
 
