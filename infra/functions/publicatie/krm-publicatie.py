@@ -11,7 +11,7 @@ s3 = boto3.client('s3')
 def get_all_files_from_s3(bucket_name, folder_name):
     
     # List all objects in the specified S3 folder
-    response = s3.list_objects_v2(Bucket=bucket_name, Prefix=folder_name)
+    response = s3.list_objects_v2(Bucket=bucket_name, Prefix=f'{folder_name}/')
     
     # Check if the folder is empty
     if 'Contents' not in response:
@@ -26,11 +26,15 @@ def get_all_files_from_s3(bucket_name, folder_name):
 
         if (key != folder_name + '/'):
             # Download each file to the Lambda's /tmp directory
+            print(key)
             download_path = os.path.join('/tmp', key.split('/')[-1])
             s3.download_file(bucket_name, key, download_path)
             
             # Do something with the downloaded file (if needed)
             print(f"Downloaded {key} to {download_path}")
+    
+    print("Done")
+
 
 def upload_file_to_s3(file_name, bucket_name, s3_file_key):
     """
@@ -57,10 +61,12 @@ def upload_file_to_s3(file_name, bucket_name, s3_file_key):
 
 def merge_geopackages(gpkg_files, output_gpkg, layer_name="krm_actuele_dataset"):
     # Initialize an empty GeoDataFrame
+    print(1)
     gdf_list = []
     common_crs = 'EPSG:4258'
     # Loop through each geopackage file and read them
     for gpkg_file in gpkg_files:
+        print(gpkg_file)
         gdf = gpd.read_file(gpkg_file)
         # Check the CRS of the current GeoDataFrame
         if gdf.crs != common_crs:
@@ -76,7 +82,7 @@ def merge_geopackages(gpkg_files, output_gpkg, layer_name="krm_actuele_dataset")
 
     
     # Ensure the output folder exists
-    #os.makedirs(os.path.dirname(output_gpkg), exist_ok=True)
+    os.makedirs(os.path.dirname(output_gpkg), exist_ok=True)
 
     # Save the merged GeoDataFrame to a new GeoPackage file
     merged_gdf.to_file(output_gpkg, layer=layer_name, driver="GPKG")
@@ -88,17 +94,15 @@ def lambda_handler(event, context):
 
     bucket_name = "krm-validatie-data-prod"
     # TODO get latest file in bucket
-    historic_key = "geopackages_history/krm_actuele_dataset.gpkg"
-    local_key = "krm_actuele_dataset.gpkg"
-    subfolder = "geopackages_productie"
+    subfolder = "geopackages"
     
     try:
         # Grab historic package
-        s3.download_file(bucket_name, historic_key, local_key)
-
+        # s3.download_file(bucket_name, historic_key, local_key)
+        print("download")
         # Grab new packages
         get_all_files_from_s3(bucket_name, subfolder)
-
+        print("downloaded")
         # Get all .gpkg files from /tmp directory
         geopackage_files = glob.glob("/tmp/*.gpkg")
         #geopackage_files = glob.glob("*.gpkg")
@@ -118,11 +122,11 @@ def lambda_handler(event, context):
         publish_bucket = "krm-validatie-data-prod"
         publish_key = "geopackages_history/krm_actuele_dataset_new.gpkg"
 
-        url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key": "{publish_key}","test": "True"}}'
+        url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key":"{publish_key}","test":"True"}}'
         # Send an HTTP GET request to the URL
         print(url)
         http = urllib3.PoolManager()
-        response = http.request('POST', url)
+        response = http.request('GET', url)
 
         print(response.status)
 

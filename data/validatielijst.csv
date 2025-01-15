@@ -252,3 +252,11 @@ RWS_2023_08 contam en eff in mar slak;D8C2;RPSI;;Nassarius reticulatus;J;Nassari
 RWS_2023_08 contam en eff in mar slak;D8C2;;IMPSSDUM;;Typering;Nassarius reticulatus;;OE;VS;DIMSLS;"Bodemschaaf;Handmatig";"HOLLSKZNND;HOLLSKZNMDN;HOLLSKZNZD;HARVKZNE;GREVLGKZNE;OOSTSDKZNE;WESTSDKZNE";;15-9-2024;16-2-2023;31-7-2023;1;=
 RWS_2023_08 contam en eff in mar slak;D8C2;MASSFTE;;organotin;ChemischeStof;Nassarius reticulatus;;OE;VS;ug/kg;"Bodemschaaf;Handmatig";"HOLLSKZNND;HOLLSKZNMDN;HOLLSKZNZD;HARVKZNE;GREVLGKZNE;OOSTSDKZNE;WESTSDKZNE";;15-9-2024;16-2-2023;31-7-2023;1;=
 RWS_2023_08 contam en eff in mar slak;D8C2;MASSFTE;;DS;Grootheid;Nassarius reticulatus;;OE;VS;%;"Bodemschaaf;Handmatig";"HOLLSKZNND;HOLLSKZNMDN;HOLLSKZNZD;HARVKZNE;GREVLGKZNE;OOSTSDKZNE;WESTSDKZNE";;15-9-2024;16-2-2023;31-7-2023;1;=
+RWS_2023_11 plastic in stormvogels;D10C3;MASSA;;OSPAR_PLAIND;Object;Fulmarus glacialis;NVT;OE;MG;g;NVT;alle_stranden;NVT;15-9-2024;1-4-2021;31-12-2023;30;>=
+RWS_2023_11 plastic in stormvogels;D10C3;MASSA;;OSPAR_PLATOT;Object;Fulmarus glacialis;NVT;OE;MG;g;NVT;alle_stranden;NVT;15-9-2024;1-4-2021;31-12-2023;30;>=
+RWS_2023_11 plastic in stormvogels;D10C3;MASSA;;OSPAR_PLAUSE;Object;Fulmarus glacialis;NVT;OE;MG;g;NVT;alle_stranden;NVT;15-9-2024;1-4-2021;31-12-2023;30;>=
+RWS_2023_11 plastic in stormvogels;D10C3;AANTL;;OSPAR_PLAIND;Object;Fulmarus glacialis;NVT;OE;MG;n;NVT;alle_stranden;NVT;15-9-2024;1-4-2021;31-12-2023;30;>=
+RWS_2023_11 plastic in stormvogels;D10C3;AANTL;;OSPAR_PLATOT;Object;Fulmarus glacialis;NVT;OE;MG;n;NVT;alle_stranden;NVT;15-9-2024;1-4-2021;31-12-2023;30;>=
+RWS_2023_11 plastic in stormvogels;D10C3;AANTL;;OSPAR_PLAUSE;Object;Fulmarus glacialis;NVT;OE;MG;n;NVT;alle_stranden;NVT;15-9-2024;1-4-2021;31-12-2023;30;>=
+RWS_2023_11 plastic in stormvogels;D10C3;;LEVSDM;;Typering;Fulmarus glacialis;NVT;OE;MG;DIMSLS;NVT;alle_stranden;NVT;15-9-2024;1-4-2021;31-12-2023;30;>=
+RWS_2023_11 plastic in stormvogels;D10C3;;SEXE;;Typering;Fulmarus glacialis;NVT;OE;MG;DIMSLS;NVT;alle_stranden;NVT;15-9-2024;1-4-2021;31-12-2023;30;>=
