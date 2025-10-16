@@ -1,6 +1,5 @@
-import uuid
+from collections import defaultdict
 import boto3
-from botocore.exceptions import NoCredentialsError
 import zipfile
 import io
 from io import StringIO
@@ -13,8 +12,9 @@ import csv
 import os
 from urllib.parse import unquote_plus
 import urllib3
-from datetime import datetime
-import json
+
+from s3_functions import delete_file_from_s3, publish_to_sqs, report_databundle, upload_file_to_s3
+from github_functions import get_data_from_github, get_shape_data_from_github
 
 s3 = boto3.client('s3')
 databundel_code = ""
@@ -22,7 +22,7 @@ package_name = ""
 bundel_akkoord = True
 akkoord_file = False
 
-is_local = True
+is_local = False
 
 def extract_csv_from_zip_in_s3(bucket_name, zip_file_key):
     global akkoord_file
@@ -35,7 +35,7 @@ def extract_csv_from_zip_in_s3(bucket_name, zip_file_key):
         zip_obj = s3.get_object(Bucket=bucket_name, Key=decoded_key)
         zip_data = zip_obj['Body'].read()
 
-                # Open the zip file in memory
+        # Open the zip file in memory
         with zipfile.ZipFile(io.BytesIO(zip_data)) as z:
             file_list = z.namelist()  # Get a list of all the files in the zip
             print("Files in ZIP:", file_list)
@@ -54,6 +54,8 @@ def extract_csv_from_zip_in_s3(bucket_name, zip_file_key):
                         # Read the CSV file in memory
                         with io.TextIOWrapper(csvfile, encoding='cp1252') as textfile:
                             csv_content = pd.read_csv(textfile, delimiter=';')
+
+                            csv_content.columns = csv_content.columns.str.lower().str.strip()
                     break  # Stop after reading the first CSV file
 
             if csv_content is not None and not csv_content.empty:
@@ -233,33 +235,55 @@ def validate_records(gdf, package_name):
     return df
 
 def set_criteria(df, validatielijst, package_name):
-
+    # Replace '+' with ' ' in the package name
     package_name = package_name.replace('+', ' ')
+
+    # Filter the validation list based on the package name
     validatie_regels = validatielijst[validatielijst['databundelcode'].apply(lambda x: package_name.startswith(x))]
 
+    # Get the criteria from the filtered validation list
     criteria = validatie_regels['criteria'].values[0]
 
-    df['krmcriterium'] = f"ANSNL-{criteria}"
+    # Split the criteria by ';' to get individual criteria
+    criteria_list = criteria.split(';')
 
-    return df
+    # Create an empty list to store the duplicated DataFrames
+    duplicated_dfs = []
+
+    # Iterate over the criteria list and duplicate the records
+    for criterium in criteria_list:
+        temp_df = df.copy()
+        temp_df['krmcriterium'] = f"ANSNL-{criterium}"
+        duplicated_dfs.append(temp_df)
+
+    # Concatenate all the duplicated DataFrames into a single DataFrame
+    duplicated_df = pd.concat(duplicated_dfs)
+
+    return duplicated_df
 
 def geocontrol(df, package_name):
 
     validatie_resultaat = pd.DataFrame()
 
     package_name = package_name.replace('+', ' ')
+
+    # Specify the local folder where you want to save the file
+    if is_local:
+        local_folder = ''
+    else:    
+        local_folder = '/tmp'
     
     # Read shapefile
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.shp', 'KRM2_P.shp')
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.shx', 'KRM2_P.shx')
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.prj', 'KRM2_P.prj')
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.dbf', 'KRM2_P.dbf')
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.cpg', 'KRM2_P.cpg')
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.shp', 'KRM2_V.shp')
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.shx', 'KRM2_V.shx')
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.prj', 'KRM2_V.prj')
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.dbf', 'KRM2_V.dbf')
-    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.cpg', 'KRM2_V.cpg')
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.shp', 'KRM2_P.shp', local_folder)
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.shx', 'KRM2_P.shx', local_folder)
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.prj', 'KRM2_P.prj', local_folder)
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.dbf', 'KRM2_P.dbf', local_folder)
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_P.cpg', 'KRM2_P.cpg', local_folder)
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.shp', 'KRM2_V.shp', local_folder)
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.shx', 'KRM2_V.shx', local_folder)
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.prj', 'KRM2_V.prj', local_folder)
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.dbf', 'KRM2_V.dbf', local_folder)
+    get_shape_data_from_github(f'https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/KRM_locatiedetails/KRM2_V.cpg', 'KRM2_V.cpg', local_folder)
 
     # Convert the coordinates from the array into shapely Points
     points_from_array = [Point(xy) for xy in zip(df['geometriepunt.x'], df['geometriepunt.y'])]
@@ -613,7 +637,7 @@ def parameter_aggregate(df, validatielijst, package_name, rules, group):
     
     package_name = package_name.replace('+', ' ')
     validatie_regels = validatielijst[validatielijst['databundelcode'].apply(lambda x: package_name.startswith(x))]
-
+    print(validatie_regels)
     # df['cleaned_lokaalid'] = df['meetwaarde.lokaalid'].str.replace('NL80_', '')
 
     df['parameter'] = df.apply(
@@ -623,11 +647,17 @@ def parameter_aggregate(df, validatielijst, package_name, rules, group):
         axis=1
     )
 
+    print(df['parameter'])
+
+    print(1)
+
     validatie_regels.index = validatie_regels.index + 2
 
     #rules.set_index('validatieregel', inplace=True)
 
     filtered_rules = rules.dropna(subset=['validatieregel'])
+
+    print(2)
 
     verzamelingen = (
         filtered_rules
@@ -646,8 +676,11 @@ def parameter_aggregate(df, validatielijst, package_name, rules, group):
         .reset_index()
     )
 
+    print(df['parameter'].str.lower())
+    print(verzamelingen)
+
     # Finding missing parameters
-    missing_parameters = verzamelingen[~verzamelingen['parameter'].isin(df['parameter'].str.lower())]
+    missing_parameters = verzamelingen[~verzamelingen['parameter'].isin(group['parameter'].str.lower())]
 
     # Prepare result DataFrame
     validatie_resultaat = pd.DataFrame()
@@ -656,7 +689,7 @@ def parameter_aggregate(df, validatielijst, package_name, rules, group):
             'databundelcode': missing_parameters['databundelcode_x'],
             'record_id': missing_parameters['record_id'],
             'uitvalreden': 'ontbrekende parameter',
-            'informatie': missing_parameters.apply(lambda row: f'parameter "{row.parameter}" uit groep "{row.group}" niet gevonden', axis=1)
+            'informatie': missing_parameters.apply(lambda row: f'parameter "{row.parameter}" uit groep "{row.groep}" niet gevonden', axis=1)
         })
 
         validatie_resultaat = pd.concat([validatie_resultaat, result], ignore_index=True)
@@ -737,11 +770,9 @@ def date_range_check(df, validatielijst, package_name):
     # Get validation rules for the current databundelcode
     rules = validatielijst[validatielijst['databundelcode'].apply(lambda x: package_name.startswith(x))]
 
-    # TODO: Check if validatie regel is null. If so skip this step
-
     # Find the min and max for startdate and enddate
-    min_startdate = pd.to_datetime(rules['startdatum'], format='mixed').min()
-    max_enddate = pd.to_datetime(rules['einddatum'], format='mixed').max()
+    min_startdate = pd.to_datetime(rules['startdatum'], dayfirst=True).min()
+    max_enddate = pd.to_datetime(rules['einddatum'], dayfirst=True).max()
 
     df['begindatum'] = pd.to_datetime(df['begindatum'], format='mixed')
 
@@ -827,13 +858,14 @@ def determine_rule(df, validatielijst, package_name, group):
 
     regel_resultaat = pd.DataFrame()
 
+    # Preprocess package_name and validatieregels
     package_name = package_name.replace('+', ' ')
-
     validatieregels = validatielijst[validatielijst['databundelcode'].apply(lambda x: package_name.startswith(x))]
 
+    # Preprocess df
     df['parameter'] = df.apply(
-        lambda row: row['biotaxon.naam'] if pd.notnull(row['biotaxon.naam']) and pd.isnull(row['parameter.code']) 
-        else (row['parameter.code'] if pd.notnull(row['parameter.code']) and pd.isnull(row['biotaxon.naam']) 
+        lambda row: row['biotaxon.naam'].lower() if pd.notnull(row['biotaxon.naam']) and pd.isnull(row['parameter.code'])
+        else (row['parameter.code'].lower() if pd.notnull(row['parameter.code']) and pd.isnull(row['biotaxon.naam'])
             else np.nan),
         axis=1
     )
@@ -844,72 +876,70 @@ def determine_rule(df, validatielijst, package_name, group):
     # Split 'locatiecode' column in validatieregels into lists and explode
     validatieregels["locatiecode"] = validatieregels["locatiecode"].str.split(";")
     validatieregels = validatieregels.explode("locatiecode")
-    
+
+    # Calculate 'aantal_in_verzameling' and 'verwacht_in_verzameling'
+    group['aantal_in_verzameling'] = group.groupby('groep')['groep'].transform('count')
+    group['verwacht_in_verzameling'] = group.apply(
+        lambda row: 1 if row['elke_param_verplicht'] == 'nee' else row['aantal_in_verzameling'],
+        axis=1
+    )
+
+    # Convert dates in validatieregels to datetime
+    validatieregels['startdatum'] = pd.to_datetime(validatieregels['startdatum'], errors='coerce', dayfirst=True)
+    validatieregels['einddatum'] = pd.to_datetime(validatieregels['einddatum'], errors='coerce', dayfirst=True)
+
+    #validatieregels.to_csv('val.csv')
+
+    group = group[group['groep'].isin(validatieregels['groep'])]
+
     new_rows = []
-    if len(df) != 0:
-        for _, row in df.iterrows():
+    if not df.empty:
+        for ind, row in df.iterrows():
 
             matched_rules = []
 
-            found_groups = group[group['parameter'] == row['parameter']]
+            found_group = group[group['parameter'].str.lower() == row['parameter']]
 
             begindatum = pd.to_datetime(row.get('begindatum', None), errors='coerce', format='mixed')
 
             for index, rule in validatieregels.iterrows():
 
-                # Convert dates using pd.to_datetime, which handles invalid dates
-                startdatum = pd.to_datetime(rule.get('startdatum', None), errors='coerce', format='mixed')
-                einddatum = pd.to_datetime(rule.get('einddatum', None), errors='coerce', format='mixed')
-
                 if ((row.get('eenheid.code', '') == rule.get('eenheid_code', '') or (pd.isna(row.get('eenheid.code', '')) and pd.isna(rule.get('eenheid_code', '')))) and
-                    (rule.get('groep') == row['parameter']) or (pd.isna(rule.get('groep', '')) and pd.isna(row['parameter'])) and
+                    (len(found_group) >= 1 or pd.isna(row['parameter'])) and
                     (row.get('grootheid.code', '') == rule.get('grootheid_code', '') or (pd.isna(row.get('grootheid.code', '')) and pd.isna(rule.get('grootheid_code', '')))) and
                     (row.get('typering.code', '') == rule.get('typering_code', '') or (pd.isna(row.get('typering.code', '')) and pd.isna(rule.get('typering_code', '')))) and
                     (row.get('hoedanigheid.code', '') == rule.get('hoedanigheid_code', '') or (pd.isna(row.get('hoedanigheid.code', '')) and pd.isna(rule.get('hoedanigheid_code', '')))) and
                     (row.get('monstercompartiment.code', '') == rule.get('monstercompartiment_code', '') or (pd.isna(row.get('monstercompartiment.code', '')) and pd.isna(rule.get('monstercompartiment_code', '')))) and
-                    (row.get('waardebewerkingsmethode.code', '') == rule.get('waardebewerkingsmethode_code', '') or 
+                    (row.get('waardebewerkingsmethode.code', '') == rule.get('waardebewerkingsmethode_code', '') or
                     (pd.isna(row.get('waardebewerkingsmethode.code', '')) and pd.isna(rule.get('waardebewerkingsmethode_code', '')))) and
-                    (row.get('locatiecode', '') in rule.get('locatiecode', '').split(';') or 
+                    (row.get('locatiecode', '') in rule.get('locatiecode', '').split(';') or
                     (pd.isna(row.get('locatiecode', '')) and pd.isna(rule.get('locatiecode', '')))) and
-                    (row.get('bemonsteringsapparaat.omschrijving', '') in rule.get('bemonsteringsapparaat_omschrijving', '').split(';') or 
+                    (row.get('bemonsteringsapparaat.omschrijving', '') in rule.get('bemonsteringsapparaat_omschrijving', '').split(';') or
                     (pd.isna(row.get('bemonsteringsapparaat.omschrijving', '')) and pd.isna(rule.get('bemonsteringsapparaat_omschrijving', '')))) and
-                    (row.get('orgaan.code', '') == rule.get('orgaan_code', '') or 
+                    (row.get('orgaan.code', '') == rule.get('orgaan_code', '') or
                     (pd.isna(row.get('orgaan.code', '')) and pd.isna(rule.get('orgaan_code', '')))) and
-                    (pd.notna(begindatum) and pd.notna(startdatum) and pd.notna(einddatum) and
-                        begindatum >= startdatum and begindatum <= einddatum) and
+                    (pd.notna(begindatum) and pd.notna(rule['startdatum']) and pd.notna(rule['einddatum']) and
+                        begindatum >= rule['startdatum'] and begindatum <= rule['einddatum']) and
                     (pd.isna(row['biotaxon.naam']) or rule['biotaxon_of_niet'].lower() == 'j') and
-                    (row.get('organisme.naam', '') == rule.get('organisme_naam', '') or 
-                    (pd.isna(row.get('organisme.naam', '')) and pd.isna(rule.get('organisme_naam', ''))))):               
+                    (row.get('organisme.naam', '') == rule.get('organisme_naam', '') or
+                    (pd.isna(row.get('organisme.naam', '')) and pd.isna(rule.get('organisme_naam', ''))))):
 
                     matched_rules.append(index + 2)
 
-            uitvalreden = 0
-            betreft_verzameling = 0
-            matched_rule = None
+            uitvalreden = 5 if len(matched_rules) == 0 else 0
+            matched_rule = matched_rules[0] if matched_rules else None
+            betreft_verzameling = 1 if len(found_group) > 1 else 0
 
-            if len(matched_rules) == 0:
-                uitvalreden = 5
-            else:
-                matched_rule = matched_rules[0]
-
-            if len(found_groups) == 0:
-                uitvalreden = 1
-
-            if len(found_groups) > 1:
-                betreft_verzameling = 1            
-            
-            # Create a new row as a dictionary
             new_row = {
                 'databundelcode': package_name,
-                'record_id': row['meetwaarde.lokaalid'].replace('NL80_', ''),  # Remove 'NL80_'
+                'record_id': row['meetwaarde.lokaalid'].replace('NL80_', ''),
                 'uitvalreden': uitvalreden,
                 'mogelijke_validatieregels': list(set(matched_rules)),
                 'validatieregel': matched_rule,
                 'betreftverzameling': betreft_verzameling,
                 'monster_identificatie': row['monster.lokaalid']
             }
-            
-            # Append the new row to the validatie_resultaat DataFrame
+
             new_rows.append(new_row)
     
     new_rows_df = pd.DataFrame(new_rows) if new_rows else pd.DataFrame(columns=[
@@ -943,12 +973,19 @@ def tellingen(df, validatielijst, package_name, rules, group):
     # Now merge regelbepalen with validatieregel using 'validatieregel' column as the key
     merged = filtered_rules.merge(validatie_regels, left_on='validatieregel', right_index=True, how='inner')
 
-    merged_with_df = merged.merge(df, left_on='record_id', right_on='cleaned_meetwaarde_lokaalid')
-    #merged_with_df.to_csv('m.csv')
+    filter_on = df['cleaned_meetwaarde_lokaalid']
+
+    if validatie_regels.iloc[0].get("group_by").strip() == 'monster.lokaalid':
+        filter_on = df['cleaned_lokaalid']
+
+    merged_with_df = merged.merge(df, left_on='record_id', right_on=filter_on)
+
+    #merged_with_df.to_csv('temp.csv')
 
     # Group the dataframe by 'recordnr_monster'
     grouped = merged_with_df.groupby(["validatieregel", "databundelcode_x", "locatie.code", "locatiecode_x"])
 
+    #print(grouped)
     new_rows = []
 
     # Iterate over each group
@@ -958,13 +995,32 @@ def tellingen(df, validatielijst, package_name, rules, group):
         aantal_val = group['aantal'].iloc[0]
         limiet = group['limiet'].iloc[0]
 
-        # Fetch the validation rule safely
+        # Fetch all validation rules that match the index
         validatieregel_id = int(group['validatieregel'].iloc[0])
-        if validatieregel_id in validatie_regels.index:
-            validatieregel = validatie_regels.loc[validatieregel_id].to_dict()
-        else:
-            validatieregel = {}  # Empty dict if no rule is found
 
+        # Filter the DataFrame to get all rows with the matching index
+        matching_rules = validatie_regels[validatie_regels.index == validatieregel_id]
+
+        # Convert the matching rows to a list of dictionaries
+        validatieregel_list = matching_rules.to_dict(orient='records')
+
+        # Initialize a defaultdict to store merged values
+        merged_dict = defaultdict(set)
+
+        # Iterate over each dictionary in the list
+        for record in validatieregel_list:
+            for key, value in record.items():
+                merged_dict[key].add(value)
+
+        # Convert sets back to appropriate types
+        validatieregel = {}
+        for key, value_set in merged_dict.items():
+            if len(value_set) == 1:
+                # If there's only one unique value, use it directly
+                validatieregel[key] = next(iter(value_set))
+            else:
+                # If there are multiple unique values, join them with a semicolon
+                validatieregel[key] = ';'.join(str(v) for v in sorted(value_set))
 
         if recordnr_monster == 0:
             soort = "tijdwaarden"
@@ -980,6 +1036,8 @@ def tellingen(df, validatielijst, package_name, rules, group):
         else:
             uitvalreden = ""
 
+        #print(aantal_dat)
+
         new_row = {
             'databundelcode': package_name,
             'record_id': group["record_id_x"].iloc[0],
@@ -989,7 +1047,7 @@ def tellingen(df, validatielijst, package_name, rules, group):
             'aantalval': aantal_val,
             'uitvalreden': uitvalreden,
             'recordnrs': '',
-            'validatieregel': validatieregel  # Store the value instead of the Series
+            'validatieregel': validatieregel
         }
 
         new_rows.append(new_row)
@@ -1062,11 +1120,9 @@ def create_geopackage(gdf):
         gdf.to_file('output.gpkg', layer='krm_actuele_dataset', driver='GPKG')
     else:
         gdf.to_file('/tmp/output.gpkg', layer='krm_actuele_dataset', driver='GPKG')
-    #gdf.to_file('output.gpkg', layer='krm_actuele_dataset', driver='GPKG')
 
 def create_geodataframe(data, columns):
     # Create DataFrame with the data
-
     df = pd.DataFrame(data, columns=columns)
 
     # Convert the 'geom' column from WKT to Shapely geometries
@@ -1079,87 +1135,6 @@ def create_geodataframe(data, columns):
     gdf.set_crs(epsg=4258, inplace=True)
 
     return gdf
-
-def download_file_from_s3(bucket_name, s3_file_key, local_file_path):
-    """
-    Download a file from an S3 bucket to local storage.
-
-    :param bucket_name: The name of the S3 bucket.
-    :param s3_file_key: The key (path) of the file in the S3 bucket.
-    :param local_file_path: The local path where the file will be saved.
-    """
-    # Create an S3 client
-    s3 = boto3.client('s3')
-
-    try:
-        # Download the file
-        s3.download_file(bucket_name, s3_file_key, local_file_path)
-        print(f"File {s3_file_key} has been downloaded to {local_file_path}.")
-    except Exception as e:
-        print(f"Error downloading file: {e}")
-
-def upload_file_to_s3(file_name, bucket_name, s3_file_key):
-    """
-    Uploads a local file to an S3 bucket.
-
-    :param file_name: Path to the local file
-    :param bucket_name: Name of the S3 bucket
-    :param s3_file_key: S3 object key (name of the file in S3)
-    :return: True if file was uploaded, else False
-    """
-    try:
-        s3.upload_file(file_name, bucket_name, s3_file_key)
-        print(f"File {file_name} successfully uploaded to {bucket_name}/{s3_file_key}")
-        return True
-    except FileNotFoundError:
-        print(f"File {file_name} was not found.")
-        return False
-    except NoCredentialsError:
-        print("Credentials not available.")
-        return False
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-        return False
-
-def get_data_from_github(url):
-    
-    # Send an HTTP GET request to the URL
-    http = urllib3.PoolManager()
-    response = http.request('GET', url)
-    
-    # Convert the response content to a string and read it into a DataFrame
-    csv_data = StringIO(response.data.decode('windows-1252'))
-    df = pd.read_csv(csv_data, delimiter=';')
-
-    df['new_index'] = range(1, len(df) + 1)
-    
-    return df
-
-def get_shape_data_from_github(url, local_filename):
-    
-    # Specify the local folder where you want to save the file
-    if is_local:
-        local_folder = ''
-    else:    
-        local_folder = '/tmp'
-
-    # Create the full path for the local file
-    local_file_path = os.path.join(local_folder, local_filename)
-
-    # Create a urllib3.PoolManager instance
-    http = urllib3.PoolManager()
-
-    # Send a GET request to the URL
-    response = http.request('GET', url)
-
-    # Check if the request was successful
-    if response.status == 200:
-        # Write the content to the local file
-        with open(local_file_path, 'wb') as f:
-            f.write(response.data)
-        print(f'File downloaded and saved as: {local_file_path}')
-    else:
-        print(f'Failed to download file: {response.status}')
 
 def report_tellingen(df, package_name):
     bucket_name = "krm-validatie-data-prod"
@@ -1177,96 +1152,24 @@ def report_tellingen(df, package_name):
     
     upload_file_to_s3(file_location, bucket_name, f'rapportages/validatielijst_per_locatie_met_aantal_{package_name}.csv')
   
-def report_databundle(df, package_name, state):
-    bucket_name = "krm-validatie-data-prod"
-
-    response = s3.get_object(Bucket=bucket_name, Key='rapportages/akkoorddata.csv')
-    csv_data = response['Body'].read().decode('utf-8')
-    
-    current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-    row = { 
-            'databundelcode': package_name,
-            'krmcriterium': df['krmcriterium'].values[0],
-            'last_updated': current_datetime,
-            'status': state
-           }
-
-    print(row)
-    # Step 2: Load the CSV data into a DataFrame
-    val = pd.read_csv(StringIO(csv_data), sep=';')
-
-    if package_name in val['databundelcode'].values:
-        # Update the existing record
-        val.loc[val['databundelcode'] == package_name, ['krmcriterium', 'status', 'last_updated']] = row['krmcriterium'], row['status'], row['last_updated']
-    else:
-        # Append the new record
-        new_record_df = pd.DataFrame([row])
-        val = pd.concat([val, new_record_df], ignore_index=True)
-
-    # Step 4: Write the updated DataFrame back to a CSV format
-    csv_buffer = StringIO()
-    val.to_csv(csv_buffer, index=False, sep=';')
-
-    # Step 5: Upload the updated CSV back to S3
-    s3.put_object(Bucket=bucket_name, Key='rapportages/akkoorddata.csv', Body=csv_buffer.getvalue())
-
-
-def publish_to_sqs(queue_url, message_body, message_attributes=None, message_group_id=None, deduplication_id=str(uuid.uuid4())):
-    """
-    Publish a message to an SQS queue.
-    
-    :param queue_url: The URL of the SQS queue.
-    :param message_body: The message body (dict or string).
-    :param message_attributes: Optional. Dictionary of message attributes.
-    :param message_group_id: Required for FIFO queues. The group ID for the message.
-    :param deduplication_id: Optional. Unique deduplication ID for the message (FIFO queues).
-    :return: The response from the SQS send_message call.
-    """
-    # Initialize SQS client
-    sqs = boto3.client('sqs')
-    
-    # Ensure message_body is a string
-    if isinstance(message_body, dict):
-        message_body = json.dumps(message_body)
-    
-    try:
-        # Prepare request parameters
-        params = {
-            'QueueUrl': queue_url,
-            'MessageBody': message_body,
-            'MessageAttributes': message_attributes or {}
-        }
-        
-        # Include FIFO-specific parameters if applicable
-        if 'fifo' in queue_url.lower():
-            if not message_group_id:
-                raise ValueError("MessageGroupId is required for FIFO queues.")
-            params['MessageGroupId'] = message_group_id
-            if deduplication_id:
-                params['MessageDeduplicationId'] = deduplication_id
-        
-        response = sqs.send_message(**params)
-        print(f"Message sent to SQS queue. Message ID: {response['MessageId']}")
-        return response
-    except Exception as e:
-        print(f"Failed to send message to SQS: {str(e)}")
-        raise
-
 def lambda_handler(event, context):
     # Extract bucket name and file key from event (assuming the event contains this information)
     if is_local:
         bucket_name = "krm-validatie-data-prod"
         #zip_file_key = "input/RWS_2023_05+vervuiling+vis+20240702_IHM_pre_1580.zip"
-        #zip_file_key = "input/RWS_2023_05+vervuiling+vis+20240702_raw.zip"
-        zip_file_key = "input/RWS_2023_08+contam+en+eff+in+mar+slak+20240718_IHM_63.zip"
-        #zip_file_key = "input/RWS_2023_11+plastic+in+stormvogels+AFW_organisme_locatie_XY_WBMTH.zip"
-        #zip_file_key = "input/RWS_2023_11+plastic+in+stormvogels+20241108_IHM_248_AFW_PLAINDX.zip"
-        #zip_file_key = "input/RWS_2022_10+zwerfvuil+op+strand+20231109.zip"
-        #zip_file_key = "input/RWS_2023_11+plastic+in+stormvogels+20241108_IHM_248_AFW_date_LOC_ORG_REQ.zip"
+        #zip_file_key = "input/RWS_2023_10 zwerfvuil op strand_IHM_2336.zip"
+        #zip_file_key = "input/RWS_2023_11+plastic+in+stormvogels+20241108_IHM_248.zip"
+        #zip_file_key = "input/RWS_2023_03a+vogels_minusNCPtotaal_9720.zip"
+        #zip_file_key = "input/WFSR_2022+compleet_1088_v2.zip"
+        #zip_file_key = "input/RWS_2022_14 zeehonden Delta_IHM_133.zip"
+        zip_file_key = "input/RWS_2021_01+Noordzeebenthos+hamon_NOV_SQL_281122_GROUPED_rev_akk_1810.zip"
+        #zip_file_key = "input/RWS_2021_01+Noordzeebenthos+bodemschaaf_SQL_021122_6030_viskg_geschoond_rev.zip"
+        #zip_file_key = "input/WMR_2022_03+Trekvissen_IM_2578.zip"
+        #zip_file_key = "input/RWS_2022_07+verontr+in+sed+20230912_IHM_264.zip"
+        #zip_file_key = "input/RWS_2022_03b bruinvis_rev 31082021_540_AKK.zip"
         #zip_file_key = "input/RWS_2023_12_O2_T_sal_3_dieptes+20240712_IHM_SALNNT_T_promille_BAPPCODE_126.zip"
-        #zip_file_key = "input/RWS_2023_11+plastic+in+stormvogels+20241108_IHM_248_AFW_datum_locatie_organisme.zip"
-        #zip_file_key = "input/RWS_2023_06+P_N_sal_chlor 20240708_293_rev.zip"
+        #zip_file_key = "input/RWS_2023_08+contam+en+eff+in+mar+slak+20240718_IHM_62.zip"
+
     else:
         bucket_name = event['Records'][0]['s3']['bucket']['name']
         zip_file_key = event['Records'][0]['s3']['object']['key']
@@ -1275,112 +1178,124 @@ def lambda_handler(event, context):
         # Call the function to extract and read the CSV file from the zip
         csv_content = extract_csv_from_zip_in_s3(bucket_name, zip_file_key)
 
-        columns = [
-            "Meetobject.LokaalID",
-            "Monster.lokaalID",
-            "Meetwaarde.lokaalID",
-            "MonsterCompartiment.code",
-            "Begindatum",
-            "Begintijd",
-            "Einddatum",
-            "Eindtijd",
-            "Tijd_UTCoffset",
-            "Typering.code",
-            "Grootheid.code",
-            "Parameter.code",
-            "Parameter.Omschrijving",
-            "Biotaxon.naam",
-            "Eenheid.code",
-            "Hoedanigheid.code",
-            "Waardebewerkingsmethode.code",
-            "Limietsymbool",
-            "Numeriekewaarde",
-            "Alfanumeriekewaarde",
-            "Kwaliteitsoordeel.code",
-            "Orgaan.code",
-            "Organisme.naam",
-            "Bemonsteringsapparaat.Omschrijving",
-            "GeometriePunt.X",
-            "GeometriePunt.Y",
-            "Referentiehorizontaal.code",
-            "BeginDiepte_m",
-            "EindDiepte_m",
-            "Referentievlak.code",
-            "Bemonsteringsmethode.code",
-            "Bemonsteringsmethode.codespace",
-            "Waardebepalingstechniek.code",
-            "Monprog.naam",
-            "KRMcriterium",
-            "Meetobject.Namespace",
-            "Levensstadium.code",
-            "Lengteklasse.code",
-            "Geslacht.code",
-            "Verschijningsvorm.code",
-            "Levensvorm.code",
-            "Waardebepalingsmethode.code",
+        columns = [            
+            "meetobject.lokaalid",
+            "monster.lokaalid",
+            "meetwaarde.lokaalid",
+            "monstercompartiment.code",
+            "begindatum",
+            "begintijd",
+            "einddatum",
+            "eindtijd",
+            "tijd_utcoffset",
+            "typering.code",
+            "grootheid.code",
+            "parameter.code",
+            "parameter.omschrijving",
+            "biotaxon.naam",
+            "eenheid.code",
+            "hoedanigheid.code",
+            "waardebewerkingsmethode.code",
+            "limietsymbool",
+            "numeriekewaarde",
+            "alfanumeriekewaarde",
+            "kwaliteitsoordeel.code",
+            "orgaan.code",
+            "organisme.naam",
+            "bemonsteringsapparaat.omschrijving",
+            "geometriepunt.x",
+            "geometriepunt.y",
+            "referentiehorizontaal.code",
+            "begindiepte_m",
+            "einddiepte_m",
+            "referentievlak.code",
+            "bemonsteringsmethode.code",
+            "bemonsteringsmethode.codespace",
+            "waardebepalingstechniek.code",
+            "monprog.naam",
+            "krmcriterium",
+            "meetobject.namespace",
+            "levensstadium.code",
+            "lengteklasse.code",
+            "geslacht.code",
+            "verschijningsvorm.code",
+            "levensvorm.code",
+            "waardebepalingsmethode.code",
             "geom",
-            "ResultaatDatum",
-            "Namespace",
-            "Analysecompartiment.code"
+            "resultaatdatum",
+            "namespace",
+            "analysecompartiment.code"
         ]
 
         data = []
 
         for index, row in csv_content.iterrows():
-            geom = 'POINT(' + str(row['GeometriePunt.X']) + ' ' + str(row['GeometriePunt.Y']) + ')'
-            row = [row['Meetobject.LokaalID'],
-                    row['Monster.lokaalID'],
-                    row['Meetwaarde.lokaalID'],
-                    row['MonsterCompartiment.code'],
-                    row['Begindatum'],
-                    row['Begintijd'],
-                    row['Einddatum'],
-                    row['Eindtijd'],
-                    row['Tijd_UTCoffset '],
-                    row['Typering.code'],
-                    row['Grootheid.code'],
-                    row['Parameter.code'],
-                    row['Parameter.Omschrijving'],
-                    row['Biotaxon.naam'],
-                    row['Eenheid.code'],
-                    row['Hoedanigheid.code'],
-                    row['Waardebewerkingsmethode.code'],
-                    row['Limietsymbool'],
-                    row['Numeriekewaarde'],
-                    row['Alfanumeriekewaarde'],
-                    row['Kwaliteitsoordeel.code'],
-                    row['Orgaan.code'],
-                    row['Organisme.naam'],
-                    row['Bemonsteringsapparaat.omschrijving'],
-                    row['GeometriePunt.X'],
-                    row['GeometriePunt.Y'],
-                    row['Referentiehorizontaal.code'],
-                    row['BeginDiepte_m '],
-                    row['EindDiepte_m '],
-                    row['Referentievlak.code '],
-                    row['Bemonsteringsmethode.code '],
-                    row['Bemonsteringsmethode.codespace '],
-                    row['Waardebepalingstechniek.code'],
+            try:
+                geom = 'POINT(' + str(row['geometriepunt.x']) + ' ' + str(row['geometriepunt.y']) + ')'
+                tijd_utc_offset = row.get('tijd_utcoffset', row.get('tijd.utcoffset'))
+                begindiepte_m = row.get('begindiepte_m', row.get('begindiepte.m'))
+                einddiepte_m = row.get('einddiepte_m', row.get('einddiepte.m'))
+                row = [row['meetobject.lokaalid'],
+                    row['monster.lokaalid'],
+                    row['meetwaarde.lokaalid'],
+                    row['monstercompartiment.code'],
+                    row['begindatum'],
+                    row['begintijd'],
+                    row['einddatum'],
+                    row['eindtijd'],
+                    tijd_utc_offset,
+                    row['typering.code'],
+                    row['grootheid.code'],
+                    row['parameter.code'],
+                    row['parameter.omschrijving'],
+                    row['biotaxon.naam'],
+                    row['eenheid.code'],
+                    row['hoedanigheid.code'],
+                    row['waardebewerkingsmethode.code'],
+                    row['limietsymbool'],
+                    row['numeriekewaarde'],
+                    row['alfanumeriekewaarde'],
+                    row['kwaliteitsoordeel.code'],
+                    row['orgaan.code'],
+                    row['organisme.naam'],
+                    row['bemonsteringsapparaat.omschrijving'],
+                    row['geometriepunt.x'],
+                    row['geometriepunt.y'],
+                    row['referentiehorizontaal.code'],
+                    begindiepte_m,
+                    einddiepte_m,
+                    row['referentievlak.code'],
+                    row['bemonsteringsmethode.code'],
+                    row['bemonsteringsmethode.codespace'],
+                    row['waardebepalingstechniek.code'],
                     databundel_code,
                     'ANSNL-D1C2',
-                    row['Meetobject.Namespace'],
-                    row['Levensstadium.code'],
-                    row['Lengteklasse.code'],
-                    row['Geslacht.code'],
-                    row['Verschijningsvorm.code'],
-                    row['Levensvorm.code'],
-                    row['Waardebepalingsmethode.code'],
+                    row['meetobject.namespace'],
+                    row['levensstadium.code'],
+                    row['lengteklasse.code'],
+                    row['geslacht.code'],
+                    row['verschijningsvorm.code'],
+                    row['levensvorm.code'],
+                    row['waardebepalingsmethode.code'],
                     geom,
-                    row['ResultaatDatum'],
-                    row['Namespace'],
-                    row['Analysecompartiment.code']
+                    row['resultaatdatum'],
+                    row['namespace'],
+                    row['analysecompartiment.code']
                 ]
+                
+                data.append(row)
             
-            data.append(row)
+            except KeyError as e:
+                print('Kolom kan niet gevonden worden:' + str(e))
+                return {
+                    'statusCode': 500,
+                    'message': str(e)
+                }
 
-        # print(data)
         package_name = os.path.splitext(os.path.basename(zip_file_key))[0]
         #print(package_name)
+        delete_file_from_s3('krm-validatie-data-prod' ,'geopackages/' + package_name + '.gpkg')
+
         gdf = create_geodataframe(data, columns)
 
         gdf = gdf.rename(columns=str.lower)
@@ -1423,4 +1338,4 @@ def lambda_handler(event, context):
             'message': str(e)
         }
 
-lambda_handler('', '')
+#lambda_handler('', '')
