@@ -23,6 +23,24 @@
       </v-row>
     </v-card-text>
   </v-card>
+  <v-card
+    v-if="item?.combined_status === 'Voldoet met afwijkingen'"
+    class="mb-4"
+    variant="outlined"
+  >
+    <v-card-title class="text-h6 bg-grey-lighten-4">
+      <v-icon class="mr-2">mdi-package-variant</v-icon>
+      Akkoord Informatie
+    </v-card-title>
+    <v-card-text>
+      <v-row>
+        <v-col cols="12" md="6">     
+          <div class="text-subtitle-2 text-grey-darken-1"></div>
+          <div class="text-body-1 mb-3 mt-3">{{ item?.akkoord_reden || 'N/A' }}</div>
+        </v-col>
+      </v-row>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>

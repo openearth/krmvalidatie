@@ -9,7 +9,8 @@ const fallbackData = [
     last_updated: '4-3-2025 08:43',
     validation: false,
     approval: false,
-    status: 'Databundel validatie is: False en akkoord file is: False'
+    status: 'Databundel validatie is: False en akkoord file is: False',
+    akkoord_reden: 'Geen reden',
   },
 ]
 
@@ -67,7 +68,8 @@ export const dataParser = {
         last_updated: lastUpdated,
         validation,
         approval,
-        status: row.status || `Validatie: ${validation}, Akkoord: ${approval}`
+        status: row.status || `Validatie: ${validation}, Akkoord: ${approval}`,
+        akkoord_reden: row.akkoord_reden,
       }
     }).filter(row => row.databundelcode) // Filter out rows without databundelcode
   },
