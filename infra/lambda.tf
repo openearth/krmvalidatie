@@ -7,7 +7,7 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
   filename      = "functions/validatie/krm-validatie.zip"  # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda.output_base64sha256
   timeout       = 900
-  memory_size   = 2048
+  memory_size   = 8192
   ephemeral_storage {
     size = 1024
   }
@@ -37,7 +37,7 @@ resource "aws_lambda_function" "krm_publicatie_lambda" {
 # Create the function
 data "archive_file" "lambda" {
   type        = "zip"
-  source_file = "functions/validatie/krm-validatie.py"
+  source_dir = "functions/validatie/"
   output_path = "functions/validatie/krm-validatie.zip"
 }
 
