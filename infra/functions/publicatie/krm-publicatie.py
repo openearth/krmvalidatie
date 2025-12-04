@@ -61,7 +61,6 @@ def upload_file_to_s3(file_name, bucket_name, s3_file_key):
 
 def merge_geopackages(gpkg_files, output_gpkg, layer_name="krm_actuele_dataset"):
     # Initialize an empty GeoDataFrame
-    print(1)
     gdf_list = []
     common_crs = 'EPSG:4258'
     # Loop through each geopackage file and read them
@@ -79,8 +78,9 @@ def merge_geopackages(gpkg_files, output_gpkg, layer_name="krm_actuele_dataset")
 
     # Concatenate all GeoDataFrames into one
     merged_gdf = pd.concat(gdf_list, ignore_index=True)
-
-    
+    columns_to_drop = ['parameter', 'record_id', 'locatiecode', 'locatie.code', 'cleaned_lokaalid', 'cleaned_meetwaarde_lokaalid', 'recordnr_monster', 'uitvalreden', 'informatie']
+    merged_gdf = merged_gdf.drop(columns=columns_to_drop, errors='ignore')
+   
     # Ensure the output folder exists
     os.makedirs(os.path.dirname(output_gpkg), exist_ok=True)
 
@@ -97,6 +97,21 @@ def lambda_handler(event, context):
     subfolder = "geopackages"
     
     try:
+        publish_to_test = True
+
+        for record in event['Records']:
+            event_source = record.get('EventSource')
+            print(record)
+            if event_source == 'aws:sns':
+                topic_arn = record['Sns']['TopicArn']
+                print(topic_arn)
+                
+                # Check if 'PublishDataToProd' is in the TopicArn
+                if 'PublishDataToProd' in topic_arn:
+                    publish_to_test = False
+                    subfolder = "geopackages_productie"
+                    break            
+
         # Grab historic package
         # s3.download_file(bucket_name, historic_key, local_key)
         print("download")
@@ -121,19 +136,6 @@ def lambda_handler(event, context):
         # Publish new package
         publish_bucket = "krm-validatie-data-prod"
         publish_key = "geopackages_history/krm_actuele_dataset_new.gpkg"
-        publish_to_test = True
-
-        for record in event['Records']:
-            event_source = record.get('EventSource')
-            print(record)
-            if event_source == 'aws:sns':
-                topic_arn = record['Sns']['TopicArn']
-                print(topic_arn)
-                
-                # Check if 'PublishDataToProd' is in the TopicArn
-                if 'PublishDataToProd' in topic_arn:
-                    publish_to_test = False
-                    break
 
         url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key":"{publish_key}","test":"{publish_to_test}"}}'
         # Send an HTTP GET request to the URL
