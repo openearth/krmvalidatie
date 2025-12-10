@@ -331,7 +331,7 @@ def test_report_databundle_update_existing(mock_boto3_client):
     report_databundle(sample_df, package_name, state)
 
     # Check if get_object was called with the correct parameters
-    mock_s3_client.get_object.assert_called_once_with(Bucket="krm-validatie-data-prod", Key='rapportages/akkoorddata.csv')
+    mock_s3_client.get_object.assert_called_once_with(Bucket="krm-validatie-data-dev", Key='rapportages/akkoorddata.csv')
 
     # Check if put_object was called to update the CSV
     mock_s3_client.put_object.assert_called_once()

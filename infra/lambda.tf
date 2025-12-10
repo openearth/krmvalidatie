@@ -3,7 +3,7 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
   function_name = "krm-validatie-lambda-${terraform.workspace}"
   runtime       = "python3.11"
   role          = aws_iam_role.function_role.arn
-  handler       = "krm-validatie.lambda_handler"
+  handler       = "handler.lambda_handler"
   filename      = "functions/validatie/krm-validatie.zip"  # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda.output_base64sha256
   timeout       = 900
