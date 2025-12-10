@@ -10,7 +10,7 @@ import pandas as pd
 from github_functions import get_data_from_github, get_shape_data_from_github
 
 if TYPE_CHECKING:
-    from .config import ValidationConfig
+    from config import ValidationConfig
 
 
 class ReferenceDataLoader:

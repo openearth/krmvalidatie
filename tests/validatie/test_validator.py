@@ -14,7 +14,7 @@ class TestValidationConfig:
     
     def test_default_values(self):
         config = ValidationConfig()
-        assert config.bucket_name == "krm-validatie-data-prod"
+        assert config.bucket_name == "krm-validatie-data-dev"
         assert config.is_local is True
         assert config.max_location_distance_m == 100.0
     

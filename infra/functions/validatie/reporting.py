@@ -9,8 +9,8 @@ from typing import TYPE_CHECKING, Any
 import pandas as pd
 
 if TYPE_CHECKING:
-    from .config import ValidationConfig
-    from .reference_data import ReferenceDataLoader
+    from config import ValidationConfig
+    from reference_data import ReferenceDataLoader
 
 
 class CountReportGenerator:

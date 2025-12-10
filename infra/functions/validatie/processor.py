@@ -13,7 +13,7 @@ import pandas as pd
 from shapely import wkt
 
 if TYPE_CHECKING:
-    from .config import ValidationConfig
+    from config import ValidationConfig
 
 
 class DataBundleProcessor:

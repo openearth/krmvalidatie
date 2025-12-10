@@ -9,7 +9,7 @@ import geopandas as gpd
 import pandas as pd
 
 if TYPE_CHECKING:
-    from .config import ValidationConfig
+    from config import ValidationConfig
 
 
 class GeoPackageExporter:
