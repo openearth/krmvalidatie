@@ -3,7 +3,7 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
   function_name = "krm-validatie-lambda-${terraform.workspace}"
   runtime       = "python3.11"
   role          = aws_iam_role.function_role.arn
-  handler       = "handler.lambda_handler"
+  handler       = "krm_validator.handler.lambda_handler"
   filename      = "functions/validatie/krm-validatie.zip"  # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda.output_base64sha256
   timeout       = 900
@@ -16,6 +16,16 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
     "arn:aws:lambda:eu-west-1:637423531264:layer:geopandas:2",
     "arn:aws:lambda:eu-west-1:637423531264:layer:tabulate:2"
   ]
+
+  environment {
+    variables = {
+      # Application settings
+      IS_LOCAL  = "false"
+
+      # S3 settings
+      KRM_BUCKET_NAME = var.bucket_name
+    }
+  }
 }
 
 # Lambda Function

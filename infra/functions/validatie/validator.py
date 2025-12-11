@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from shapely.geometry import Point
 
-from report import ValidationReport, ValidationSection
+from .report import ValidationReport, ValidationSection
 
 if TYPE_CHECKING:
     from config import ValidationConfig
