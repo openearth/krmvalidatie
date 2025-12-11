@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # =============================================================================
   # Main validator service - for local development and testing
@@ -10,13 +8,19 @@ services:
       target: runtime
     container_name: krm-validator
     environment:
+      # AWS credentials
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-eu-west-1}
-      - IS_LOCAL=true
+      - AWS_ENDPOINT_URL=${AWS_ENDPOINT_URL:-}
+      # Application settings
+      - IS_LOCAL=${IS_LOCAL:-true}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      # S3 settings
+      - KRM_BUCKET_NAME=${KRM_BUCKET_NAME:-krm-validatie-data-dev}
     volumes:
-      # Mount source for development (hot reload)
-      - ./src:/app/src:ro
+      # Mount source for development (hot reload) - matches your structure
+      - ./functions/validatie:/app/krm_validator:ro
       # Mount data directories
       - ./data/input:/app/data/input:ro
       - ./data/output:/app/data/output
@@ -36,11 +40,54 @@ services:
     ports:
       - "9000:8080"
     environment:
+      # AWS credentials
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-eu-west-1}
+      - AWS_ENDPOINT_URL=${AWS_ENDPOINT_URL:-}
+      # Application settings (Lambda mode)
+      - IS_LOCAL=false
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      # S3 settings
+      - KRM_BUCKET_NAME=${KRM_BUCKET_NAME:-krm-validatie-data-dev}
+      # SQS settings
+      - KRM_SQS_QUEUE_URL=${KRM_SQS_QUEUE_URL:-}
+      # Validation settings
+      - KRM_MAX_LOCATION_DISTANCE_M=${KRM_MAX_LOCATION_DISTANCE_M:-100.0}
     volumes:
       - ~/.aws:/root/.aws:ro
+
+  # =============================================================================
+  # Validator with LocalStack (full local AWS emulation)
+  # =============================================================================
+  validator-local:
+    build:
+      context: .
+      target: runtime
+    container_name: krm-validator-local
+    depends_on:
+      - localstack
+    environment:
+      # Use LocalStack
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=eu-west-1
+      - AWS_ENDPOINT_URL=http://localstack:4566
+      # Application settings
+      - IS_LOCAL=true
+      - LOG_LEVEL=DEBUG
+      # S3 settings
+      - KRM_BUCKET_NAME=krm-validatie-data-dev
+      # Path settings
+      - KRM_LOCAL_FOLDER=/app/data
+      - KRM_TEMP_FOLDER=/tmp
+    volumes:
+      - ./functions/validatie:/app/krm_validator:ro
+      - ./data:/app/data
+    working_dir: /app
+    command: ["python", "-m", "krm_validator.handler"]
+    profiles:
+      - local
 
   # =============================================================================
   # LocalStack for local AWS emulation (S3, SQS)
@@ -68,9 +115,11 @@ services:
       target: runtime
     container_name: krm-validator-test
     environment:
-      - PYTHONPATH=/app/src
+      - PYTHONPATH=/app
+      - IS_LOCAL=true
+      - LOG_LEVEL=DEBUG
     volumes:
-      - ./src:/app/src:ro
+      - ./functions/validatie:/app/krm_validator:ro
       - ./tests:/app/tests:ro
     command: ["python", "-m", "pytest", "tests/", "-v", "--tb=short"]
     profiles:

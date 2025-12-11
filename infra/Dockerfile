@@ -4,7 +4,7 @@
 # =============================================================================
 # Stage 1: Builder - Install dependencies and build wheel
 # =============================================================================
-FROM python:3.11-slim as builder
+FROM python:3.11-slim AS builder
 
 WORKDIR /build
 
@@ -22,34 +22,26 @@ ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
 # Install Python dependencies first (for better caching)
-COPY pyproject.toml .
+COPY requirements.txt .
 RUN pip install --no-cache-dir build wheel \
-    && pip wheel --no-cache-dir --wheel-dir /wheels \
-    boto3 \
-    geopandas \
-    numpy \
-    pandas \
-    shapely \
-    pyproj \
-    fiona
+    && pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt
 
-# Copy source and build the package
-COPY src/ src/
-COPY README.md .
-RUN pip wheel --no-cache-dir --wheel-dir /wheels .
-
+# Copy source code (matches your structure: functions/validatie/*.py)
+COPY functions/validatie/*.py /build/krm_validator/
+RUN touch /build/krm_validator/__init__.py
 
 # =============================================================================
 # Stage 2: Runtime - Minimal image with only runtime dependencies
 # =============================================================================
-FROM python:3.11-slim as runtime
+FROM python:3.11-slim AS runtime
 
 WORKDIR /app
 
 # Install runtime dependencies for GDAL/GEOS
+# Package names for Debian Trixie (python:3.11-slim base)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libgdal32 \
-    libgeos-c1v5 \
+    libgdal36 \
+    libgeos-c1t64 \
     libproj25 \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
@@ -62,12 +54,8 @@ COPY --from=builder /wheels /wheels
 RUN pip install --no-cache-dir /wheels/*.whl \
     && rm -rf /wheels
 
-# Copy application code
-COPY src/ src/
-COPY pyproject.toml .
-
-# Install the package in editable mode (or regular install)
-RUN pip install --no-cache-dir -e .
+# Copy application code as a package
+COPY --from=builder /build/krm_validator /app/krm_validator/
 
 # Create directories for data
 RUN mkdir -p /app/data /app/output /tmp \
@@ -79,16 +67,17 @@ USER appuser
 # Environment variables
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONPATH=/app
 ENV AWS_DEFAULT_REGION=eu-west-1
 
-# Default command - can be overridden
+# Default command
 CMD ["python", "-m", "krm_validator.handler"]
 
 
 # =============================================================================
 # Stage 3: Lambda - AWS Lambda compatible image
 # =============================================================================
-FROM public.ecr.aws/lambda/python:3.11 as lambda
+FROM public.ecr.aws/lambda/python:3.11 AS lambda
 
 # Install GDAL dependencies
 RUN yum install -y \
@@ -100,18 +89,13 @@ RUN yum install -y \
     proj-devel \
     && yum clean all
 
-# Copy wheels from builder
+# Copy wheels from builder and install
 COPY --from=builder /wheels /wheels
 RUN pip install --no-cache-dir /wheels/*.whl \
     && rm -rf /wheels
 
-# Copy application code
-COPY src/ ${LAMBDA_TASK_ROOT}/src/
-COPY pyproject.toml ${LAMBDA_TASK_ROOT}/
-
-# Install package
-WORKDIR ${LAMBDA_TASK_ROOT}
-RUN pip install --no-cache-dir -e .
+# Copy application code as a package
+COPY --from=builder /build/krm_validator ${LAMBDA_TASK_ROOT}/
 
 # Set the Lambda handler
-CMD ["krm_validator.handler.lambda_handler"]
+CMD ["handler.lambda_handler"]
