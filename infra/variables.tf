@@ -5,5 +5,5 @@ variable "aws_region" {
 variable "bucket_name" {
   description = "S3 bucket for KRM data"
   type        = string
-  default     = "krm-validatie-data-${terraform.workspace}"
+  default     = "krm-validatie-data"
 }
