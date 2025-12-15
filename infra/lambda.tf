@@ -23,7 +23,7 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
       IS_LOCAL  = "false"
 
       # S3 settings
-      KRM_BUCKET_NAME = var.bucket_name
+      KRM_BUCKET_NAME = "${var.bucket_name}-${terraform.workspace}"
     }
   }
 }
