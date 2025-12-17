@@ -44,11 +44,21 @@ resource "aws_lambda_function" "krm_publicatie_lambda" {
   ]
 }
 
-# Create the function
+locals {
+  validatie_files = fileset("functions/validatie", "*.py")
+}
+
 data "archive_file" "lambda" {
   type        = "zip"
-  source_dir = "functions/validatie/"
   output_path = "functions/validatie/krm-validatie.zip"
+
+  dynamic "source" {
+    for_each = local.validatie_files
+    content {
+      content  = file("functions/validatie/${source.value}")
+      filename = "krm_validator/${source.value}"
+    }
+  }
 }
 
 # Create the function
