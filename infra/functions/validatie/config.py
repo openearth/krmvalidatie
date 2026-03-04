@@ -1,6 +1,7 @@
 """Configuration settings for KRM validation."""
 
-from dataclasses import dataclass
+import os
+from dataclasses import dataclass, field
 from pathlib import Path
 
 
@@ -8,9 +9,19 @@ from pathlib import Path
 class ValidationConfig:
     """Configuration for validation process."""
     
-    bucket_name: str = "krm-validatie-data-prod"
+    # S3 settings
+    bucket_name: str = field(
+        default_factory=lambda: os.environ.get("KRM_BUCKET_NAME", "krm-validatie-data-dev")
+    )
+
     local_folder: Path = Path(".")
-    is_local: bool = True
+    
+    # Local/Lambda environment
+    is_local: bool = field(
+        default_factory=lambda: os.environ.get("IS_LOCAL", "").lower() in ("true", "1", "yes")
+        or os.environ.get("AWS_EXECUTION_ENV") is None
+    )
+
     sqs_queue_url: str = "https://sqs.eu-west-1.amazonaws.com/637423531264/publishToTest.fifo"
     
     # GitHub base URL for reference data
@@ -22,11 +33,11 @@ class ValidationConfig:
     @property
     def temp_folder(self) -> Path:
         """Get temporary folder based on environment."""
-        return self.local_folder if self.is_local else Path("/tmp")
+        if self.is_local:
+            return self.local_folder
+        return Path("/tmp")
     
     @classmethod
-    def from_environment(cls, **overrides) -> "ValidationConfig":
-        """Create config detecting local vs Lambda environment."""
-        import os
-        is_local = os.environ.get('AWS_EXECUTION_ENV') is None
-        return cls(is_local=is_local, **overrides)
+    def from_environment(cls) -> "ValidationConfig":
+        """Create config from environment variables."""
+        return cls()
