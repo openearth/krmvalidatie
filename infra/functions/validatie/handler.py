@@ -6,14 +6,14 @@ import os
 from pathlib import Path
 from typing import Any
 
-from s3_functions import delete_file_from_s3, publish_to_sqs, report_databundle, upload_file_to_s3
+from .s3_functions import delete_file_from_s3, publish_to_sqs, report_databundle, upload_file_to_s3
 
-from config import ValidationConfig
-from exporter import GeoPackageExporter, set_criteria
-from processor import DataBundleProcessor
-from reference_data import ReferenceDataLoader
-from reporting import generate_count_report
-from validator import KRMValidator
+from .config import ValidationConfig
+from .exporter import GeoPackageExporter, set_criteria
+from .processor import DataBundleProcessor
+from .reference_data import ReferenceDataLoader
+from .reporting import generate_count_report
+from .validator import KRMValidator
 
 
 def lambda_handler(event: dict[str, Any], context: Any) -> dict[str, Any]:
