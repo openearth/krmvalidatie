@@ -8,7 +8,7 @@ from pathlib import Path
 class ValidationConfig:
     """Configuration for validation process."""
     
-    bucket_name: str = "krm-validatie-data-prod"
+    bucket_name: str = "krm-validatie-data-dev"
     local_folder: Path = Path(".")
     is_local: bool = True
     sqs_queue_url: str = "https://sqs.eu-west-1.amazonaws.com/637423531264/publishToTest.fifo"
