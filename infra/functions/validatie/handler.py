@@ -33,7 +33,7 @@ def lambda_handler(event: dict[str, Any], context: Any) -> dict[str, Any]:
     # Get input parameters
     if config.is_local:
         bucket_name = config.bucket_name
-        zip_file_key = "input/WMR_2024_01+Noordzeebenthos+bodemschaaf_tijdkolom_3031.zip"
+        zip_file_key = "input/WMR_2024_01+Noordzeebenthos+bodemschaaf_tijdkolom_3031_test.zip"
     else:
         bucket_name = event['Records'][0]['s3']['bucket']['name']
         zip_file_key = event['Records'][0]['s3']['object']['key']
