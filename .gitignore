@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -7,3 +7,12 @@
 infra/layers/*
 dashboard/.env
 infra/.env
+
+# Terraform (generated)
+infra/.terraform/
+infra/.terraform.lock.hcl
+infra/**/terraform.tfstate
+infra/**/terraform.tfstate.*
+
+# Terraform-created Lambda deployment zip files
+infra/functions/**/*.zip
