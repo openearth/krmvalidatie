@@ -4,7 +4,7 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
   runtime       = "python3.11"
   role          = aws_iam_role.function_role.arn
   handler       = "krm_validator.handler.lambda_handler"
-  filename      = "functions/validatie/krm-validatie.zip"  # Make sure to create and upload this file
+  filename      = "functions/validatie-${terraform.workspace}/krm-validatie.zip"  # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda.output_base64sha256
   timeout       = 900
   memory_size   = 8192
@@ -34,7 +34,7 @@ resource "aws_lambda_function" "krm_publicatie_lambda" {
   runtime       = "python3.11"
   role          = aws_iam_role.function_role.arn
   handler       = "krm-publicatie.lambda_handler"
-  filename      = "functions/publicatie/krm-publicatie.zip"  # Make sure to create and upload this file
+  filename      = "functions/publicatie-${terraform.workspace}/krm-publicatie.zip"  # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda_publicatie.output_base64sha256
   timeout       = 900
   memory_size   = 1024
@@ -45,17 +45,18 @@ resource "aws_lambda_function" "krm_publicatie_lambda" {
 }
 
 locals {
-  validatie_files = fileset("functions/validatie", "*.py")
+  # Collect python modules from the workspace-specific source folder
+  validatie_files = fileset("functions/validatie-${terraform.workspace}", "*.py")
 }
 
 data "archive_file" "lambda" {
   type        = "zip"
-  output_path = "functions/validatie/krm-validatie.zip"
+  output_path = "functions/validatie-${terraform.workspace}/krm-validatie.zip"
 
   dynamic "source" {
     for_each = local.validatie_files
     content {
-      content  = file("functions/validatie/${source.value}")
+      content  = file("functions/validatie-${terraform.workspace}/${source.value}")
       filename = "krm_validator/${source.value}"
     }
   }
@@ -64,8 +65,8 @@ data "archive_file" "lambda" {
 # Create the function
 data "archive_file" "lambda_publicatie" {
   type        = "zip"
-  source_file = "functions/publicatie/krm-publicatie.py"
-  output_path = "functions/publicatie/krm-publicatie.zip"
+  source_file = "functions/publicatie-${terraform.workspace}/krm-publicatie.py"
+  output_path = "functions/publicatie-${terraform.workspace}/krm-publicatie.zip"
 }
 
 # IAM policy document for accessing Secrets Manager

@@ -17,7 +17,7 @@ def get_all_files_from_s3(bucket_name, folder_name):
     if 'Contents' not in response:
         return {
             'statusCode': 404,
-            'body': 'No files found in the specified S3 folder.'
+            'body': 'No files found in the specified S3 folder'
         }
     
     # Iterate over all files and download them
