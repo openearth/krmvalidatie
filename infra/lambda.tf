@@ -141,3 +141,49 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
 
   depends_on = [aws_lambda_permission.allow_bucket]
 }
+
+# # This section needs to be avilitated to create the SNS triggers. Now they exist in the AWS console. They were created manually by Floris in the production envrionment.
+# # SNS topics for publication triggers
+# resource "aws_sns_topic" "publish_data_to_test" {
+#   name = "PublishDataToTest-${terraform.workspace}"
+# }
+
+# resource "aws_sns_topic" "publish_data_to_prod" {
+#   name = "PublishDataToProd-${terraform.workspace}"
+# }
+
+# # Allow SNS test topic to invoke publication lambda
+# resource "aws_lambda_permission" "allow_sns_publish_test" {
+#   statement_id  = "AllowExecutionFromSNSPublishDataToTest"
+#   action        = "lambda:InvokeFunction"
+#   function_name = aws_lambda_function.krm_publicatie_lambda.function_name
+#   principal     = "sns.amazonaws.com"
+#   source_arn    = aws_sns_topic.publish_data_to_test.arn
+# }
+
+# # Allow SNS prod topic to invoke publication lambda
+# resource "aws_lambda_permission" "allow_sns_publish_prod" {
+#   statement_id  = "AllowExecutionFromSNSPublishDataToProd"
+#   action        = "lambda:InvokeFunction"
+#   function_name = aws_lambda_function.krm_publicatie_lambda.function_name
+#   principal     = "sns.amazonaws.com"
+#   source_arn    = aws_sns_topic.publish_data_to_prod.arn
+# }
+
+# # Connect test SNS topic to publication lambda
+# resource "aws_sns_topic_subscription" "publish_data_to_test_lambda" {
+#   topic_arn = aws_sns_topic.publish_data_to_test.arn
+#   protocol  = "lambda"
+#   endpoint  = aws_lambda_function.krm_publicatie_lambda.arn
+
+#   depends_on = [aws_lambda_permission.allow_sns_publish_test]
+# }
+
+# # Connect prod SNS topic to publication lambda
+# resource "aws_sns_topic_subscription" "publish_data_to_prod_lambda" {
+#   topic_arn = aws_sns_topic.publish_data_to_prod.arn
+#   protocol  = "lambda"
+#   endpoint  = aws_lambda_function.krm_publicatie_lambda.arn
+
+#   depends_on = [aws_lambda_permission.allow_sns_publish_prod]
+# }

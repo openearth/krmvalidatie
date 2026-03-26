@@ -130,14 +130,16 @@ def lambda_handler(event, context):
         # Merge all GeoPackages
         merge_geopackages(geopackage_files, output_geopackage)
         
-        upload_file_to_s3('/tmp/merged_output.gpkg', 'krm-validatie-data-prod', 'geopackages_history/krm_actuele_dataset_new.gpkg')
-        #upload_file_to_s3('merged_output.gpkg', 'krm-validatie-data-prod', 'geopackages_history/krm_actuele_dataset_new.gpkg')
+        upload_file_to_s3('/tmp/merged_output.gpkg', 'krm-validatie-data-dev', 'geopackages_history/krm_actuele_dataset_new.gpkg')
+        #upload_file_to_s3('merged_output.gpkg', 'krm-validatie-data-dev', 'geopackages_history/krm_actuele_dataset_new.gpkg')
 
         # Publish new package
-        publish_bucket = "krm-validatie-data-prod"
-        publish_key = "geopackages_productie/output.gpkg"
+        publish_bucket = "krm-validatie-data-dev"
+        publish_key = "geopackages_history/krm_actuele_dataset_new.gpkg"
 
-        url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion_dev&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key":"{publish_key}"}'
+        # url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key":"{publish_key}","test":"{publish_to_test}"}}'
+        # url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion_dev&version=2.0.0&DataInputs=s3_inputs=%7B%22bucketname%22:%22krm-validatie-data-dev%22,%22key%22:%22geopackage/output.gpkg%22%7D'
+        url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion_dev&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key":"{publish_key}"}}'
         # Send an HTTP GET request to the URL
         print(url)
         http = urllib3.PoolManager()
