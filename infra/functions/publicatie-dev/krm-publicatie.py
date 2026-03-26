@@ -135,9 +135,9 @@ def lambda_handler(event, context):
 
         # Publish new package
         publish_bucket = "krm-validatie-data-prod"
-        publish_key = "geopackages_history/krm_actuele_dataset_new.gpkg"
+        publish_key = "geopackages_productie/output.gpkg"
 
-        url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key":"{publish_key}","test":"{publish_to_test}"}}'
+        url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion_dev&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key":"{publish_key}"}'
         # Send an HTTP GET request to the URL
         print(url)
         http = urllib3.PoolManager()
