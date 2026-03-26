@@ -92,7 +92,7 @@ def merge_geopackages(gpkg_files, output_gpkg, layer_name="krm_actuele_dataset")
 
 def lambda_handler(event, context):
 
-    bucket_name = "krm-validatie-data-prod"
+    bucket_name = "krm-validatie-data-dev"
     # TODO get latest file in bucket
     subfolder = "geopackages"
     
