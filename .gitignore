@@ -16,3 +16,9 @@ infra/**/terraform.tfstate.*
 
 # Terraform-created Lambda deployment zip files
 infra/functions/**/*.zip
+
+# Python cache files
+infra/functions/**/*.pyc
+infra/functions/validatie/__pycache__/
+
+
