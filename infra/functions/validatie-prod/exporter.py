@@ -124,12 +124,15 @@ def set_criteria(
     # Get criteria string and split
     criteria = validatie_regels['criteria'].values[0]
     criteria_list = criteria.split(';')
+
+    monprog_naam = validatie_regels['databundelcode'].values[0]
     
     # Duplicate records for each criterion
     duplicated_dfs = []
     for criterium in criteria_list:
         temp_df = df.copy()
         temp_df['krmcriterium'] = f"ANSNL-{criterium}"
+        temp_df['monprog.naam'] = monprog_naam
         duplicated_dfs.append(temp_df)
     
     return pd.concat(duplicated_dfs, ignore_index=True)
