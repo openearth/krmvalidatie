@@ -1,4 +1,4 @@
-"""AWS Lambda handler for KRM validation"""
+"""AWS Lambda handler for KRM validation."""
 
 from __future__ import annotations
 

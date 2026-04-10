@@ -84,13 +84,18 @@ class GeoPackageExporter:
         gdf = gdf.copy()
         
         # Apply type conversions
+        exportcols = []
         for column, dtype in self.DTYPE_MAPPINGS.items():
+            exportcols.append(column)
             if column in gdf.columns:
                 try:
                     gdf[column] = gdf[column].astype(dtype)
                 except (ValueError, TypeError):
                     # Keep original type if conversion fails
                     pass
+
+        keep = [c for c in exportcols if c in gdf.columns]
+        gdf = gdf[keep].copy()
         
         gdf.to_file(filepath, layer=layer_name, driver='GPKG')
 
