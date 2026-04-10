@@ -93,8 +93,11 @@ class GeoPackageExporter:
                 except (ValueError, TypeError):
                     # Keep original type if conversion fails
                     pass
+
+        keep = [c for c in exportcols if c in gdf.columns]
+        gdf = gdf[keep].copy()
         
-        gdf.to_file(filepath, columns=exportcols,layer=layer_name, driver='GPKG')
+        gdf.to_file(filepath, layer=layer_name, driver='GPKG')
 
 
 def set_criteria(
