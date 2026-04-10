@@ -78,7 +78,7 @@ def merge_geopackages(gpkg_files, output_gpkg, layer_name="krm_actuele_dataset")
 
     # Concatenate all GeoDataFrames into one
     merged_gdf = pd.concat(gdf_list, ignore_index=True)
-    columns_to_drop = ['parameter', 'record_id', 'locatiecode', 'locatie.code', 'cleaned_lokaalid', 'cleaned_meetwaarde_lokaalid', 'recordnr_monster', 'uitvalreden', 'informatie']
+    columns_to_drop = ['parameter', 'record_id', 'locatie.code', 'cleaned_lokaalid', 'cleaned_meetwaarde_lokaalid', 'recordnr_monster', 'uitvalreden', 'informatie']
     merged_gdf = merged_gdf.drop(columns=columns_to_drop, errors='ignore')
    
     # Ensure the output folder exists

@@ -82,7 +82,7 @@ class KRMValidator:
         df = gdf.copy()
         df['parameter'] = df.apply(self._get_parameter_value, axis=1)
         df['record_id'] = df['meetwaarde.lokaalid'].str.replace('NL80_', '')
-        df['locatiecode'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
+        df['locatie.code'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
         
         results = []
         for _, row in df.iterrows():
@@ -143,7 +143,7 @@ class KRMValidator:
                 return False
         
         # Semicolon-separated value checks
-        if not self._value_in_list(row.get('locatiecode'), rule.get('locatiecode', '')):
+        if not self._value_in_list(row.get('locatie.code'), rule.get('locatie.code', '')):
             return False
         if not self._value_in_list(
             row.get('bemonsteringsapparaat.omschrijving'),
@@ -302,7 +302,7 @@ class KRMValidator:
                     if not self._location_matches(row, rule)
                 )
                 if loc_mismatches == total_rules:
-                    valid_locs = ','.join(rules['locatiecode'].astype(str).unique())
+                    valid_locs = ','.join(rules['locatie.code'].astype(str).unique())
                     self.report.add(
                         section=ValidationSection.COLUMN_VALUE,
                         databundelcode=package_name,
@@ -333,7 +333,7 @@ class KRMValidator:
         df = gdf.copy()
         df['cleaned_lokaalid'] = df['monster.lokaalid'].str.replace('NL80_', '')
         df['cleaned_meetwaarde_lokaalid'] = df['meetwaarde.lokaalid'].str.replace('NL80_', '')
-        df['locatiecode'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
+        df['locatie.code'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
         df['recordnr_monster'] = df['cleaned_meetwaarde_lokaalid'].rank(method='dense').astype(int)
         
         # Filter to rules with valid validatieregel
@@ -425,7 +425,7 @@ class KRMValidator:
         df = gdf.copy()
         df['cleaned_lokaalid'] = df['monster.lokaalid'].str.replace('NL80_', '')
         df['cleaned_meetwaarde_lokaalid'] = df['meetwaarde.lokaalid'].str.replace('NL80_', '')
-        df['locatiecode'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
+        df['locatie.code'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
         
         # Build parameter column
         df['parameter'] = df.apply(
@@ -758,10 +758,10 @@ class KRMValidator:
     def _location_matches(row: pd.Series, rule: pd.Series) -> bool:
         """Check if location code matches rule."""
         loc_code = row.get('locatie.code', '')
-        rule_locs = str(rule.get('locatiecode', ''))
+        rule_locs = str(rule.get('locatie.code', ''))
         
-        if pd.isna(loc_code) and pd.isna(rule.get('locatiecode')):
+        if pd.isna(loc_code) and pd.isna(rule.get('locatie.code')):
             return True
-        if pd.isna(loc_code) or pd.isna(rule.get('locatiecode')):
+        if pd.isna(loc_code) or pd.isna(rule.get('locatie.code')):
             return False
         return loc_code in rule_locs
