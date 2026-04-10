@@ -52,7 +52,7 @@ class CountReportGenerator:
         df = gdf.copy()
         df['cleaned_lokaalid'] = df['monster.lokaalid'].str.replace('NL80_', '')
         df['cleaned_meetwaarde_lokaalid'] = df['meetwaarde.lokaalid'].str.replace('NL80_', '')
-        df['locatie.code'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
+        df['locatiecode'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
         df['recordnr_monster'] = df['cleaned_meetwaarde_lokaalid'].rank(method='dense').astype(int)
         
         # Filter rules with valid validatieregel
