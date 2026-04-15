@@ -34,9 +34,10 @@ class ReferenceDataLoader:
     def validatielijst(self) -> pd.DataFrame:
         """Get validation rules list."""
         if self._validatielijst is None:
-            self._validatielijst = get_data_from_github(
+            loaded = get_data_from_github(
                 f"{self._base_url}/validatielijst.csv"
             )
+            self._validatielijst = self._normalize_validatielijst_columns(loaded)
         return self._validatielijst
     
     @property
@@ -123,6 +124,8 @@ class ReferenceDataLoader:
         
         if rules.empty:
             return rules
+        if "locatiecode" not in rules.columns:
+            return pd.DataFrame()
         
         # Split semicolon-separated location codes into separate rows
         rules = rules.copy()
@@ -153,3 +156,17 @@ class ReferenceDataLoader:
         self._group = None
         self._column_definition = None
         self._location_gdf = None
+
+    @staticmethod
+    def _normalize_validatielijst_columns(df: pd.DataFrame | None) -> pd.DataFrame:
+        """Normalize validatielijst column names to expected schema."""
+        if df is None:
+            return pd.DataFrame()
+        out = df.copy()
+        out.columns = out.columns.astype(str).str.strip().str.lower()
+        aliases = {
+            "locatie.code": "locatiecode",
+            "locatie_code": "locatiecode",
+        }
+        out = out.rename(columns={k: v for k, v in aliases.items() if k in out.columns})
+        return out

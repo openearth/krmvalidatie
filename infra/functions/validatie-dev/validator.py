@@ -181,7 +181,7 @@ class KRMValidator:
         
         # Prepare data
         df = gdf.copy()
-        df['locatie.code'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
+        df['locatiecode'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
         
         # Create point geometries
         points = [Point(xy) for xy in zip(df['geometriepunt.x'], df['geometriepunt.y'])]
@@ -196,7 +196,7 @@ class KRMValidator:
                 databundelcode=package_name,
                 record_id=row['meetwaarde.lokaalid'],
                 uitvalreden='onbekende locatie',
-                informatie=f"onbekende locatie: {row['locatie.code']}"
+                informatie=f"onbekende locatie: {row['locatiecode']}"
             )
         
         # Check distances for known locations
@@ -230,7 +230,7 @@ class KRMValidator:
                     databundelcode=package_name,
                     record_id=row['meetwaarde.lokaalid'],
                     uitvalreden='locatie verder dan 100 meter',
-                    informatie=f"afstand van locatie: {row['locatie.code']}: {int(distance)}m"
+                    informatie=f"afstand van locatie: {row['locatiecode']}: {int(distance)}m"
                 )
     
     def _check_mandatory_columns(self, gdf: gpd.GeoDataFrame, package_name: str) -> None:
@@ -259,7 +259,7 @@ class KRMValidator:
             return
         
         df = gdf.copy()
-        df['locatie.code'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
+        df['locatiecode'] = df['meetobject.lokaalid'].str.replace('NL80_', '')
         
         # Columns to validate
         check_columns = [
@@ -308,7 +308,7 @@ class KRMValidator:
                         databundelcode=package_name,
                         record_id=row['meetwaarde.lokaalid'],
                         uitvalreden='ongeldige code',
-                        informatie=f"Locatiecode '{row['locatie.code']}' niet in: {{{valid_locs}}}"
+                        informatie=f"Locatiecode '{row['locatiecode']}' niet in: {{{valid_locs}}}"
                     )
     
     def _check_counts(
@@ -371,7 +371,7 @@ class KRMValidator:
         grouped = merged_with_df.groupby([
             "validatieregel",
             "databundelcode_x",
-            "locatie.code",
+            "locatiecode_y",
             "locatiecode_x"
         ])
         
@@ -757,7 +757,7 @@ class KRMValidator:
     @staticmethod
     def _location_matches(row: pd.Series, rule: pd.Series) -> bool:
         """Check if location code matches rule."""
-        loc_code = row.get('locatie.code', '')
+        loc_code = row.get('locatiecode', '')
         rule_locs = str(rule.get('locatiecode', ''))
         
         if pd.isna(loc_code) and pd.isna(rule.get('locatiecode')):

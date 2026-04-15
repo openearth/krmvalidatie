@@ -90,7 +90,7 @@ class CountReportGenerator:
         grouped = merged_with_df.groupby([
             "validatieregel",
             "databundelcode_x",
-            "locatie.code",
+            "locatiecode_y",
             "locatiecode_x"
         ])
         
@@ -121,7 +121,7 @@ class CountReportGenerator:
             results.append({
                 'databundelcode': clean_name,
                 'record_id': record_id,
-                'locatiecode_aantal': group_df['locatie.code'].iloc[0],
+                'locatiecode_aantal': group_df['locatiecode_y'].iloc[0],
                 'aantaldat': aantal_dat,
                 'limiet': limiet,
                 'aantalval': aantal_val,
