@@ -457,3 +457,9 @@ RWS_2023_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-XX;OR;;n;NVT;VOOR
 RWS_2023_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-AD;OR;;n;NVT;"GR;WS;OS";;15-9-2024;1-7-2022;1-7-2023;12;=;monster.lokaalid 
 RWS_2023_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-JU;OR;;n;NVT;"GR;WS;OS";;15-9-2024;1-7-2022;1-7-2023;12;=;monster.lokaalid 
 RWS_2023_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-XX;OR;;n;NVT;"GR;WS;OS";;15-9-2024;1-7-2022;1-7-2023;5; >=;monster.lokaalid 
+RWS_2024_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-AD;OR;;n;NVT;VOORDELTA;;15-9-2025;1-7-2023;1-7-2024;14;=;monster.lokaalid 
+RWS_2024_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-JU;OR;;n;NVT;VOORDELTA;;15-9-2025;1-7-2023;1-7-2024;14;=;monster.lokaalid 
+RWS_2024_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-XX;OR;;n;NVT;VOORDELTA;;15-9-2025;1-7-2023;1-7-2024;5; >=;monster.lokaalid 
+RWS_2024_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-AD;OR;;n;NVT;"GR;WS;OS";;15-9-2025;1-7-2023;1-7-2024;12;=;monster.lokaalid 
+RWS_2024_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-JU;OR;;n;NVT;"GR;WS;OS";;15-9-2025;1-7-2023;1-7-2024;12;=;monster.lokaalid 
+RWS_2024_14 zeehonden Delta;"D1C2;D1C3";AANTL;;zeehonden;J;;LS-XX;OR;;n;NVT;"GR;WS;OS";;15-9-2025;1-7-2023;1-7-2024;5; >=;monster.lokaalid 
