@@ -557,3 +557,5 @@ WMR_2024_03 Trekvissen;"D1C2;D1C4;D1C5";AANTPTD;;Salmo salar;J;;NVT;OW;;n/d;Zalm
 WMR_2024_03 Trekvissen;"D1C2;D1C4;D1C5";INSNG;;Salmo salar;J;;NVT;OW;;d;Zalmsteek;NL93_8;;15-9-2024;1-1-2024;31-12-2024;1;>=;monster.lokaalid ;;
 WMR_2024_03 Trekvissen;"D1C2;D1C4;D1C5";MASSPTD;;Salmo salar;J;;NVT;OW;;kg/d;Zalmsteek;NL93_8;;15-9-2024;1-1-2024;31-12-2024;1;>=;monster.lokaalid ;;
 WMR_2024_03 Trekvissen;"D1C2;D1C4;D1C5";NG;;Salmo salar;J;;NVT;OW;;kg;Zalmsteek;NL93_8;;15-9-2024;1-1-2024;31-12-2024;1;>=;monster.lokaalid ;;
+RWS_2024_10 zwerfvuil op strand;D10C1;AANTPLTE;;zwerfvuil op strand;Object;;NVT;OR;NVT;n/hm;NVT;"strand_Bergen;strand_Veere;strand_Noordwijk;strand_Terschelling";NVT;15-9-2025;1-1-2024;31-12-2024;4;=;monster.lokaalid ;;
+RWS_2025_10 zwerfvuil op strand;D10C1;AANTPLTE;;zwerfvuil op strand;Object;;NVT;OR;NVT;n/hm;NVT;"strand_Bergen;strand_Veere;strand_Noordwijk;strand_Terschelling";NVT;15-9-2026;1-1-2025;31-12-2025;4;=;monster.lokaalid ;;
