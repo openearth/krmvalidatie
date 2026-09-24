@@ -123,6 +123,22 @@ Type yes when prompted to confirm the destruction.
 
 ## Architecture
 
+![AWS architecture of the production environment](../docs/Architecture_diagram.png)
+
+The diagram shows the production environment. The `dev` workspace is identical apart from the
+names: everywhere `-prod` appears, read `-dev`, and the two SNS topics without a suffix
+(`PublishDataToTest` and `PublishDataToProd`) exist only alongside production.
+
+Two details that are easy to get wrong:
+
+* The Lambda functions are **not** attached to the VPC. There is no `vpc_config`, so they run in
+  the default AWS-managed network. The VPC exists but is unused by them.
+* The RDS PostgreSQL instance is commented out in `postgres.tf` and does not exist. The network
+  is reserved for it.
+
+<details>
+<summary>The same architecture as a Mermaid diagram, for quick edits</summary>
+
 ```mermaid
 flowchart TB
     GH["GitHub raw · refs/heads/main/data<br/>settings and reference lists"]
@@ -171,13 +187,12 @@ flowchart TB
 
 All buckets shown are prefixes inside the single bucket `krm-validatie-data-<ws>`. All three
 functions share one IAM role (`function_role`) and run in `eu-west-1` of account `637423531264`.
+`<ws>` is the Terraform workspace, so everything is created per workspace from one configuration.
 
-`<ws>` is the Terraform workspace (`dev` or `prod`). Everything is created per workspace, from
-one configuration, so both environments are identical apart from their names.
+</details>
 
-Two things are deliberately outside this picture: the objects in the bucket, which Terraform does
-not manage, and the hand-made `PublishDataToTest` / `PublishDataToProd` topics, which are
-described in the next section.
+The objects in the bucket are deliberately outside both pictures: Terraform does not manage them.
+The hand-made `PublishDataToTest` / `PublishDataToProd` topics are described in the next section.
 
 ## SNS topics in production
 
