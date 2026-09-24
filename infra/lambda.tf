@@ -174,6 +174,20 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
 }
 
 # SNS topics for publication triggers
+#
+# NOTE for the prod workspace: two topics without a workspace suffix,
+# PublishDataToTest and PublishDataToProd, were created by hand in the console and
+# are the ones production uses today. They are subscribed to
+# krm-publicatie-lambda-prod but are NOT in the Terraform state.
+#
+# Applying this configuration in the prod workspace therefore creates a SECOND,
+# parallel set of topics (PublishDataToTest-prod / PublishDataToProd-prod) pointing
+# at the same lambda. The manual topics keep working and are not modified, so
+# nothing breaks, but both sets trigger the same publication. Make sure everyone
+# knows which one to publish to. See infra/README.md, "SNS topics in production".
+#
+# The alternative, adopting the manual topics with workspace-aware names plus
+# terraform import, was considered and deliberately not chosen.
 resource "aws_sns_topic" "publish_data_to_test" {
   name = "PublishDataToTest-${terraform.workspace}"
 }
