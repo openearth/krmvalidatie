@@ -97,6 +97,20 @@ def upload_dataframe(df, key):
     print(f"Uploaded {len(df)} rows to s3://{BUCKET_NAME}/{key}")
 
 
+def clear_prefix(prefix):
+    """Delete everything under a prefix so a run never mixes old and new files."""
+    paginator = s3.get_paginator("list_objects_v2")
+    deleted = 0
+    for page in paginator.paginate(Bucket=BUCKET_NAME, Prefix=f"{prefix}/"):
+        keys = [{"Key": obj["Key"]} for obj in page.get("Contents", [])]
+        if not keys:
+            continue
+        s3.delete_objects(Bucket=BUCKET_NAME, Delete={"Objects": keys})
+        deleted += len(keys)
+    print(f"Removed {deleted} existing files from s3://{BUCKET_NAME}/{prefix}/")
+    return deleted
+
+
 def lambda_handler(event, context):
     cfg = load_settings()
     overrides = extract_overrides(event)
@@ -114,6 +128,8 @@ def lambda_handler(event, context):
     locations = loccatalog["Code"]
     if cfg.get("limit_locations"):
         locations = locations.head(cfg["limit_locations"])
+
+    removed = clear_prefix(prefix)
 
     frames = []
     failures = []
@@ -148,6 +164,7 @@ def lambda_handler(event, context):
     result = {
         "bucket": BUCKET_NAME,
         "prefix": prefix,
+        "removed": removed,
         "locations": len(locations),
         "downloaded": len(frames),
         "failed": failures,

@@ -144,8 +144,14 @@ downloaded/
 The `_combined.csv` file is usually the one you want. To download it, tick the checkbox next to
 it and click **Download**.
 
-Files from a new run **replace** the files of the previous run for the same quantity. Results for
-different quantities are kept in separate folders and do not overwrite each other.
+> ⚠️ **Every run empties its own folder first.** Before downloading anything, the program deletes
+> all files already present in `downloaded/<grootheid_code>/`, so what you see afterwards is
+> always exactly the result of the most recent run — there are never leftovers from an earlier
+> one mixed in.
+>
+> This means results for the same quantity are **not** kept. If you need to keep a result,
+> download it before starting the next run for that quantity. Folders of *other* quantities are
+> never touched, so `AANTPLTE/` and `WATHTE/` can happily exist side by side.
 
 ---
 
@@ -161,17 +167,19 @@ You will see lines like:
 ```
 Reading settings from https://raw.githubusercontent.com/openearth/krmvalidatie/...
 1268 catalog records, 4 unique locations
+Removed 5 existing files from s3://krm-validatie-data-dev/downloaded/AANTPLTE/
 Processing location: bergenaanzee.standafvalmeetnet
 Uploaded 584 rows to s3://krm-validatie-data-dev/downloaded/AANTPLTE/bergenaanzee.standafvalmeetnet.csv
 ...
 Uploaded 2336 rows to s3://krm-validatie-data-dev/downloaded/AANTPLTE/AANTPLTE_combined.csv
-{"bucket": "krm-validatie-data-dev", "prefix": "downloaded/AANTPLTE", "locations": 4,
- "downloaded": 4, "failed": [], "rows": 2336}
+{"bucket": "krm-validatie-data-dev", "prefix": "downloaded/AANTPLTE", "removed": 5,
+ "locations": 4, "downloaded": 4, "failed": [], "rows": 2336}
 ```
 
-That last line is the summary of the run. `"downloaded"` is the number of locations that
-produced data, `"failed"` lists the ones that did not, and `"rows"` is the size of the combined
-file. If `"failed"` is empty and `"rows"` is greater than zero, everything went well.
+That last line is the summary of the run. `"removed"` is how many old files were cleared out,
+`"downloaded"` is the number of locations that produced data, `"failed"` lists the ones that did
+not, and `"rows"` is the size of the combined file. If `"failed"` is empty and `"rows"` is
+greater than zero, everything went well.
 
 ### If something goes wrong
 

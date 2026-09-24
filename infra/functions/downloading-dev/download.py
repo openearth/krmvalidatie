@@ -22,6 +22,10 @@ if not output_dir.is_absolute():
     output_dir = (config_path.parent / output_dir).resolve()
 output_dir.mkdir(parents=True, exist_ok=True)
 
+# remove CSV files from a previous run so old and new results never get mixed
+for old_file in output_dir.glob("*.csv"):
+    old_file.unlink()
+
 catalog = rw.get_catalog()
 # check the initial catalog content
 # print(catalog.head())

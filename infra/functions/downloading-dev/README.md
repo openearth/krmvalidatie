@@ -120,6 +120,15 @@ s3://krm-validatie-data-dev/downloaded/<grootheid_code>/
 └── <grootheid_code>_combined.csv
 ```
 
+Each run **deletes everything under its own prefix before downloading**, so the folder always
+reflects exactly one run. Without this, lowering `limit_locations` or changing the location set
+would leave stale CSV files from the previous run next to the fresh ones, indistinguishable from
+them. The deletion happens after the catalog has been fetched successfully, so a failure to
+reach Waterinfo leaves the existing data untouched. The number of deleted files is reported as
+`removed` in the result.
+
+The local script does the same with `*.csv` in its `output_dir`.
+
 ## Lambda layer
 
 The Lambda uses two layers: the existing `geopandas` layer for pandas, and a small
