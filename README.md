@@ -20,6 +20,62 @@ publication does not start automatically after a validation. You decide when eac
 
 All data lives in one place: the **`krm-validatie-data-prod`** bucket.
 
+```mermaid
+flowchart TB
+    U(["👤 You<br/>AWS console"])
+    G(["🐙 GitHub<br/>data/ folder"])
+
+    W["🌊 Rijkswaterstaat<br/>Waterinfo"]
+
+    subgraph s1["Step 1 — Downloading"]
+        T1["📣 DownloadWaterinfo-prod"] --> L1["⚙️ krm-downloading-lambda-prod"]
+    end
+
+    subgraph s2["Step 2 — Validation"]
+        IN["📁 input/<br/>upload a .zip"] --> L2["⚙️ krm-validatie-lambda-prod"]
+    end
+
+    subgraph s3["Step 3 — Publication"]
+        T3T["📣 PublishDataToTest"] --> L3["⚙️ krm-publicatie-lambda-prod"]
+        T3P["📣 PublishDataToProd"] --> L3
+    end
+
+    OUT1["📁 downloaded/"]
+    OUT2["📁 rapportages/<br/>validation reports"]
+    OUT3["📁 geopackages/<br/>approved bundles"]
+    OUT3P["📁 geopackages_productie/<br/>ready to go live"]
+    OUT4["📁 geopackages_history/<br/>merged dataset"]
+    V["🗺️ Viewer<br/>marineprojects.openearth.nl"]
+
+    U -->|publish a message| T1
+    U -->|upload a .zip| IN
+    U -->|publish a message| T3T
+    U -->|publish a message| T3P
+    G -.->|settings and<br/>validation lists| L1
+    G -.-> L2
+
+    W --> L1
+    L1 --> OUT1
+    L2 --> OUT2
+    L2 -->|only when approved| OUT3
+    OUT3 -.->|you move it<br/>when ready| OUT3P
+    OUT3 --> L3
+    OUT3P --> L3
+    L3 --> OUT4 --> V
+
+    classDef bucket fill:#e8f4ea,stroke:#3a7d44,color:#1b3b22
+    classDef lambda fill:#fdecd9,stroke:#d86613,color:#5a2a06
+    classDef topic fill:#f6e6f7,stroke:#8b3a9e,color:#3d1a45
+    classDef ext fill:#eef2f7,stroke:#54708c,color:#22303f
+    class OUT1,OUT2,OUT3,OUT3P,OUT4,IN bucket
+    class L1,L2,L3 lambda
+    class T1,T3T,T3P topic
+    class W,V,U,G ext
+```
+
+Everything inside the numbered boxes runs by itself. The only things you do are publish a message,
+upload a ZIP file, and edit the files in `data/` on GitHub.
+
 ---
 
 # Step 1 — Downloading Waterinfo data

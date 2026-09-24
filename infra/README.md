@@ -121,6 +121,64 @@ terraform destroy
 
 Type yes when prompted to confirm the destruction.
 
+## Architecture
+
+```mermaid
+flowchart TB
+    GH["GitHub raw · refs/heads/main/data<br/>settings and reference lists"]
+    WI["Rijkswaterstaat<br/>Waterinfo API"]
+    WPS["WPS marineprojects.openearth.nl<br/>wps_mp_dataingestion"]
+
+    subgraph dl["1 · Downloading"]
+        direction LR
+        SNS1(["SNS<br/>DownloadWaterinfo-&lt;ws&gt;"]) --> LD["krm-downloading-lambda-&lt;ws&gt;<br/>2048 MB · 900 s<br/>geopandas:2 + rws-waterinfo:1"]
+        EB(["EventBridge schedule<br/>cron 0 3 * * ? * · DISABLED"]) --> LD
+        LD -->|clears prefix first| P1[("downloaded/&lt;grootheid&gt;/")]
+    end
+
+    subgraph val["2 · Validation"]
+        direction LR
+        P2[("input/")] --> EV(["S3 event<br/>prefix input/ · suffix .zip"]) --> LV["krm-validatie-lambda-&lt;ws&gt;<br/>8192 MB · 900 s<br/>geopandas:2 + tabulate:2"]
+        LV --> P3[("rapportages/")]
+        LV -->|only when valid<br/>or akkoord file| P4[("geopackages/")]
+        LV -.-> SQS(["SQS publishToTest.fifo"])
+    end
+
+    subgraph pub["3 · Publication"]
+        direction LR
+        SNS2(["SNS PublishDataToTest-&lt;ws&gt;<br/>+ manual PublishDataToTest"]) --> LP["krm-publicatie-lambda-&lt;ws&gt;<br/>1024 MB · 900 s<br/>geopandas:2"]
+        SNS3(["SNS PublishDataToProd-&lt;ws&gt;<br/>+ manual PublishDataToProd"]) --> LP
+        LP -->|merged gpkg| P6[("geopackages_history/")]
+    end
+
+    WI --> LD
+    GH -.->|waterinfo_downloading_settings.toml| LD
+    GH -.->|validatielijst.csv · groep.csv<br/>kolomdefinitie.csv| LV
+    P4 -.->|moved by hand<br/>when ready to go live| P5[("geopackages_productie/")]
+    P4 -->|via PublishDataToTest| LP
+    P5 -->|via PublishDataToProd| LP
+    P6 --> WPS
+
+    classDef bucket fill:#e8f4ea,stroke:#3a7d44,color:#1b3b22
+    classDef lambda fill:#fdecd9,stroke:#d86613,color:#5a2a06
+    classDef trig fill:#f6e6f7,stroke:#8b3a9e,color:#3d1a45
+    classDef external fill:#eef2f7,stroke:#54708c,color:#22303f
+    class P1,P2,P3,P4,P5,P6 bucket
+    class LD,LV,LP lambda
+    class SNS1,SNS2,SNS3,EB,EV,SQS trig
+    class WI,GH,WPS external
+```
+
+All buckets shown are prefixes inside the single bucket `krm-validatie-data-<ws>`. All three
+functions share one IAM role (`function_role`) and run in `eu-west-1` of account `637423531264`.
+
+`<ws>` is the Terraform workspace (`dev` or `prod`). Everything is created per workspace, from
+one configuration, so both environments are identical apart from their names.
+
+Two things are deliberately outside this picture: the objects in the bucket, which Terraform does
+not manage, and the hand-made `PublishDataToTest` / `PublishDataToProd` topics, which are
+described in the next section.
+
 ## SNS topics in production
 
 Two SNS topics used by production were created by hand in the AWS console and are **not managed
