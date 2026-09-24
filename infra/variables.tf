@@ -11,8 +11,8 @@ variable "bucket_name" {
 variable "waterinfo_settings_url" {
   description = "Location of the Waterinfo download settings file read by the downloading lambda"
   type        = string
-  # TODO switch back to refs/heads/main once the waterinfo_downloading branch is merged
-  default = "https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/waterinfo_downloading/data/waterinfo_downloading_settings.toml"
+  # Read from the main branch, like the other lookup tables in the data folder
+  default = "https://raw.githubusercontent.com/openearth/krmvalidatie/refs/heads/main/data/waterinfo_downloading_settings.toml"
 }
 
 variable "waterinfo_schedule_expression" {
