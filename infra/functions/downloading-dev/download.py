@@ -8,8 +8,11 @@ from pathlib import Path
 import pandas as pd
 import rws_waterinfo as rw
 
-# read the settings
-config_path = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).with_name("config.toml"))
+# read the settings; by default the shared file in the repository data folder,
+# the same place where the other lookup tables live
+DEFAULT_CONFIG = Path(__file__).resolve().parents[3] / "data" / "waterinfo_downloading_settings.toml"
+
+config_path = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_CONFIG
 with open(config_path, "rb") as f:
     cfg = tomllib.load(f)
 

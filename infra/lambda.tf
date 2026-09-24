@@ -1,13 +1,13 @@
 # Lambda Function
 resource "aws_lambda_function" "krm_validatie_lambda" {
-  function_name = "krm-validatie-lambda-${terraform.workspace}"
-  runtime       = "python3.11"
-  role          = aws_iam_role.function_role.arn
-  handler       = "krm_validator.handler.lambda_handler"
-  filename      = "functions/validatie-${terraform.workspace}/krm-validatie.zip"  # Make sure to create and upload this file
+  function_name    = "krm-validatie-lambda-${terraform.workspace}"
+  runtime          = "python3.11"
+  role             = aws_iam_role.function_role.arn
+  handler          = "krm_validator.handler.lambda_handler"
+  filename         = "functions/validatie-${terraform.workspace}/krm-validatie.zip" # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda.output_base64sha256
-  timeout       = 900
-  memory_size   = 8192
+  timeout          = 900
+  memory_size      = 8192
   ephemeral_storage {
     size = 1024
   }
@@ -20,7 +20,7 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
   environment {
     variables = {
       # Application settings
-      IS_LOCAL  = "false"
+      IS_LOCAL = "false"
 
       # S3 settings
       KRM_BUCKET_NAME = "${var.bucket_name}-${terraform.workspace}"
@@ -30,14 +30,14 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
 
 # Lambda Function
 resource "aws_lambda_function" "krm_publicatie_lambda" {
-  function_name = "krm-publicatie-lambda-${terraform.workspace}"
-  runtime       = "python3.11"
-  role          = aws_iam_role.function_role.arn
-  handler       = "krm-publicatie.lambda_handler"
-  filename      = "functions/publicatie-${terraform.workspace}/krm-publicatie.zip"  # Make sure to create and upload this file
+  function_name    = "krm-publicatie-lambda-${terraform.workspace}"
+  runtime          = "python3.11"
+  role             = aws_iam_role.function_role.arn
+  handler          = "krm-publicatie.lambda_handler"
+  filename         = "functions/publicatie-${terraform.workspace}/krm-publicatie.zip" # Make sure to create and upload this file
   source_code_hash = data.archive_file.lambda_publicatie.output_base64sha256
-  timeout       = 900
-  memory_size   = 1024
+  timeout          = 900
+  memory_size      = 1024
 
   layers = [
     "arn:aws:lambda:eu-west-1:637423531264:layer:geopandas:2"
@@ -49,6 +49,31 @@ locals {
   validatie_files = fileset("functions/validatie-${terraform.workspace}", "*.py")
 }
 
+# Lambda Function that downloads Waterinfo data into the bucket
+resource "aws_lambda_function" "krm_downloading_lambda" {
+  function_name    = "krm-downloading-lambda-${terraform.workspace}"
+  runtime          = "python3.11"
+  role             = aws_iam_role.function_role.arn
+  handler          = "krm-downloading.lambda_handler"
+  filename         = "functions/downloading-${terraform.workspace}/krm-downloading.zip"
+  source_code_hash = data.archive_file.lambda_downloading.output_base64sha256
+  timeout          = 900
+  memory_size      = 2048
+
+  layers = [
+    # geopandas layer supplies pandas, the rws-waterinfo layer the Waterinfo client
+    "arn:aws:lambda:eu-west-1:637423531264:layer:geopandas:2",
+    "arn:aws:lambda:eu-west-1:637423531264:layer:rws-waterinfo:1"
+  ]
+
+  environment {
+    variables = {
+      KRM_BUCKET_NAME  = "${var.bucket_name}-${terraform.workspace}"
+      KRM_SETTINGS_URL = var.waterinfo_settings_url
+      KRM_S3_PREFIX    = "downloaded"
+    }
+  }
+}
 data "archive_file" "lambda" {
   type        = "zip"
   output_path = "functions/validatie-${terraform.workspace}/krm-validatie.zip"
@@ -67,6 +92,12 @@ data "archive_file" "lambda_publicatie" {
   type        = "zip"
   source_file = "functions/publicatie-${terraform.workspace}/krm-publicatie.py"
   output_path = "functions/publicatie-${terraform.workspace}/krm-publicatie.zip"
+}
+
+data "archive_file" "lambda_downloading" {
+  type        = "zip"
+  source_file = "functions/downloading-${terraform.workspace}/krm-downloading.py"
+  output_path = "functions/downloading-${terraform.workspace}/krm-downloading.zip"
 }
 
 # IAM policy document for accessing Secrets Manager
@@ -185,4 +216,56 @@ resource "aws_sns_topic_subscription" "publish_data_to_prod_lambda" {
   endpoint  = aws_lambda_function.krm_publicatie_lambda.arn
 
   depends_on = [aws_lambda_permission.allow_sns_publish_prod]
+}
+
+# =============================================================================
+# Triggers for the Waterinfo downloading lambda
+# =============================================================================
+
+# SNS topic for manually starting a download
+resource "aws_sns_topic" "download_waterinfo" {
+  name = "DownloadWaterinfo-${terraform.workspace}"
+}
+
+# Allow the SNS topic to invoke the downloading lambda
+resource "aws_lambda_permission" "allow_sns_download_waterinfo" {
+  statement_id  = "AllowExecutionFromSNSDownloadWaterinfo"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.krm_downloading_lambda.function_name
+  principal     = "sns.amazonaws.com"
+  source_arn    = aws_sns_topic.download_waterinfo.arn
+}
+
+# Connect the SNS topic to the downloading lambda
+resource "aws_sns_topic_subscription" "download_waterinfo_lambda" {
+  topic_arn = aws_sns_topic.download_waterinfo.arn
+  protocol  = "lambda"
+  endpoint  = aws_lambda_function.krm_downloading_lambda.arn
+
+  depends_on = [aws_lambda_permission.allow_sns_download_waterinfo]
+}
+
+# Scheduled download. Disabled by default, see var.waterinfo_schedule_enabled.
+resource "aws_cloudwatch_event_rule" "download_waterinfo_schedule" {
+  name                = "DownloadWaterinfoSchedule-${terraform.workspace}"
+  description         = "Scheduled Waterinfo download, settings are read from the TOML file in the repository"
+  schedule_expression = var.waterinfo_schedule_expression
+  state               = var.waterinfo_schedule_enabled ? "ENABLED" : "DISABLED"
+}
+
+resource "aws_cloudwatch_event_target" "download_waterinfo_schedule" {
+  rule      = aws_cloudwatch_event_rule.download_waterinfo_schedule.name
+  target_id = "krm-downloading-lambda-${terraform.workspace}"
+  arn       = aws_lambda_function.krm_downloading_lambda.arn
+
+  # Empty payload, so the lambda uses the TOML settings unchanged
+  input = jsonencode({})
+}
+
+resource "aws_lambda_permission" "allow_eventbridge_download_waterinfo" {
+  statement_id  = "AllowExecutionFromEventBridgeSchedule"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.krm_downloading_lambda.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.download_waterinfo_schedule.arn
 }
