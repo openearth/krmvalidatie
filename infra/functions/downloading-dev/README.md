@@ -3,6 +3,10 @@
 Downloads Rijkswaterstaat Waterinfo observation data with the
 [`rws-waterinfo`](https://pypi.org/project/rws-waterinfo/) package.
 
+> 👉 If you only need to **start a download from the AWS console** and **change the settings on
+> GitHub**, read [`USER_GUIDE.md`](USER_GUIDE.md) instead. This README is the technical
+> documentation.
+
 It runs in two places from one set of settings:
 
 - **locally**, through Docker Compose, writing CSV files to the repository `data/` folder
@@ -148,6 +152,7 @@ update the layer version in `infra/lambda.tf`.
 | `requirements.txt` | `pandas`, `rws-waterinfo` |
 | `requirements-notebook.txt` | JupyterLab extras, kept out of the runtime image |
 | `notebooks/waterinfo_demo.ipynb` | Interactive version of the demo |
+| `USER_GUIDE.md` | Step-by-step manual for console/GitHub users |
 
 The handler is duplicated to `../downloading-prod/` because Terraform reads the function source
 from `functions/downloading-${terraform.workspace}`, the same pattern as `validatie-*` and

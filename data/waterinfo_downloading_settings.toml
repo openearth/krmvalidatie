@@ -7,6 +7,8 @@
 #
 # Edit and commit this file to change what gets downloaded, then trigger the
 # Lambda by publishing a message to the DownloadWaterinfo SNS topic.
+# Step-by-step instructions for doing this from the AWS console and from GitHub
+# are in infra/functions/downloading-dev/USER_GUIDE.md
 # TOML is used because it allows comments and Python 3.11 reads it natively.
 
 # Catalog filter on the 'WaardeBepalingsMethode.Code' column
