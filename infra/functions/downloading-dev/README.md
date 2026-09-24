@@ -90,6 +90,17 @@ Overridable keys: `method_code`, `compartiment_code`, `eenheid_code`, `meetappar
 Unknown keys are ignored and logged. A message that is not JSON is ignored, and the TOML is
 used unchanged.
 
+> **On Windows PowerShell**, inline JSON gets mangled by the shell's quoting, and the message
+> silently arrives as plain text (the Lambda then falls back to the TOML). Put the message in a
+> file instead:
+>
+> ```powershell
+> '{"limit_locations": 1}' | Out-File msg.json -Encoding ascii -NoNewline
+> aws sns publish --region eu-west-1 `
+>   --topic-arn arn:aws:sns:eu-west-1:637423531264:DownloadWaterinfo-dev `
+>   --message file://msg.json
+> ```
+
 ### 2. On a schedule
 
 An EventBridge rule (`DownloadWaterinfoSchedule-<workspace>`) invokes the Lambda with an empty
