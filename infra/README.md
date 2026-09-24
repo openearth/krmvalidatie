@@ -121,6 +121,66 @@ terraform destroy
 
 Type yes when prompted to confirm the destruction.
 
+## SNS topics in production
+
+Two SNS topics used by production were created by hand in the AWS console and are **not managed
+by Terraform**:
+
+| Topic | Subscribed to | Managed by |
+| --- | --- | --- |
+| `PublishDataToTest` | `krm-publicatie-lambda-prod` | console, by hand |
+| `PublishDataToProd` | `krm-publicatie-lambda-prod` | console, by hand |
+
+The configuration in `lambda.tf` names its topics `PublishDataTo...-${terraform.workspace}`, so
+in the `prod` workspace it produces `PublishDataToTest-prod` and `PublishDataToProd-prod`. Those
+are different names, which means Terraform does not recognise the manual topics as its own.
+
+### What this means when applying in prod
+
+Running `terraform apply` in the `prod` workspace creates a **second, parallel set of topics**
+next to the manual ones, subscribed to the same `krm-publicatie-lambda-prod` function:
+
+```
+PublishDataToProd        ──┐
+                           ├──> krm-publicatie-lambda-prod
+PublishDataToProd-prod   ──┘
+```
+
+This has been accepted deliberately. Nothing breaks: the manual topics, their subscriptions and
+their lambda permissions are left untouched and keep working exactly as before. Publishing to
+either topic triggers the same publication.
+
+The practical consequence is that the console shows two topics with nearly the same name. Agree
+within the team which one to use, and be aware that a message published to the other one is not
+lost but simply runs the same job.
+
+The prod workspace state currently contains only `aws_lambda_permission.allow_bucket`, so the
+whole SNS block is new there.
+
+### The alternative, if you ever want to clean this up
+
+Make the names workspace-aware so that prod keeps the names people already use, and import the
+existing topics into the state:
+
+```hcl
+name = terraform.workspace == "prod" ? "PublishDataToProd" : "PublishDataToProd-${terraform.workspace}"
+```
+
+```bash
+terraform workspace select prod
+terraform import aws_sns_topic.publish_data_to_prod arn:aws:sns:eu-west-1:637423531264:PublishDataToProd
+terraform import aws_sns_topic.publish_data_to_test arn:aws:sns:eu-west-1:637423531264:PublishDataToTest
+# the two subscriptions have to be imported with their subscription ARN as well
+terraform plan   # must report "no changes" before you apply anything
+```
+
+Importing does not modify anything in AWS, it only records existing resources in the state.
+
+### The Waterinfo download topic
+
+`DownloadWaterinfo-<workspace>` has no hand-made counterpart, so it deploys cleanly in prod and
+is not affected by any of the above.
+
 
 # Creating and Publishing AWS Lambda Layers
 
