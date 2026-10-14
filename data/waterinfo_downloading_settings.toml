@@ -1,0 +1,39 @@
+# Waterinfo download settings.
+#
+# This file is the single source of truth for the Waterinfo download, both for the
+# local script (infra/functions/downloading-dev/download.py) and for the Lambda
+# function, which reads it from GitHub raw just like validatielijst.csv and the
+# other lookup tables in this folder.
+#
+# Edit and commit this file to change what gets downloaded, then trigger the
+# Lambda by publishing a message to the DownloadWaterinfo SNS topic.
+# Step-by-step instructions for doing this from the AWS console and from GitHub
+# are in infra/functions/downloading-dev/USER_GUIDE.md
+# TOML is used because it allows comments and Python 3.11 reads it natively.
+
+# Catalog filter on the 'WaardeBepalingsMethode.Code' column
+method_code = "other:X156"
+
+# Request codes, in the order the Waterinfo API expects them:
+# [compartiment, eenheid, meetapparaat, grootheid, locatie, start, end]
+compartiment_code = "OR"
+eenheid_code = ""
+meetapparaat_code = ""
+grootheid_code = "AANTPLTE"
+
+# Period to download (YYYY-MM-DD)
+start_date = "2022-12-31"
+end_date = "2023-12-31"
+
+# Parallel downloads per request
+max_workers = 8
+
+# Only process the first N locations, 0 = all. Handy for a quick test run.
+limit_locations = 0
+
+# Local script only: where CSV files are written, relative to this file.
+# The Lambda ignores this and writes to the S3 prefix below instead.
+output_dir = "waterinfo"
+
+# Lambda only: prefix inside the krm-validatie-data-<workspace> bucket.
+s3_prefix = "downloaded"

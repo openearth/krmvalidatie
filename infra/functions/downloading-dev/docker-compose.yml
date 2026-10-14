@@ -1,0 +1,44 @@
+# Standalone compose stack for the Waterinfo downloader.
+# Not connected to the krm-validator stack in infra/docker-compose.yml.
+#
+#   cd infra/functions/downloading-dev
+#   docker compose run --rm downloader      # run the download
+#   docker compose up -d notebook           # experiment in JupyterLab
+#
+# The repository root is mounted at /work, so the relative output_dir in
+# config.toml resolves to the repository data/ folder just like it does locally.
+
+name: krm-downloader
+
+services:
+  downloader:
+    build:
+      context: .
+      target: runtime
+    image: krm-downloader:dev
+    container_name: krm-downloader
+    volumes:
+      - ../../../:/work
+    working_dir: /work/infra/functions/downloading-dev
+    entrypoint: ["python", "download.py"]
+
+  notebook:
+    build:
+      context: .
+      target: notebook
+    image: krm-downloader-notebook:dev
+    container_name: krm-downloader-notebook
+    ports:
+      # Bound to localhost only - do not expose this beyond the machine
+      - "127.0.0.1:8888:8888"
+    volumes:
+      - ../../../:/work
+    working_dir: /work/infra/functions/downloading-dev/notebooks
+    command:
+      - jupyter
+      - lab
+      - --ip=0.0.0.0
+      - --port=8888
+      - --no-browser
+      - --notebook-dir=/work/infra/functions/downloading-dev/notebooks
+      - --ServerApp.token=${JUPYTER_TOKEN:-krm}

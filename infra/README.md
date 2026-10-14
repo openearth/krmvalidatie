@@ -121,6 +121,139 @@ terraform destroy
 
 Type yes when prompted to confirm the destruction.
 
+## Architecture
+
+![AWS architecture of the production environment](../docs/Architecture_diagram.png)
+
+The diagram shows the production environment. The `dev` workspace is identical apart from the
+names: everywhere `-prod` appears, read `-dev`, and the two SNS topics without a suffix
+(`PublishDataToTest` and `PublishDataToProd`) exist only alongside production.
+
+Two details that are easy to get wrong:
+
+* The Lambda functions are **not** attached to the VPC. There is no `vpc_config`, so they run in
+  the default AWS-managed network. The VPC exists but is unused by them.
+* The RDS PostgreSQL instance is commented out in `postgres.tf` and does not exist. The network
+  is reserved for it.
+
+<details>
+<summary>The same architecture as a Mermaid diagram, for quick edits</summary>
+
+```mermaid
+flowchart TB
+    GH["GitHub raw · refs/heads/main/data<br/>settings and reference lists"]
+    WI["Rijkswaterstaat<br/>Waterinfo API"]
+    WPS["WPS marineprojects.openearth.nl<br/>wps_mp_dataingestion"]
+
+    subgraph dl["1 · Downloading"]
+        direction LR
+        SNS1(["SNS<br/>DownloadWaterinfo-&lt;ws&gt;"]) --> LD["krm-downloading-lambda-&lt;ws&gt;<br/>2048 MB · 900 s<br/>geopandas:2 + rws-waterinfo:1"]
+        EB(["EventBridge schedule<br/>cron 0 3 * * ? * · DISABLED"]) --> LD
+        LD -->|clears prefix first| P1[("downloaded/&lt;grootheid&gt;/")]
+    end
+
+    subgraph val["2 · Validation"]
+        direction LR
+        P2[("input/")] --> EV(["S3 event<br/>prefix input/ · suffix .zip"]) --> LV["krm-validatie-lambda-&lt;ws&gt;<br/>8192 MB · 900 s<br/>geopandas:2 + tabulate:2"]
+        LV --> P3[("rapportages/")]
+        LV -->|only when valid<br/>or akkoord file| P4[("geopackages/")]
+        LV -.-> SQS(["SQS publishToTest.fifo"])
+    end
+
+    subgraph pub["3 · Publication"]
+        direction LR
+        SNS2(["SNS PublishDataToTest-&lt;ws&gt;<br/>+ manual PublishDataToTest"]) --> LP["krm-publicatie-lambda-&lt;ws&gt;<br/>1024 MB · 900 s<br/>geopandas:2"]
+        SNS3(["SNS PublishDataToProd-&lt;ws&gt;<br/>+ manual PublishDataToProd"]) --> LP
+        LP -->|merged gpkg| P6[("geopackages_history/")]
+    end
+
+    WI --> LD
+    GH -.->|waterinfo_downloading_settings.toml| LD
+    GH -.->|validatielijst.csv · groep.csv<br/>kolomdefinitie.csv| LV
+    P4 -.->|moved by hand<br/>when ready to go live| P5[("geopackages_productie/")]
+    P4 -->|via PublishDataToTest| LP
+    P5 -->|via PublishDataToProd| LP
+    P6 --> WPS
+
+    classDef bucket fill:#e8f4ea,stroke:#3a7d44,color:#1b3b22
+    classDef lambda fill:#fdecd9,stroke:#d86613,color:#5a2a06
+    classDef trig fill:#f6e6f7,stroke:#8b3a9e,color:#3d1a45
+    classDef external fill:#eef2f7,stroke:#54708c,color:#22303f
+    class P1,P2,P3,P4,P5,P6 bucket
+    class LD,LV,LP lambda
+    class SNS1,SNS2,SNS3,EB,EV,SQS trig
+    class WI,GH,WPS external
+```
+
+All buckets shown are prefixes inside the single bucket `krm-validatie-data-<ws>`. All three
+functions share one IAM role (`function_role`) and run in `eu-west-1` of account `637423531264`.
+`<ws>` is the Terraform workspace, so everything is created per workspace from one configuration.
+
+</details>
+
+The objects in the bucket are deliberately outside both pictures: Terraform does not manage them.
+The hand-made `PublishDataToTest` / `PublishDataToProd` topics are described in the next section.
+
+## SNS topics in production
+
+Two SNS topics used by production were created by hand in the AWS console and are **not managed
+by Terraform**:
+
+| Topic | Subscribed to | Managed by |
+| --- | --- | --- |
+| `PublishDataToTest` | `krm-publicatie-lambda-prod` | console, by hand |
+| `PublishDataToProd` | `krm-publicatie-lambda-prod` | console, by hand |
+
+The configuration in `lambda.tf` names its topics `PublishDataTo...-${terraform.workspace}`, so
+in the `prod` workspace it produces `PublishDataToTest-prod` and `PublishDataToProd-prod`. Those
+are different names, which means Terraform does not recognise the manual topics as its own.
+
+### What this means when applying in prod
+
+Running `terraform apply` in the `prod` workspace creates a **second, parallel set of topics**
+next to the manual ones, subscribed to the same `krm-publicatie-lambda-prod` function:
+
+```
+PublishDataToProd        ──┐
+                           ├──> krm-publicatie-lambda-prod
+PublishDataToProd-prod   ──┘
+```
+
+This has been accepted deliberately. Nothing breaks: the manual topics, their subscriptions and
+their lambda permissions are left untouched and keep working exactly as before. Publishing to
+either topic triggers the same publication.
+
+The practical consequence is that the console shows two topics with nearly the same name. Agree
+within the team which one to use, and be aware that a message published to the other one is not
+lost but simply runs the same job.
+
+The prod workspace state currently contains only `aws_lambda_permission.allow_bucket`, so the
+whole SNS block is new there.
+
+### The alternative, if you ever want to clean this up
+
+Make the names workspace-aware so that prod keeps the names people already use, and import the
+existing topics into the state:
+
+```hcl
+name = terraform.workspace == "prod" ? "PublishDataToProd" : "PublishDataToProd-${terraform.workspace}"
+```
+
+```bash
+terraform workspace select prod
+terraform import aws_sns_topic.publish_data_to_prod arn:aws:sns:eu-west-1:637423531264:PublishDataToProd
+terraform import aws_sns_topic.publish_data_to_test arn:aws:sns:eu-west-1:637423531264:PublishDataToTest
+# the two subscriptions have to be imported with their subscription ARN as well
+terraform plan   # must report "no changes" before you apply anything
+```
+
+Importing does not modify anything in AWS, it only records existing resources in the state.
+
+### The Waterinfo download topic
+
+`DownloadWaterinfo-<workspace>` has no hand-made counterpart, so it deploys cleanly in prod and
+is not affected by any of the above.
+
 
 # Creating and Publishing AWS Lambda Layers
 
