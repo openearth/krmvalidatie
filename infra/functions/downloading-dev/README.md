@@ -66,6 +66,12 @@ Then open **http://127.0.0.1:8888/lab?token=krm**. `notebooks/waterinfo_demo.ipy
 through the steps interactively. Notebooks are mounted read-write, so saves land back in the
 repository. Stop everything with `docker compose down`.
 
+> ⚠️ **The notebook reads `validatielijst.csv` and `waterinfo_location_codes.csv` from the
+> `waterinfo_downloading` branch on GitHub, not from `main`.** This is temporary. Once the branch
+> is merged, change `GITHUB_BRANCH = "waterinfo_downloading"` to `"main"` in the "Download the
+> rows marked `DT`" cell of `notebooks/waterinfo_demo.ipynb`. The files have to be pushed to the
+> branch before the notebook can see them; local changes are not used.
+
 ## Running on AWS
 
 `krm-downloading.py` is the Lambda handler. It is triggered in two ways.
