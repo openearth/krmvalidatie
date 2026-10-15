@@ -62,15 +62,38 @@ docker compose run --rm downloader /work/data/my-other-settings.toml
 docker compose up -d notebook
 ```
 
-Then open **http://127.0.0.1:8888/lab?token=krm**. `notebooks/waterinfo_demo.ipynb` walks
-through the steps interactively. Notebooks are mounted read-write, so saves land back in the
-repository. Stop everything with `docker compose down`.
+Then open **http://127.0.0.1:8888/lab?token=krm**. Two notebooks are available. Notebooks are
+mounted read-write, so saves land back in the repository. Stop everything with
+`docker compose down`.
+
+| Notebook | Purpose | Output |
+| --- | --- | --- |
+| `notebooks/waterinfo_demo.ipynb` | Walks through the download steps interactively, using `data/waterinfo_downloading_settings.toml` | `data/waterinfo/notebook/<grootheid_code>_combined.csv` |
+| `notebooks/download_validatielijst.ipynb` | Downloads every row of `validatielijst.csv` whose `process` column is `DT` | `data/waterinfo/<databundelcode>_<YYYYMMDD>.csv` |
+
+### Downloading the `DT` rows of `validatielijst.csv`
+
+`download_validatielijst.ipynb` does the following for each row with `process = DT`:
+
+1. Takes the locations from `locatiecode` (for example `strand_Bergen;strand_Veere`) and translates
+   them to Waterinfo location codes with `data/waterinfo_location_codes.csv`
+   (`locatiecode;waterinfo_code`). Add a line there for every new location. A location without
+   a line stops the notebook with an error.
+2. Downloads each location for the period `startdatum` - `einddatum` (`D-M-YYYY`), with the row's
+   `grootheid_code` and `monstercompartiment_code`.
+3. Combines the locations in one file called `<databundelcode>_<download date>.csv`, separated
+   by `;`, with the same columns as the Waterinfo catalog data.
+
+Both CSV files are fetched from GitHub with the same method the validation lambda uses
+(`urllib3` GET, `windows-1252`, `;`). The notebook checks that the required columns exist and says
+which column is missing if not.
 
 > ⚠️ **The notebook reads `validatielijst.csv` and `waterinfo_location_codes.csv` from the
 > `waterinfo_downloading` branch on GitHub, not from `main`.** This is temporary. Once the branch
-> is merged, change `GITHUB_BRANCH = "waterinfo_downloading"` to `"main"` in the "Download the
-> rows marked `DT`" cell of `notebooks/waterinfo_demo.ipynb`. The files have to be pushed to the
-> branch before the notebook can see them; local changes are not used.
+> is merged, change `GITHUB_BRANCH = "waterinfo_downloading"` to `"main"` in
+> `notebooks/download_validatielijst.ipynb`. The files have to be pushed to the branch before the
+> notebook can see them; local changes are not used. GitHub caches raw files for about 5 minutes
+> after a push, so a fresh push may take that long to show up.
 
 ## Running on AWS
 
@@ -167,6 +190,8 @@ update the layer version in `infra/lambda.tf`.
 | `requirements.txt` | `pandas`, `rws-waterinfo` |
 | `requirements-notebook.txt` | JupyterLab extras, kept out of the runtime image |
 | `notebooks/waterinfo_demo.ipynb` | Interactive version of the demo |
+| `notebooks/download_validatielijst.ipynb` | Downloads the `DT` rows of `validatielijst.csv` |
+| `../../../data/waterinfo_location_codes.csv` | `locatiecode` in `validatielijst.csv` to Waterinfo location code |
 | `USER_GUIDE.md` | Step-by-step manual for console/GitHub users |
 
 The handler is duplicated to `../downloading-prod/` because Terraform reads the function source
