@@ -1,23 +1,3 @@
-"""Lambda handler that downloads the Waterinfo data marked ``DT`` in validatielijst.csv.
-
-Starts when a message is published to the DownloadWaterinfo SNS topic, or when the
-scheduled EventBridge rule fires. The content of the message is ignored. What gets
-downloaded is decided only by two CSV files in the repository's ``data`` folder,
-which the lambda reads from GitHub (raw URL), like the validation lambda does:
-
-* ``validatielijst.csv``: every row whose ``process`` column is ``DT`` is
-  downloaded for the period ``startdatum`` - ``einddatum``, with its
-  ``grootheid_code`` and ``monstercompartiment_code``, for the locations in
-  ``locatiecode``.
-* ``waterinfo_location_codes.csv``: translates a ``locatiecode`` of
-  validatielijst (for example ``strand_Bergen``) to the Waterinfo location code.
-
-Each DT row produces one file ``<databundelcode>_<YYYYMMDD>.csv`` with the
-locations combined, in S3 under the ``downloaded`` prefix. Running the file
-directly (``python krm-downloading-validatielijst.py [output_dir]``) writes the
-files to a local folder instead, which is handy for testing.
-"""
-
 import io
 import json
 import os
