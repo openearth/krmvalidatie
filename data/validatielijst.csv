@@ -667,10 +667,10 @@ WFSR_2024;D9C1;MASSFTE;;WFSR-23 mg/kg;ChemischeStof;Cancer pagurus;NVT;OE;BV;mg/
 WFSR_2024;D9C1;MASSFTE;;WFSR-23 ng/g;ChemischeStof;Cancer pagurus;NVT;OE;BV;ng/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
 WFSR_2024;D9C1;MASSFTE;;WFSR-23 pg/g;ChemischeStof;Cancer pagurus;NVT;OE;BV;pg/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
 WFSR_2024;D9C1;MASSFTE;;VET;Object;Cancer pagurus;NVT;OE;BV;%;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
-WFSR_2024;D9C1;MASSFTE;;WFSR-23 mg/kg;ChemischeStof;Nephrops Norvegicus;NVT;OE;FT;mg/kg;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
-WFSR_2024;D9C1;MASSFTE;;WFSR-23 ng/g;ChemischeStof;Nephrops Norvegicus;NVT;OE;FT;ng/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
-WFSR_2024;D9C1;MASSFTE;;WFSR-23 pg/g;ChemischeStof;Nephrops Norvegicus;NVT;OE;FT;pg/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
-WFSR_2024;D9C1;MASSFTE;;VET;Object;Nephrops Norvegicus;NVT;OE;FT;%;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
+WFSR_2024;D9C1;MASSFTE;;WFSR-23 mg/kg;ChemischeStof;Nephrops norvegicus;NVT;OE;FT;mg/kg;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
+WFSR_2024;D9C1;MASSFTE;;WFSR-23 ng/g;ChemischeStof;Nephrops norvegicus;NVT;OE;FT;ng/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
+WFSR_2024;D9C1;MASSFTE;;WFSR-23 pg/g;ChemischeStof;Nephrops norvegicus;NVT;OE;FT;pg/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
+WFSR_2024;D9C1;MASSFTE;;VET;Object;Nephrops norvegicus;NVT;OE;FT;%;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
 WFSR_2024;D9C1;MASSFTE;;WFSR-23 mg/kg;ChemischeStof;Microstomus kitt;NVT;OE;FT;mg/kg;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
 WFSR_2024;D9C1;MASSFTE;;WFSR-23 ng/g;ChemischeStof;Microstomus kitt;NVT;OE;FT;ng/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
 WFSR_2024;D9C1;MASSFTE;;WFSR-23 pg/g;ChemischeStof;Microstomus kitt;NVT;OE;FT;pg/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
