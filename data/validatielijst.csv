@@ -679,3 +679,11 @@ WFSR_2024;D9C1;MASSFTE;;WFSR-23 mg/kg;ChemischeStof;Platichthys flesus;NVT;OE;FT
 WFSR_2024;D9C1;MASSFTE;;WFSR-23 ng/g;ChemischeStof;Platichthys flesus;NVT;OE;FT;ng/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
 WFSR_2024;D9C1;MASSFTE;;WFSR-23 pg/g;ChemischeStof;Platichthys flesus;NVT;OE;FT;pg/g;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
 WFSR_2024;D9C1;MASSFTE;;VET;Object;Platichthys flesus;NVT;OE;FT;%;NVT;NOORDZEE;;15-9-2025;1-1-2024;31-12-2024;1;>=;meetwaarde.lokaalid ;;
+RWS_2024_11 plastic in stormvogels;D10C3;MASSA;;OSPAR_PLAIND;Object;Fulmarus glacialis;NVT;OE;MG;g;NVT;alle_stranden;NVT;15-9-2025;1-1-2024;31-12-2024;30;>=;meetwaarde.lokaalid ;;
+RWS_2024_11 plastic in stormvogels;D10C3;MASSA;;OSPAR_PLATOT;Object;Fulmarus glacialis;NVT;OE;MG;g;NVT;alle_stranden;NVT;15-9-2025;1-1-2024;31-12-2024;30;>=;meetwaarde.lokaalid ;;
+RWS_2024_11 plastic in stormvogels;D10C3;MASSA;;OSPAR_PLAUSE;Object;Fulmarus glacialis;NVT;OE;MG;g;NVT;alle_stranden;NVT;15-9-2025;1-1-2024;31-12-2024;30;>=;meetwaarde.lokaalid ;;
+RWS_2024_11 plastic in stormvogels;D10C3;AANTL;;OSPAR_PLAIND;Object;Fulmarus glacialis;NVT;OE;MG;n;NVT;alle_stranden;NVT;15-9-2025;1-1-2024;31-12-2024;30;>=;meetwaarde.lokaalid ;;
+RWS_2024_11 plastic in stormvogels;D10C3;AANTL;;OSPAR_PLATOT;Object;Fulmarus glacialis;NVT;OE;MG;n;NVT;alle_stranden;NVT;15-9-2025;1-1-2024;31-12-2024;30;>=;meetwaarde.lokaalid ;;
+RWS_2024_11 plastic in stormvogels;D10C3;AANTL;;OSPAR_PLAUSE;Object;Fulmarus glacialis;NVT;OE;MG;n;NVT;alle_stranden;NVT;15-9-2025;1-1-2024;31-12-2024;30;>=;meetwaarde.lokaalid ;;
+RWS_2024_11 plastic in stormvogels;D10C3;;LEVSDM;;Typering;Fulmarus glacialis;NVT;OE;MG;DIMSLS;NVT;alle_stranden;NVT;15-9-2025;1-1-2024;31-12-2024;30;>=;meetwaarde.lokaalid ;;
+RWS_2024_11 plastic in stormvogels;D10C3;;SEXE;;Typering;Fulmarus glacialis;NVT;OE;MG;DIMSLS;NVT;alle_stranden;NVT;15-9-2025;1-1-2024;31-12-2024;30;>=;meetwaarde.lokaalid ;;
