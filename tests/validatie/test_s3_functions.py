@@ -342,10 +342,11 @@ def test_report_databundle_update_existing(mock_boto3_client):
     assert "new_state" in updated_csv
 
 @patch('boto3.client')
-def test_report_databundle_append_new(mock_boto3_client):
+def test_report_databundle_append_new(mock_boto3_client, monkeypatch):
     # Setup the mock
     mock_s3_client = MagicMock()
     mock_boto3_client.return_value = mock_s3_client
+    monkeypatch.setenv("KRM_BUCKET_NAME", "krm-validatie-data-prod")
 
     # Sample CSV data for testing
     sample_csv_data = "databundelcode;krmcriterium;last_updated;status\npackage1;criterion1;2023-01-01 00:00:00;state1"

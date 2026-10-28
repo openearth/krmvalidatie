@@ -111,7 +111,22 @@ terraform workspace delete <workspace_name>
 
 Note: You cannot delete a workspace if it is currently selected. Switch to another workspace first.
 
-### Cleaning Up
+### Lambda source code
+
+Each Lambda has one shared source folder, used by both the `dev` and `prod` Terraform workspaces:
+
+- `functions/validatie/` contains the validation package.
+- `functions/publicatie/` contains the publication handler.
+- `functions/downloading/` contains the Waterinfo download handler.
+
+Terraform builds each deployment zip from these shared sources. Environment-specific settings,
+such as the S3 bucket and publication WPS identifier, are passed to the Lambda as environment
+variables based on the selected workspace. The downloader's local Docker setup and notebooks
+remain in `functions/downloading-dev/`; they are development tools, not a second deployed handler.
+
+The root `docker-compose.yml` mounts `functions/validatie/`, the same package Terraform deploys.
+
+## Cleaning Up
 
 To destroy the resources created by Terraform:
 

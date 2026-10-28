@@ -68,7 +68,7 @@ repository. Stop everything with `docker compose down`.
 
 ## Running on AWS
 
-`krm-downloading.py` is the Lambda handler. It is triggered in two ways.
+The shared Lambda handler is in `../downloading/krm-downloading.py`. It is triggered in two ways.
 
 ### 1. Manually, by publishing a message
 
@@ -155,7 +155,7 @@ update the layer version in `infra/lambda.tf`.
 | File | Purpose |
 | --- | --- |
 | `download.py` | Local script |
-| `krm-downloading.py` | Lambda handler |
+| `../downloading/krm-downloading.py` | Shared Lambda handler |
 | `Dockerfile` | Local image, `runtime` and `notebook` stages |
 | `docker-compose.yml` | Local compose stack |
 | `requirements.txt` | `pandas`, `rws-waterinfo` |
@@ -163,9 +163,8 @@ update the layer version in `infra/lambda.tf`.
 | `notebooks/waterinfo_demo.ipynb` | Interactive version of the demo |
 | `USER_GUIDE.md` | Step-by-step manual for console/GitHub users |
 
-The handler is duplicated to `../downloading-prod/` because Terraform reads the function source
-from `functions/downloading-${terraform.workspace}`, the same pattern as `validatie-*` and
-`publicatie-*`.
+Terraform packages this shared handler for both workspaces. The workspace-specific bucket is
+provided through the `KRM_BUCKET_NAME` Lambda environment variable.
 
 ## Difference with the original demo script
 

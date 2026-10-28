@@ -8,6 +8,10 @@ import glob
 
 s3 = boto3.client('s3')
 
+BUCKET_NAME = os.environ.get("KRM_BUCKET_NAME", "krm-validatie-data-dev")
+WPS_IDENTIFIER = os.environ.get("KRM_WPS_IDENTIFIER", "wps_mp_dataingestion_dev")
+INCLUDE_TEST_PARAMETER = os.environ.get("KRM_WPS_INCLUDE_TEST_PARAMETER", "false").lower() == "true"
+
 def get_all_files_from_s3(bucket_name, folder_name):
     
     # List all objects in the specified S3 folder
@@ -92,7 +96,7 @@ def merge_geopackages(gpkg_files, output_gpkg, layer_name="krm_actuele_dataset")
 
 def lambda_handler(event, context):
 
-    bucket_name = "krm-validatie-data-dev"
+    bucket_name = BUCKET_NAME
     # TODO get latest file in bucket
     subfolder = "geopackages"
     
@@ -130,16 +134,18 @@ def lambda_handler(event, context):
         # Merge all GeoPackages
         merge_geopackages(geopackage_files, output_geopackage)
         
-        upload_file_to_s3('/tmp/merged_output.gpkg', 'krm-validatie-data-dev', 'geopackages_history/krm_actuele_dataset_new.gpkg')
-        #upload_file_to_s3('merged_output.gpkg', 'krm-validatie-data-dev', 'geopackages_history/krm_actuele_dataset_new.gpkg')
+        upload_file_to_s3('/tmp/merged_output.gpkg', bucket_name, 'geopackages_history/krm_actuele_dataset_new.gpkg')
 
         # Publish new package
-        publish_bucket = "krm-validatie-data-dev"
+        publish_bucket = bucket_name
         publish_key = "geopackages_history/krm_actuele_dataset_new.gpkg"
 
-        # url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key":"{publish_key}","test":"{publish_to_test}"}}'
-        # url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion_dev&version=2.0.0&DataInputs=s3_inputs=%7B%22bucketname%22:%22krm-validatie-data-dev%22,%22key%22:%22geopackage/output.gpkg%22%7D'
-        url =f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS&identifier=wps_mp_dataingestion_dev&version=2.0.0&DataInputs=s3_inputs={{"bucketname":"{publish_bucket}","key":"{publish_key}"}}'
+        test_parameter = f',"test":"{publish_to_test}"' if INCLUDE_TEST_PARAMETER else ""
+        url = (
+            f'https://marineprojects.openearth.nl/wps?request=Execute&service=WPS'
+            f'&identifier={WPS_IDENTIFIER}&version=2.0.0&DataInputs=s3_inputs='
+            f'{{"bucketname":"{publish_bucket}","key":"{publish_key}"{test_parameter}}}'
+        )
         # Send an HTTP GET request to the URL
         print(url)
         http = urllib3.PoolManager()

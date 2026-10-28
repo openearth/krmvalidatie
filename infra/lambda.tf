@@ -4,7 +4,7 @@ resource "aws_lambda_function" "krm_validatie_lambda" {
   runtime          = "python3.11"
   role             = aws_iam_role.function_role.arn
   handler          = "krm_validator.handler.lambda_handler"
-  filename         = "functions/validatie-${terraform.workspace}/krm-validatie.zip" # Make sure to create and upload this file
+  filename         = "functions/validatie/krm-validatie.zip"
   source_code_hash = data.archive_file.lambda.output_base64sha256
   timeout          = 900
   memory_size      = 8192
@@ -34,10 +34,18 @@ resource "aws_lambda_function" "krm_publicatie_lambda" {
   runtime          = "python3.11"
   role             = aws_iam_role.function_role.arn
   handler          = "krm-publicatie.lambda_handler"
-  filename         = "functions/publicatie-${terraform.workspace}/krm-publicatie.zip" # Make sure to create and upload this file
+  filename         = "functions/publicatie/krm-publicatie.zip"
   source_code_hash = data.archive_file.lambda_publicatie.output_base64sha256
   timeout          = 900
   memory_size      = 1024
+
+  environment {
+    variables = {
+      KRM_BUCKET_NAME                = "${var.bucket_name}-${terraform.workspace}"
+      KRM_WPS_IDENTIFIER             = local.is_prod ? "wps_mp_dataingestion" : "wps_mp_dataingestion_dev"
+      KRM_WPS_INCLUDE_TEST_PARAMETER = local.is_prod ? "true" : "false"
+    }
+  }
 
   layers = [
     "arn:aws:lambda:eu-west-1:637423531264:layer:geopandas:2"
@@ -45,8 +53,8 @@ resource "aws_lambda_function" "krm_publicatie_lambda" {
 }
 
 locals {
-  # Collect python modules from the workspace-specific source folder
-  validatie_files = fileset("functions/validatie-${terraform.workspace}", "*.py")
+  # Package the shared validation code as a krm_validator Python package.
+  validatie_files = fileset("functions/validatie", "*.py")
 }
 
 # Lambda Function that downloads Waterinfo data into the bucket
@@ -55,7 +63,7 @@ resource "aws_lambda_function" "krm_downloading_lambda" {
   runtime          = "python3.11"
   role             = aws_iam_role.function_role.arn
   handler          = "krm-downloading.lambda_handler"
-  filename         = "functions/downloading-${terraform.workspace}/krm-downloading.zip"
+  filename         = "functions/downloading/krm-downloading.zip"
   source_code_hash = data.archive_file.lambda_downloading.output_base64sha256
   timeout          = 900
   memory_size      = 2048
@@ -76,12 +84,12 @@ resource "aws_lambda_function" "krm_downloading_lambda" {
 }
 data "archive_file" "lambda" {
   type        = "zip"
-  output_path = "functions/validatie-${terraform.workspace}/krm-validatie.zip"
+  output_path = "functions/validatie/krm-validatie.zip"
 
   dynamic "source" {
     for_each = local.validatie_files
     content {
-      content  = file("functions/validatie-${terraform.workspace}/${source.value}")
+      content  = file("functions/validatie/${source.value}")
       filename = "krm_validator/${source.value}"
     }
   }
@@ -90,14 +98,14 @@ data "archive_file" "lambda" {
 # Create the function
 data "archive_file" "lambda_publicatie" {
   type        = "zip"
-  source_file = "functions/publicatie-${terraform.workspace}/krm-publicatie.py"
-  output_path = "functions/publicatie-${terraform.workspace}/krm-publicatie.zip"
+  source_file = "functions/publicatie/krm-publicatie.py"
+  output_path = "functions/publicatie/krm-publicatie.zip"
 }
 
 data "archive_file" "lambda_downloading" {
   type        = "zip"
-  source_file = "functions/downloading-${terraform.workspace}/krm-downloading.py"
-  output_path = "functions/downloading-${terraform.workspace}/krm-downloading.zip"
+  source_file = "functions/downloading/krm-downloading.py"
+  output_path = "functions/downloading/krm-downloading.zip"
 }
 
 # IAM policy document for accessing Secrets Manager

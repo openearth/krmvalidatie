@@ -1,5 +1,6 @@
 from datetime import datetime
 from io import StringIO
+import os
 import uuid
 import boto3
 import json
@@ -127,7 +128,7 @@ def report_databundle(df, package_name, state):
 
     s3 = boto3.client('s3')
     
-    bucket_name = "krm-validatie-data-prod"
+    bucket_name = os.environ.get("KRM_BUCKET_NAME", "krm-validatie-data-dev")
 
     response = s3.get_object(Bucket=bucket_name, Key='rapportages/akkoorddata.csv')
     csv_data = response['Body'].read().decode('utf-8')
